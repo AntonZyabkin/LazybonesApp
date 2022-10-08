@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47A28F15C1B008D4499 /* MainPresenter.swift */; };
+		5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47C28F1615C008D4499 /* NetworkService.swift */; };
 		E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667728ED6886006C89F8 /* AppDelegate.swift */; };
 		E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667928ED6886006C89F8 /* SceneDelegate.swift */; };
-		E8B5667C28ED6886006C89F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667B28ED6886006C89F8 /* ViewController.swift */; };
-		E8B5667F28ED6886006C89F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B5667D28ED6886006C89F8 /* Main.storyboard */; };
+		E8B5667C28ED6886006C89F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667B28ED6886006C89F8 /* MainViewController.swift */; };
 		E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */; };
 		E8B5668428ED6888006C89F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B5668328ED6888006C89F8 /* Assets.xcassets */; };
 		E8B5668728ED6888006C89F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */; };
@@ -37,11 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5737A47A28F15C1B008D4499 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		5737A47C28F1615C008D4499 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E8B5667428ED6886006C89F8 /* LazybonesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazybonesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5667728ED6886006C89F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8B5667928ED6886006C89F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8B5667B28ED6886006C89F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E8B5667E28ED6886006C89F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8B5667B28ED6886006C89F8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E8B5668128ED6886006C89F8 /* LazybonesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LazybonesApp.xcdatamodel; sourceTree = "<group>"; };
 		E8B5668328ED6888006C89F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8B5668628ED6888006C89F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +80,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5737A47828F15B85008D4499 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				5737A47928F15BF4008D4499 /* Main */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		5737A47928F15BF4008D4499 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5667B28ED6886006C89F8 /* MainViewController.swift */,
+				5737A47A28F15C1B008D4499 /* MainPresenter.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		5737A47E28F1649F008D4499 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5737A47F28F164AC008D4499 /* ServiceLayer */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5737A47F28F164AC008D4499 /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				5737A47C28F1615C008D4499 /* NetworkService.swift */,
+			);
+			path = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		5737A48028F164B9008D4499 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				5737A48128F164C5008D4499 /* Resources */,
+				E8B5667728ED6886006C89F8 /* AppDelegate.swift */,
+				E8B5667928ED6886006C89F8 /* SceneDelegate.swift */,
+				E8B5668828ED6888006C89F8 /* Info.plist */,
+				E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		5737A48128F164C5008D4499 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */,
+				E8B5668328ED6888006C89F8 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E8B5666B28ED6886006C89F8 = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +157,9 @@
 		E8B5667628ED6886006C89F8 /* LazybonesApp */ = {
 			isa = PBXGroup;
 			children = (
-				E8B5667728ED6886006C89F8 /* AppDelegate.swift */,
-				E8B5667928ED6886006C89F8 /* SceneDelegate.swift */,
-				E8B5667B28ED6886006C89F8 /* ViewController.swift */,
-				E8B5667D28ED6886006C89F8 /* Main.storyboard */,
-				E8B5668328ED6888006C89F8 /* Assets.xcassets */,
-				E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */,
-				E8B5668828ED6888006C89F8 /* Info.plist */,
-				E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */,
+				5737A48028F164B9008D4499 /* Application */,
+				5737A47E28F1649F008D4499 /* Core */,
+				5737A47828F15B85008D4499 /* Scenes */,
 			);
 			path = LazybonesApp;
 			sourceTree = "<group>";
@@ -236,7 +287,6 @@
 			files = (
 				E8B5668728ED6888006C89F8 /* LaunchScreen.storyboard in Resources */,
 				E8B5668428ED6888006C89F8 /* Assets.xcassets in Resources */,
-				E8B5667F28ED6886006C89F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,9 +311,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8B5667C28ED6886006C89F8 /* ViewController.swift in Sources */,
+				5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */,
+				E8B5667C28ED6886006C89F8 /* MainViewController.swift in Sources */,
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
+				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,14 +353,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E8B5667D28ED6886006C89F8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8B5667E28ED6886006C89F8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,13 +486,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LazybonesApp/Info.plist;
+				INFOPLIST_FILE = LazybonesApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -471,13 +514,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LazybonesApp/Info.plist;
+				INFOPLIST_FILE = LazybonesApp/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
