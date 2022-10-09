@@ -15,22 +15,25 @@ enum Actions: String, CaseIterable {
     case comments = "Get comments"
 }
 
-let usersURL = "https://jsonplaceholder.typicode.com/users"
-let commentsURL = "https://jsonplaceholder.typicode.com/comments"
-let postsURL = "https://jsonplaceholder.typicode.com/posts"
-
+private let urlArray = ["https://jsonplaceholder.typicode.com/posts",
+                        "https://jsonplaceholder.typicode.com/users",
+                        "https://jsonplaceholder.typicode.com/comments"]
 
 //MARK: - PlaseHolderViewController
 class PlaseHolderViewController: UIViewController {
     
     private var actionsCollectionView: UICollectionView!
+    private let actionsArray = Actions.allCases
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray
         setupPlaseHolderViewController()
     }
-
+    
+    private func presentDetailInfoVC(typrOfinfo: String) {
+        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(typeOfData: typrOfinfo), animated: true)
+    }
 }
 
 //MARK: - view setting functions
@@ -43,9 +46,6 @@ private extension PlaseHolderViewController {
     
     func addSubviews() {
         view.addSubview(actionsCollectionView)
-    }
-    
-    func setupConstrainst() {
     }
     
     func setCollectionView() {
@@ -72,21 +72,34 @@ private extension PlaseHolderViewController {
 }
 
 
-//MARK: - UICollectionView Delegate+DataSource
+//MARK: - UICollectionView DataSource Impl
 
-extension PlaseHolderViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PlaseHolderViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        actionsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = actionsCollectionView.dequeueReusableCell(withReuseIdentifier: ActionCollectionViewCell.identifier, for: indexPath) as! ActionCollectionViewCell
-        cell.configureLabel(with: String(indexPath.row))
+        cell.configureLabel(with: actionsArray[indexPath.row].rawValue)
         return cell
-        
     }
+}
+
+//MARK: - UICollectionView Delegate Impl
+extension PlaseHolderViewController: UICollectionViewDelegate {
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let action = actionsArray[indexPath.row]
+        switch action {
+        case .posts:
+            presentDetailInfoVC(typrOfinfo: "posts")
+        case .users:
+            presentDetailInfoVC(typrOfinfo: "users")
+        case .comments:
+            presentDetailInfoVC(typrOfinfo: "comment")
+        }
+    }
 }

@@ -1,11 +1,12 @@
 //
-//  JSONPlaceHolderModel.swift
+//  DetailInfoModel.swift
 //  LazybonesApp
 //
-//  Created by Anton Zyabkin on 08.10.2022.
+//  Created by Anton Zyabkin on 09.10.2022.
 //
 
 import Foundation
+
 
 struct Post: Codable {
     
