@@ -18,6 +18,10 @@
 		E8B5669228ED6888006C89F8 /* LazybonesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669128ED6888006C89F8 /* LazybonesAppTests.swift */; };
 		E8B5669C28ED6888006C89F8 /* LazybonesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */; };
 		E8B5669E28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */; };
+		E8B566B028F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566AF28F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift */; };
+		E8B566B228F1CBDB006C89F8 /* PlaseHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B128F1CBDB006C89F8 /* PlaseHolderViewController.swift */; };
+		E8B566B428F1CC0B006C89F8 /* JSONPlaceHolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B328F1CC0B006C89F8 /* JSONPlaceHolderModel.swift */; };
+		E8B566B828F2B1BA006C89F8 /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B728F2B1BA006C89F8 /* ActionCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		E8B5669728ED6888006C89F8 /* LazybonesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LazybonesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITests.swift; sourceTree = "<group>"; };
 		E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E8B566AF28F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPlaceHolderTableViewPresenter.swift; sourceTree = "<group>"; };
+		E8B566B128F1CBDB006C89F8 /* PlaseHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaseHolderViewController.swift; sourceTree = "<group>"; };
+		E8B566B328F1CC0B006C89F8 /* JSONPlaceHolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPlaceHolderModel.swift; sourceTree = "<group>"; };
+		E8B566B728F2B1BA006C89F8 /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		5737A47828F15B85008D4499 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				E8B566AB28F1CB16006C89F8 /* JSONPlaceHoldetTableVeiw */,
 				5737A47928F15BF4008D4499 /* Main */,
 			);
 			path = Scenes;
@@ -179,6 +188,41 @@
 				E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */,
 			);
 			path = LazybonesAppUITests;
+			sourceTree = "<group>";
+		};
+		E8B566AB28F1CB16006C89F8 /* JSONPlaceHoldetTableVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				E8B566AC28F1CB41006C89F8 /* Model */,
+				E8B566AD28F1CB4B006C89F8 /* View */,
+				E8B566AE28F1CB51006C89F8 /* Presenter */,
+			);
+			path = JSONPlaceHoldetTableVeiw;
+			sourceTree = "<group>";
+		};
+		E8B566AC28F1CB41006C89F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E8B566B328F1CC0B006C89F8 /* JSONPlaceHolderModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E8B566AD28F1CB4B006C89F8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E8B566B128F1CBDB006C89F8 /* PlaseHolderViewController.swift */,
+				E8B566B728F2B1BA006C89F8 /* ActionCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E8B566AE28F1CB51006C89F8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E8B566AF28F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,12 +355,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B566B428F1CC0B006C89F8 /* JSONPlaceHolderModel.swift in Sources */,
 				5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */,
 				E8B5667C28ED6886006C89F8 /* MainViewController.swift in Sources */,
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
+				E8B566B228F1CBDB006C89F8 /* PlaseHolderViewController.swift in Sources */,
 				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
+				E8B566B028F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift in Sources */,
+				E8B566B828F2B1BA006C89F8 /* ActionCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

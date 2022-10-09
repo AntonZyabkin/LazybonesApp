@@ -19,8 +19,9 @@ final class MainViewController: UIViewController {
     
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Title", for: .normal)
+        button.setTitle("All requests", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.backgroundColor = .blue
         button.layer.cornerRadius = 16
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -40,6 +41,8 @@ final class MainViewController: UIViewController {
     @objc
     private func didTapButton() {
         presenter?.didTapButton()
+        let plaseHolderVC = PlaseHolderViewController()
+        show(plaseHolderVC, sender: nil)
     }
 }
 
@@ -54,6 +57,7 @@ extension MainViewController: MainDisplayLogic {
 // MARK: - Private mathod
 
 private extension MainViewController {
+    
     func setupViewController() {
         view.backgroundColor = .lightGray
         
