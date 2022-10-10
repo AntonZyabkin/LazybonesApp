@@ -15,21 +15,26 @@ class DetailInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
-        presenter.showGreeting()
         setupDetailInfoViewController()
     }
 }
 
 //MARK: - DetailInfoViewProtocol Impl
 extension DetailInfoViewController: DetailInfoViewProtocol {
-    
-    func setGreating(user: User) {
-        print(user.name)
+    func failure(error: Error) {
+        print("error")
+
     }
+    
+    func succes() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
 }
 
 //MARK: - Setting TableView
-
 extension DetailInfoViewController {
     
     func setupDetailInfoViewController() {

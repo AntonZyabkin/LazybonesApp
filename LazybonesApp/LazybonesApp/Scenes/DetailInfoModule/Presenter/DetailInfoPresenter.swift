@@ -8,28 +8,44 @@
 import Foundation
 
 
-protocol DetailInfoViewProtocol {
+protocol DetailInfoViewProtocol: AnyObject {
     
-    func setGreating(user: User)
+    func succes()
+    func failure(error: Error)
 }
 
 protocol DetailInfoViewPresenterProtocol {
     
-    init(view: DetailInfoViewProtocol, user: User)
-    func showGreeting()
+    init(view: DetailInfoViewProtocol, networkService: NetworkServiceProtocol, didSelectedURL: String)
+    func getDataArray()
+    var dataArray: [Any]? { get set }
 }
 
 class DetailInfoPresenter: DetailInfoViewPresenterProtocol {
     
-    let view: DetailInfoViewProtocol
-    let user: User
-    
-    required init(view: DetailInfoViewProtocol, user: User) {
+    weak var view: (DetailInfoViewProtocol)?
+    let networkService: NetworkServiceProtocol!
+    let didSelectedURL: String!
+    var dataArray: [Any]?
+
+    required init(view: DetailInfoViewProtocol, networkService: NetworkServiceProtocol, didSelectedURL: String) {
         self.view = view
-        self.user = user
+        self.networkService = networkService
+        self.didSelectedURL = didSelectedURL
+        getDataArray()
     }
     
-    func showGreeting() {
-        view.setGreating(user: user)
+    func getDataArray() {
+        networkService.getData(url: didSelectedURL) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let dataArray):
+                self.dataArray = dataArray
+                self.view?.succes()
+            case .failure(let error):
+                self.view?.failure(error: error)
+            }
+        }
     }
+    
 }

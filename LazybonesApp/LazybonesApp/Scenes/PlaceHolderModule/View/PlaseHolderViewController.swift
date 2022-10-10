@@ -31,8 +31,8 @@ class PlaseHolderViewController: UIViewController {
         setupPlaseHolderViewController()
     }
     
-    private func presentDetailInfoVC(typrOfinfo: String) {
-        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(typeOfData: typrOfinfo), animated: true)
+    private func presentDetailInfoVC(didSelectedURL: String) {
+        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(didSelectedURL: didSelectedURL), animated: true)
     }
 }
 
@@ -92,14 +92,6 @@ extension PlaseHolderViewController: UICollectionViewDataSource {
 extension PlaseHolderViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let action = actionsArray[indexPath.row]
-        switch action {
-        case .posts:
-            presentDetailInfoVC(typrOfinfo: "posts")
-        case .users:
-            presentDetailInfoVC(typrOfinfo: "users")
-        case .comments:
-            presentDetailInfoVC(typrOfinfo: "comment")
-        }
+        presentDetailInfoVC(didSelectedURL: urlArray[indexPath.row])
     }
 }

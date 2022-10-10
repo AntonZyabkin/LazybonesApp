@@ -50,7 +50,7 @@ final class MainViewController: UIViewController {
 
 extension MainViewController: MainDisplayLogic {
     func updateView() {
-        print(#function)
+        
     }
 }
 

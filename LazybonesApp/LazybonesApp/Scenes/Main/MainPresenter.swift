@@ -29,12 +29,10 @@ final class MainPresenter {
 
 extension MainPresenter: MainPresentatisonLogic {
     func viewDidLoad() {
-        print(#function)
         networkService.request()
         viewController?.updateView()
     }
     
     func didTapButton() {
-        print(#function)
     }
 }
