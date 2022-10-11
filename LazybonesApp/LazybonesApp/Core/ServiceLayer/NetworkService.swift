@@ -12,7 +12,7 @@ protocol Networkable {
 }
 
 protocol NetworkServiceProtocol {
-    func getData(url: String, complittion: @escaping (Result<[Any]?, Error>) -> Void)
+    func getData<T>(url: String, complition: @escaping (Result<[T]?, Error>) -> Void) where T: Codable
 }
 
 final class NetworkService {}
@@ -25,36 +25,21 @@ extension NetworkService: Networkable {
 
 extension NetworkService: NetworkServiceProtocol {
     
-    func getData(url: String, complittion: @escaping (Result<[Any]?, Error>) -> Void) {
+    func getData<T>(url: String, complition: @escaping (Result<T?, Error>) -> Void) where T: Codable {
         guard let url = URL(string: url) else {
             return }
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
-                complittion(.failure(error))
+                complition(.failure(error))
                 return
             }
-            
             do {
-                if let obj = self.convertData(data: data!) {
-                    complittion(.success(obj))
-                }
+                let obj = try JSONDecoder().decode(T.self, from: data!)
+                complition(.success(obj))
+            } catch {
+                print("error trying to convert data to JSON")
+                complition(.failure(error))
             }
         }.resume()
-    }
-    
-}
-//MARK: - костыль
-extension NetworkService {
-    
-    func convertData(data: Data) -> [Any]? {
-
-        if let obj = try? JSONDecoder().decode([User].self, from: data) {
-            return obj
-        } else if let obj = try? JSONDecoder().decode([Comment].self, from: data) {
-            return obj
-        } else {
-            let obj = try? JSONDecoder().decode([Post].self, from: data)
-            return obj
-        }
     }
 }

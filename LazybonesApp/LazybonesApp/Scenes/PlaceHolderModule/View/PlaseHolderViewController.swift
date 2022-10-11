@@ -15,9 +15,7 @@ enum Actions: String, CaseIterable {
     case comments = "Get comments"
 }
 
-private let urlArray = ["https://jsonplaceholder.typicode.com/posts",
-                        "https://jsonplaceholder.typicode.com/users",
-                        "https://jsonplaceholder.typicode.com/comments"]
+
 
 //MARK: - PlaseHolderViewController
 class PlaseHolderViewController: UIViewController {
@@ -31,8 +29,8 @@ class PlaseHolderViewController: UIViewController {
         setupPlaseHolderViewController()
     }
     
-    private func presentDetailInfoVC(didSelectedURL: String) {
-        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(didSelectedURL: didSelectedURL), animated: true)
+    private func presentDetailInfoVC(didSelectURL: Int) {
+        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(didSelectURL: didSelectURL), animated: true)
     }
 }
 
@@ -92,6 +90,6 @@ extension PlaseHolderViewController: UICollectionViewDataSource {
 extension PlaseHolderViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailInfoVC(didSelectedURL: urlArray[indexPath.row])
+        presentDetailInfoVC(didSelectURL: indexPath.row)
     }
 }

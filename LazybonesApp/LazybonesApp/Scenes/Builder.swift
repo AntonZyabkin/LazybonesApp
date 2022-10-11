@@ -9,16 +9,17 @@ import UIKit
 
 protocol Builder {
     
-    static func createDetailInfoVC(didSelectedURL: String) -> UIViewController
+    static func createDetailInfoVC(didSelectURL: Int) -> UIViewController
 }
 
 class ModuleBuilder: Builder{
     
-    static func createDetailInfoVC(didSelectedURL: String) -> UIViewController {
+    static func createDetailInfoVC(didSelectURL: Int) -> UIViewController {
 
         let view = DetailInfoViewController()
         let networkServise = NetworkService()
-        let presenter = DetailInfoPresenter(view: view, networkService: networkServise, didSelectedURL: didSelectedURL)
+        let presenter = DetailInfoPresenter(view: view, networkService: networkServise, didSelectURL: didSelectURL)
+        presenter.getDataArray()
         view.presenter = presenter
         return view
     }
