@@ -29,7 +29,7 @@ final class MainPresenter {
 
 extension MainPresenter: MainPresentatisonLogic {
     func viewDidLoad() {
-        networkService.request()
+//        networkService.request()
         viewController?.updateView()
     }
     

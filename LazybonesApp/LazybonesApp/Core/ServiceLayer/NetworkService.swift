@@ -8,38 +8,63 @@
 import Foundation
 
 protocol Networkable {
-    func request()
+    func request<T: Decodable>(urlstring: String, complition: @escaping (Result<T, Error>) -> Void)
 }
 
-protocol NetworkServiceProtocol {
-    func getData<T>(url: String, complition: @escaping (Result<[T]?, Error>) -> Void) where T: Codable
-}
-
-final class NetworkService {}
-
-extension NetworkService: Networkable {
-    func request() {
-
+final class NetworkService {
+    private let decoderService: DecoderServicable
+    init(decoderService: DecoderServicable) {
+        self.decoderService = decoderService
     }
 }
 
-extension NetworkService: NetworkServiceProtocol {
-    
-    func getData<T>(url: String, complition: @escaping (Result<T?, Error>) -> Void) where T: Codable {
-        guard let url = URL(string: url) else {
-            return }
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                complition(.failure(error))
+enum NetworkError: Error {
+    case urlError
+    case responseError
+    case dataError
+    case unknownError
+}
+
+extension NetworkService: Networkable {
+    func request<T: Decodable>(urlstring: String, complition: @escaping (Result<T, Error>) -> Void) {
+        func complitionHandler(_ result: Result<T, Error>) {
+            DispatchQueue.main.async {
+                complition(result)
+            }
+        }
+        DispatchQueue.global(qos: .utility).async {
+            guard let url = URL(string: urlstring) else {
+                let error = NetworkError.urlError
+                complitionHandler(.failure(error))
                 return
             }
-            do {
-                let obj = try JSONDecoder().decode(T.self, from: data!)
-                complition(.success(obj))
-            } catch {
-                print("error trying to convert data to JSON")
-                complition(.failure(error))
-            }
-        }.resume()
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request) { [weak self] data, urlResponse, error in
+                if let error = error {
+                    complition(.failure(error))
+                }
+                guard let urlResponse = urlResponse as? HTTPURLResponse else {
+                    let error = NetworkError.responseError
+                    complitionHandler(.failure(error))
+                    return
+                }
+                switch urlResponse.statusCode {
+                case 200...210:
+                    guard let data = data else {
+                        let error = NetworkError.dataError
+                        complitionHandler(.failure(error))
+                        return
+                    }
+                    self?.decoderService.decode(data, complition: complition)
+                case 401:
+                    //do something
+                    break
+                default:
+                    let error = NetworkError.unknownError
+                    complitionHandler(.failure(error))
+                    return
+                }
+            }.resume()
+        }
     }
 }

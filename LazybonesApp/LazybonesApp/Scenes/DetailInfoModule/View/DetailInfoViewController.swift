@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DetailInfoViewProtocol: AnyObject {
+    func succes()
+    func failure(error: Error)
+}
 class DetailInfoViewController: UIViewController {
     
     var presenter: DetailInfoViewPresenterProtocol!
@@ -16,6 +20,7 @@ class DetailInfoViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         setupDetailInfoViewController()
+        presenter.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,22 +70,21 @@ extension DetailInfoViewController {
 extension DetailInfoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let array = presenter.data else { return 0 }
-        return array.count
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DetailinfoTableViewCell.identifier, for: indexPath) as! DetailinfoTableViewCell
-
-        if let data = presenter.data as? [Post] {
-            cell.labelName.text = data[indexPath.row].title
-        } else if let data = presenter.data as? [User] {
-            cell.labelName.text = data[indexPath.row].name
-        } else if let data = presenter.data as? [Comment] {
-            cell.labelName.text = data[indexPath.row].name
-        }
-        cell.labelName.frame = cell.bounds
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: DetailinfoTableViewCell.identifier, for: indexPath) as! DetailinfoTableViewCell
+//
+//        if let data = presenter.data as? [Post] {
+//            cell.labelName.text = data[indexPath.row].title
+//        } else if let data = presenter.data as? [User] {
+//            cell.labelName.text = data[indexPath.row].name
+//        } else if let data = presenter.data as? [Comment] {
+//            cell.labelName.text = data[indexPath.row].name
+//        }
+//        cell.labelName.frame = cell.bounds
+        return UITableViewCell()
     }
 }
 

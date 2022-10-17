@@ -17,10 +17,12 @@ class ModuleBuilder: Builder{
     static func createDetailInfoVC(didSelectURL: Int) -> UIViewController {
 
         let view = DetailInfoViewController()
-        let networkServise = NetworkService()
-        let presenter = DetailInfoPresenter(view: view, networkService: networkServise, didSelectURL: didSelectURL)
-        presenter.getDataArray()
+        let decoderService = DecoderServise()
+        let networkService = NetworkService(decoderService: decoderService)
+        let apiService = APIService(netwokkService: networkService)
+        let presenter = DetailInfoPresenter(apiService: apiService)
         view.presenter = presenter
+        presenter.view = view
         return view
     }
 }
