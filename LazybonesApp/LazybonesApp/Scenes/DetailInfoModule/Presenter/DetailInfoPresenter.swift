@@ -24,10 +24,9 @@ extension DetailInfoPresenter: DetailInfoViewPresenterProtocol {
         apiService.fetchPosts { [weak self] result in
             switch result {
             case .success(let response):
-                print(response.count, response.first)
-                self?.view?.succes()
+                self?.view?.succes(response)
             case .failure(let error):
-                print(error, error.localizedDescription)
+                self?.view?.failure(error: error)
             }
         }
     }

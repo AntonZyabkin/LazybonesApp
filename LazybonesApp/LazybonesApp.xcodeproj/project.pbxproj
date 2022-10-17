@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F52A3A8336F9629E070F5DA /* Pods_LazybonesApp_LazybonesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */; };
 		5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47A28F15C1B008D4499 /* MainPresenter.swift */; };
 		5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47C28F1615C008D4499 /* NetworkService.swift */; };
+		9911AB4B3C022A32EACDBEE7 /* Pods_LazybonesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */; };
 		E875D0AB28F2E118000B6A08 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AA28F2E118000B6A08 /* Builder.swift */; };
 		E875D0AF28F2E407000B6A08 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */; };
 		E875D0B228F2E573000B6A08 /* DetailInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */; };
@@ -16,6 +18,7 @@
 		E875D0B728F2F8B4000B6A08 /* DetailinfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0B628F2F8B4000B6A08 /* DetailinfoTableViewCell.swift */; };
 		E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3528FD5B780058884F /* DecoderService.swift */; };
 		E8AF8A3828FD646C0058884F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3728FD646C0058884F /* APIService.swift */; };
+		E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3928FD864C0058884F /* MoyaService.swift */; };
 		E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667728ED6886006C89F8 /* AppDelegate.swift */; };
 		E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667928ED6886006C89F8 /* SceneDelegate.swift */; };
 		E8B5667C28ED6886006C89F8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667B28ED6886006C89F8 /* MainViewController.swift */; };
@@ -29,6 +32,7 @@
 		E8B566B228F1CBDB006C89F8 /* PlaseHolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B128F1CBDB006C89F8 /* PlaseHolderViewController.swift */; };
 		E8B566B428F1CC0B006C89F8 /* JSONPlaceHolderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B328F1CC0B006C89F8 /* JSONPlaceHolderModel.swift */; };
 		E8B566B828F2B1BA006C89F8 /* ActionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B566B728F2B1BA006C89F8 /* ActionCollectionViewCell.swift */; };
+		F630BF613E79AD8A914EE95E /* Pods_LazybonesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFDD0A524DE7BE145842C232 /* Pods_LazybonesApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,8 +53,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazybonesAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC96FEEC79821C8D8C54062 /* Pods-LazybonesApp-LazybonesAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp-LazybonesAppUITests.release.xcconfig"; path = "Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5737A47A28F15C1B008D4499 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		5737A47C28F1615C008D4499 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		8825B3B8EA6C92D4E83EEF5E /* Pods-LazybonesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesApp/Pods-LazybonesApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8A49638B38C5784FEC360724 /* Pods-LazybonesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp.release.xcconfig"; path = "Target Support Files/Pods-LazybonesApp/Pods-LazybonesApp.release.xcconfig"; sourceTree = "<group>"; };
+		AFDD0A524DE7BE145842C232 /* Pods_LazybonesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazybonesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.release.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E875D0AA28F2E118000B6A08 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoPresenter.swift; sourceTree = "<group>"; };
@@ -58,6 +70,7 @@
 		E875D0B628F2F8B4000B6A08 /* DetailinfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailinfoTableViewCell.swift; sourceTree = "<group>"; };
 		E8AF8A3528FD5B780058884F /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
 		E8AF8A3728FD646C0058884F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		E8AF8A3928FD864C0058884F /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		E8B5667428ED6886006C89F8 /* LazybonesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazybonesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5667728ED6886006C89F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8B5667928ED6886006C89F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +88,7 @@
 		E8B566B128F1CBDB006C89F8 /* PlaseHolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaseHolderViewController.swift; sourceTree = "<group>"; };
 		E8B566B328F1CC0B006C89F8 /* JSONPlaceHolderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONPlaceHolderModel.swift; sourceTree = "<group>"; };
 		E8B566B728F2B1BA006C89F8 /* ActionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCollectionViewCell.swift; sourceTree = "<group>"; };
+		FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazybonesApp_LazybonesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F630BF613E79AD8A914EE95E /* Pods_LazybonesApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9911AB4B3C022A32EACDBEE7 /* Pods_LazybonesAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,12 +112,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F52A3A8336F9629E070F5DA /* Pods_LazybonesApp_LazybonesAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2CAA296E7A24142C98AF2D0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFDD0A524DE7BE145842C232 /* Pods_LazybonesApp.framework */,
+				FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */,
+				0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5737A47828F15B85008D4499 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +160,7 @@
 		5737A47F28F164AC008D4499 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E8AF8A3928FD864C0058884F /* MoyaService.swift */,
 				5737A47C28F1615C008D4499 /* NetworkService.swift */,
 				E8AF8A3528FD5B780058884F /* DecoderService.swift */,
 				E8AF8A3728FD646C0058884F /* APIService.swift */,
@@ -159,6 +187,19 @@
 				E8B5668328ED6888006C89F8 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B4263029EE6C9BBC04E0EE7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8825B3B8EA6C92D4E83EEF5E /* Pods-LazybonesApp.debug.xcconfig */,
+				8A49638B38C5784FEC360724 /* Pods-LazybonesApp.release.xcconfig */,
+				D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */,
+				0AC96FEEC79821C8D8C54062 /* Pods-LazybonesApp-LazybonesAppUITests.release.xcconfig */,
+				C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */,
+				BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		E875D0AC28F2E36C000B6A08 /* DetailInfoModule */ = {
@@ -203,6 +244,8 @@
 				E8B5669028ED6888006C89F8 /* LazybonesAppTests */,
 				E8B5669A28ED6888006C89F8 /* LazybonesAppUITests */,
 				E8B5667528ED6886006C89F8 /* Products */,
+				B4263029EE6C9BBC04E0EE7B /* Pods */,
+				2CAA296E7A24142C98AF2D0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -285,9 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8B566A128ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesApp" */;
 			buildPhases = (
+				2CEC378B8ADBD0E048704914 /* [CP] Check Pods Manifest.lock */,
 				E8B5667028ED6886006C89F8 /* Sources */,
 				E8B5667128ED6886006C89F8 /* Frameworks */,
 				E8B5667228ED6886006C89F8 /* Resources */,
+				B38D7E52FDE250D0318E6C8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -302,6 +347,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8B566A428ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppTests" */;
 			buildPhases = (
+				03F8D832BC49C4BEFD326546 /* [CP] Check Pods Manifest.lock */,
 				E8B5668928ED6888006C89F8 /* Sources */,
 				E8B5668A28ED6888006C89F8 /* Frameworks */,
 				E8B5668B28ED6888006C89F8 /* Resources */,
@@ -320,9 +366,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8B566A728ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppUITests" */;
 			buildPhases = (
+				AE8F349EFF411FA5E30F076F /* [CP] Check Pods Manifest.lock */,
 				E8B5669328ED6888006C89F8 /* Sources */,
 				E8B5669428ED6888006C89F8 /* Frameworks */,
 				E8B5669528ED6888006C89F8 /* Resources */,
+				9B2B3E986FBD3361189716BD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -403,12 +451,116 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03F8D832BC49C4BEFD326546 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LazybonesAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2CEC378B8ADBD0E048704914 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LazybonesApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B2B3E986FBD3361189716BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE8F349EFF411FA5E30F076F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LazybonesApp-LazybonesAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B38D7E52FDE250D0318E6C8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp/Pods-LazybonesApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp/Pods-LazybonesApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LazybonesApp/Pods-LazybonesApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E8B5667028ED6886006C89F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E8AF8A3828FD646C0058884F /* APIService.swift in Sources */,
+				E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */,
 				E875D0B428F2E975000B6A08 /* DetailInfoModel.swift in Sources */,
 				E8B566B428F1CC0B006C89F8 /* JSONPlaceHolderModel.swift in Sources */,
 				E875D0B228F2E573000B6A08 /* DetailInfoPresenter.swift in Sources */,
@@ -588,6 +740,7 @@
 		};
 		E8B566A228ED6888006C89F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8825B3B8EA6C92D4E83EEF5E /* Pods-LazybonesApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -616,6 +769,7 @@
 		};
 		E8B566A328ED6888006C89F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A49638B38C5784FEC360724 /* Pods-LazybonesApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -644,6 +798,7 @@
 		};
 		E8B566A528ED6888006C89F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -663,6 +818,7 @@
 		};
 		E8B566A628ED6888006C89F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -682,6 +838,7 @@
 		};
 		E8B566A828ED6888006C89F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -699,6 +856,7 @@
 		};
 		E8B566A928ED6888006C89F8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AC96FEEC79821C8D8C54062 /* Pods-LazybonesApp-LazybonesAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

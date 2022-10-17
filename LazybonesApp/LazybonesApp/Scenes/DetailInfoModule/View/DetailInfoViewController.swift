@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DetailInfoViewProtocol: AnyObject {
-    func succes()
+    func succes<T: Decodable>(_ responce: [T])
     func failure(error: Error)
 }
 class DetailInfoViewController: UIViewController {
@@ -32,20 +32,14 @@ class DetailInfoViewController: UIViewController {
 
 //MARK: - DetailInfoViewProtocol Impl
 extension DetailInfoViewController: DetailInfoViewProtocol {
+    func succes<T>(_ responce: [T]) where T : Decodable {
+        print(responce.first)
+    }
     
     func failure(error: Error) {
         print(error)
     }
-    
-    func succes() {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-
 }
-
-    // ЖОПААААААА
 
 //MARK: - Setting TableView
 extension DetailInfoViewController {
@@ -62,7 +56,6 @@ extension DetailInfoViewController {
         tableView.frame = view.bounds
         tableView.register(DetailinfoTableViewCell.self, forCellReuseIdentifier: DetailinfoTableViewCell.identifier)
         tableView.dataSource = self
-        tableView.delegate = self
     }
 }
 
@@ -86,9 +79,4 @@ extension DetailInfoViewController: UITableViewDataSource {
 //        cell.labelName.frame = cell.bounds
         return UITableViewCell()
     }
-}
-
-//MARK: - UITableView Delegate Impl
-extension DetailInfoViewController: UITableViewDelegate {
-    
 }
