@@ -10,17 +10,17 @@ import Moya
 
 protocol Builder {
     
-    static func createDetailInfoVC(didSelectURL: Int) -> UIViewController
+    static func createDetailInfoVC(with method: Action) -> UIViewController
 }
 
 class ModuleBuilder: Builder{
     
-    static func createDetailInfoVC(didSelectURL: Int) -> UIViewController {
+    static func createDetailInfoVC(with method: Action) -> UIViewController {
 
         let view = DetailInfoViewController()
         let decoderService = DecoderServise()
         let networkService = NetworkService(decoderService: decoderService)
-        let apiService = APIService(netwokkService: networkService)
+        let apiService = APIService(netwokkService: networkService, method: method)
         let presenter = DetailInfoPresenter(apiService: apiService)
         view.presenter = presenter
         presenter.view = view

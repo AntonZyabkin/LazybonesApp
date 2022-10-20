@@ -15,14 +15,15 @@ class DetailInfoViewController: UIViewController {
     
     var presenter: DetailInfoViewPresenterProtocol!
     var tableView = UITableView()
+    var data: [Decodable] = []
 
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .cyan
         setupDetailInfoViewController()
         presenter.viewDidLoad()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -33,22 +34,26 @@ class DetailInfoViewController: UIViewController {
 //MARK: - DetailInfoViewProtocol Impl
 extension DetailInfoViewController: DetailInfoViewProtocol {
     func succes<T>(_ responce: [T]) where T : Decodable {
-        print(responce.first)
+        data = responce
     }
-    
     func failure(error: Error) {
-        print(error)
-    }
+        let alert = UIAlertController(
+            title: error.localizedDescription.description,
+            message: nil, preferredStyle: .alert
+        )
+        let canselButton = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(canselButton)
+        self.present(alert, animated: true)    }
 }
 
 //MARK: - Setting TableView
 extension DetailInfoViewController {
-    
     func setupDetailInfoViewController() {
         setTableView()
         addSubviews()
     }
-    
     private func addSubviews() {
         view.addSubview(tableView)
     }
@@ -61,22 +66,14 @@ extension DetailInfoViewController {
 
 //MARK: - UITableView DataSourse Impl
 extension DetailInfoViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: DetailinfoTableViewCell.identifier, for: indexPath) as! DetailinfoTableViewCell
-//
-//        if let data = presenter.data as? [Post] {
-//            cell.labelName.text = data[indexPath.row].title
-//        } else if let data = presenter.data as? [User] {
-//            cell.labelName.text = data[indexPath.row].name
-//        } else if let data = presenter.data as? [Comment] {
-//            cell.labelName.text = data[indexPath.row].name
-//        }
-//        cell.labelName.frame = cell.bounds
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailinfoTableViewCell.identifier, for: indexPath) as! DetailinfoTableViewCell
+        cell.labelName.frame = cell.bounds
         return UITableViewCell()
     }
 }
+ 

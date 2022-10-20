@@ -11,7 +11,7 @@ import Moya
 
 protocol Networkable {
 //    func request<T: Decodable>(urlstring: String, complition: @escaping (Result<T, Error>) -> Void)
-    func requestMoya<T: Decodable>(_ method: DetailInfoDataService, complition: @escaping (Result<T, Error>) -> Void)
+    func requestMoya<T: Decodable>(_ method: Action, complition: @escaping (Result<T, Error>) -> Void)
 }
 
 final class NetworkService {
@@ -31,14 +31,14 @@ enum NetworkError: Error {
 extension NetworkService: Networkable {
     
     //MARK: - MoyaProvider method
-    func requestMoya<T: Decodable>(_ method: DetailInfoDataService, complition: @escaping (Result<T, Error>) -> Void) {
+    func requestMoya<T: Decodable>(_ method: Action, complition: @escaping (Result<T, Error>) -> Void) {
         func complitionHandler(_ result: Result<T, Error>) {
             DispatchQueue.main.async {
                 complition(result)
             }
         }
         DispatchQueue.global(qos: .utility).async {
-            MoyaProvider<DetailInfoDataService>().request(method) { [weak self] result in
+            MoyaProvider<Action>().request(method) { [weak self] result in
                 switch result {
                 case .failure(let error):
                     complition(.failure(error))

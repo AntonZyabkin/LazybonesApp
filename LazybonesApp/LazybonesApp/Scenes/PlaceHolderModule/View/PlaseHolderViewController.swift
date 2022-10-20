@@ -8,20 +8,21 @@
 import UIKit
 
 //MARK: - Actions
-enum Actions: String, CaseIterable {
+
+enum Action: String, CaseIterable {
+    typealias RawValue = String
     
-    case posts = "Get posts"
-    case users = "Get users"
-    case comments = "Get comments"
+    case Post
+    case User
+    case Comment
 }
-
-
 
 //MARK: - PlaseHolderViewController
 class PlaseHolderViewController: UIViewController {
     
     private var actionsCollectionView: UICollectionView!
-    private let actionsArray = Actions.allCases
+    private let actionsArray = Action.allCases
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +30,8 @@ class PlaseHolderViewController: UIViewController {
         setupPlaseHolderViewController()
     }
     
-    private func presentDetailInfoVC(didSelectURL: Int) {
-        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(didSelectURL: didSelectURL), animated: true)
+    private func presentDetailInfoVC(action: Action) {
+        navigationController?.pushViewController(ModuleBuilder.createDetailInfoVC(with: action), animated: true)
     }
 }
 
@@ -90,6 +91,6 @@ extension PlaseHolderViewController: UICollectionViewDataSource {
 extension PlaseHolderViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailInfoVC(didSelectURL: indexPath.row)
+        presentDetailInfoVC(action: actionsArray[indexPath.row])
     }
 }

@@ -21,13 +21,28 @@ final class DetailInfoPresenter {
 
 extension DetailInfoPresenter: DetailInfoViewPresenterProtocol {
     func viewDidLoad() {
-        apiService.fetchPosts { [weak self] result in
+        func parseResult<T: Decodable>(result: Result<[T], Error>) {
             switch result {
             case .success(let response):
-                self?.view?.succes(response)
+                self.view?.succes(response)
             case .failure(let error):
-                self?.view?.failure(error: error)
+                self.view?.failure(error: error)
             }
         }
+        switch apiService.method {
+        case .Post:
+            apiService.fetchPosts() { result in
+                parseResult(result: result)
+            }
+        case .User:
+            apiService.fetchUsers() { result in
+                parseResult(result: result)
+            }
+        case .Comment:
+            apiService.fetchComments() { result in
+                parseResult(result: result)
+            }
+        }
+        
     }
 }
