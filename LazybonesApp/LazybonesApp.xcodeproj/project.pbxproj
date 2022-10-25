@@ -11,6 +11,11 @@
 		5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47A28F15C1B008D4499 /* MainPresenter.swift */; };
 		5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47C28F1615C008D4499 /* NetworkService.swift */; };
 		9911AB4B3C022A32EACDBEE7 /* Pods_LazybonesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */; };
+		E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35CF290803A100C979D8 /* PaymentViewController.swift */; };
+		E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D1290803C200C979D8 /* TeamViewController.swift */; };
+		E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D3290803E300C979D8 /* ComingViewController.swift */; };
+		E83F35D62908040400C979D8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D52908040400C979D8 /* DashboardViewController.swift */; };
+		E83F35D8290812EA00C979D8 /* MainTabBapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D7290812EA00C979D8 /* MainTabBapController.swift */; };
 		E875D0AB28F2E118000B6A08 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AA28F2E118000B6A08 /* Builder.swift */; };
 		E875D0AF28F2E407000B6A08 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */; };
 		E875D0B228F2E573000B6A08 /* DetailInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */; };
@@ -63,6 +68,11 @@
 		BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.release.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E83F35CF290803A100C979D8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		E83F35D1290803C200C979D8 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		E83F35D3290803E300C979D8 /* ComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingViewController.swift; sourceTree = "<group>"; };
+		E83F35D52908040400C979D8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		E83F35D7290812EA00C979D8 /* MainTabBapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBapController.swift; sourceTree = "<group>"; };
 		E875D0AA28F2E118000B6A08 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoPresenter.swift; sourceTree = "<group>"; };
@@ -133,9 +143,12 @@
 			isa = PBXGroup;
 			children = (
 				E875D0AA28F2E118000B6A08 /* Builder.swift */,
-				E875D0AC28F2E36C000B6A08 /* DetailInfoModule */,
-				E8B566AB28F1CB16006C89F8 /* PlaceHolderModule */,
-				5737A47928F15BF4008D4499 /* Main */,
+				E83F35D7290812EA00C979D8 /* MainTabBapController.swift */,
+				E83F35BF2908027F00C979D8 /* DashboardModule */,
+				E83F35C02908029D00C979D8 /* ComingModule */,
+				E83F35C1290802D000C979D8 /* TeamModule */,
+				E83F35C2290802DD00C979D8 /* PaymentModule */,
+				E83F35D929081E3400C979D8 /* STYDY */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -200,6 +213,144 @@
 				BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E83F35BF2908027F00C979D8 /* DashboardModule */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35C82908034B00C979D8 /* Model */,
+				E83F35C72908034600C979D8 /* View */,
+				E83F35C62908034100C979D8 /* Presenter */,
+			);
+			path = DashboardModule;
+			sourceTree = "<group>";
+		};
+		E83F35C02908029D00C979D8 /* ComingModule */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35CE2908036900C979D8 /* Model */,
+				E83F35CC2908036200C979D8 /* View */,
+				E83F35C92908035700C979D8 /* Presenter */,
+			);
+			path = ComingModule;
+			sourceTree = "<group>";
+		};
+		E83F35C1290802D000C979D8 /* TeamModule */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35CD2908036700C979D8 /* Model */,
+				E83F35CB2908035F00C979D8 /* View */,
+				E83F35CA2908035A00C979D8 /* Presenter */,
+			);
+			path = TeamModule;
+			sourceTree = "<group>";
+		};
+		E83F35C2290802DD00C979D8 /* PaymentModule */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35C52908031C00C979D8 /* Model */,
+				E83F35C42908031800C979D8 /* View */,
+				E83F35C32908030C00C979D8 /* Presenter */,
+			);
+			path = PaymentModule;
+			sourceTree = "<group>";
+		};
+		E83F35C32908030C00C979D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E83F35C42908031800C979D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35CF290803A100C979D8 /* PaymentViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E83F35C52908031C00C979D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E83F35C62908034100C979D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E83F35C72908034600C979D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35D52908040400C979D8 /* DashboardViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E83F35C82908034B00C979D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E83F35C92908035700C979D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E83F35CA2908035A00C979D8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E83F35CB2908035F00C979D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35D1290803C200C979D8 /* TeamViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E83F35CC2908036200C979D8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35D3290803E300C979D8 /* ComingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E83F35CD2908036700C979D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E83F35CE2908036900C979D8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E83F35D929081E3400C979D8 /* STYDY */ = {
+			isa = PBXGroup;
+			children = (
+				E875D0AC28F2E36C000B6A08 /* DetailInfoModule */,
+				E8B566AB28F1CB16006C89F8 /* PlaceHolderModule */,
+				5737A47928F15BF4008D4499 /* Main */,
+			);
+			path = STYDY;
 			sourceTree = "<group>";
 		};
 		E875D0AC28F2E36C000B6A08 /* DetailInfoModule */ = {
@@ -561,20 +712,25 @@
 			files = (
 				E8AF8A3828FD646C0058884F /* APIService.swift in Sources */,
 				E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */,
+				E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */,
 				E875D0B428F2E975000B6A08 /* DetailInfoModel.swift in Sources */,
 				E8B566B428F1CC0B006C89F8 /* JSONPlaceHolderModel.swift in Sources */,
 				E875D0B228F2E573000B6A08 /* DetailInfoPresenter.swift in Sources */,
 				5737A47B28F15C1B008D4499 /* MainPresenter.swift in Sources */,
 				E8B5667C28ED6886006C89F8 /* MainViewController.swift in Sources */,
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
+				E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */,
 				E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
 				E8B566B228F1CBDB006C89F8 /* PlaseHolderViewController.swift in Sources */,
 				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
+				E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */,
 				E8B566B028F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift in Sources */,
 				E875D0B728F2F8B4000B6A08 /* DetailinfoTableViewCell.swift in Sources */,
 				E8B566B828F2B1BA006C89F8 /* ActionCollectionViewCell.swift in Sources */,
+				E83F35D62908040400C979D8 /* DashboardViewController.swift in Sources */,
+				E83F35D8290812EA00C979D8 /* MainTabBapController.swift in Sources */,
 				E875D0AB28F2E118000B6A08 /* Builder.swift in Sources */,
 				E875D0AF28F2E407000B6A08 /* DetailInfoViewController.swift in Sources */,
 			);

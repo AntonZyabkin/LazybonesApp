@@ -33,8 +33,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         viewController.presenter = presenter
         presenter.viewController = viewController
         
-        window.rootViewController = UINavigationController(rootViewController: viewController)
+//        window.rootViewController = UINavigationController(rootViewController: viewController)
         
+        window.rootViewController = ModuleBuilder.lounchDashboardVC()
         window.makeKeyAndVisible()
         
         self.window = window

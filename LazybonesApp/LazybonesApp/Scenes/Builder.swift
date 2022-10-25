@@ -26,4 +26,11 @@ class ModuleBuilder: Builder{
         presenter.view = view
         return view
     }
+    
+    static func lounchDashboardVC() -> UIViewController {
+        
+        let tabBarController = MainTabBapController()
+        let navigationVC = UINavigationController(rootViewController: tabBarController)
+        return navigationVC
+    }
 }
