@@ -6,34 +6,39 @@
 //
 
 import Foundation
+import Moya
 
 protocol APIServicable {
     func fetchPosts(complition: @escaping (Result<[Post], Error>) -> Void)
     func fetchComments(complition: @escaping (Result<[Comment], Error>) -> Void)
     func fetchUsers(complition: @escaping (Result<[User], Error>) -> Void)
-    var method: Action { get }
+    func fetchComingList(complition: @escaping (Result<SbisComingListResponse, Error>) -> Void)
+    var target: TargetType { get }
 }
 
 final class APIService{
     private let networkService: Networkable
-    let method: Action
+    let target: TargetType
 
-    init(networkService: Networkable, method: Action) {
+    init(networkService: Networkable, target: TargetType) {
         self.networkService = networkService
-        self.method = method
+        self.target = target
     }
 }
 
 extension APIService: APIServicable {
     func fetchPosts(complition: @escaping (Result<[Post], Error>) -> Void) {
-        networkService.request(method, complition: complition)
+        networkService.request(target, complition: complition)
     }
     
     func fetchComments(complition: @escaping (Result<[Comment], Error>) -> Void) {
-        networkService.request(method, complition: complition)
+        networkService.request(target, complition: complition)
     }
 
     func fetchUsers(complition: @escaping (Result<[User], Error>) -> Void) {
-        networkService.request(method, complition: complition)
+        networkService.request(target, complition: complition)
+    }
+    func fetchComingList(complition: @escaping (Result<SbisComingListResponse, Error>) -> Void) {
+        networkService.request(target, complition: complition)
     }
 }
