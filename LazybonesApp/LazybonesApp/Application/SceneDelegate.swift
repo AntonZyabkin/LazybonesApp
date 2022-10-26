@@ -23,21 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
-        
-        // TODO: -
-        let viewController = MainViewController()
-        let decoderService = DecoderServise()
-        let networkService = NetworkService(decoderService: decoderService)
-        let presenter = MainPresenter(networkService: networkService)
-        
-        viewController.presenter = presenter
-        presenter.viewController = viewController
-        
-//        window.rootViewController = UINavigationController(rootViewController: viewController)
-        
         window.rootViewController = ModuleBuilder.lounchDashboardVC()
         window.makeKeyAndVisible()
-        
         self.window = window
     }
 }

@@ -10,8 +10,7 @@ import Moya
 
 extension Action: TargetType {
     var baseURL: URL {
-        //TODO: - Fix this force unwrap
-        URL(string: "https://jsonplaceholder.typicode.com1")!
+        URL(string: "https://jsonplaceholder.typicode.com")!
     }
     
     var path: String {

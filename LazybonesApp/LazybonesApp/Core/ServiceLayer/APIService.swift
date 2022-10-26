@@ -15,25 +15,25 @@ protocol APIServicable {
 }
 
 final class APIService{
-    private let netwokkService: Networkable
+    private let networkService: Networkable
     let method: Action
 
-    init(netwokkService: Networkable, method: Action) {
-        self.netwokkService = netwokkService
+    init(networkService: Networkable, method: Action) {
+        self.networkService = networkService
         self.method = method
     }
 }
 
 extension APIService: APIServicable {
     func fetchPosts(complition: @escaping (Result<[Post], Error>) -> Void) {
-        netwokkService.requestMoya(method, complition: complition)
+        networkService.request(method, complition: complition)
     }
     
     func fetchComments(complition: @escaping (Result<[Comment], Error>) -> Void) {
-        netwokkService.requestMoya(method, complition: complition)
+        networkService.request(method, complition: complition)
     }
 
     func fetchUsers(complition: @escaping (Result<[User], Error>) -> Void) {
-        netwokkService.requestMoya(method, complition: complition)
+        networkService.request(method, complition: complition)
     }
 }
