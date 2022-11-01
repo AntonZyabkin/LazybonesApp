@@ -12,11 +12,11 @@ protocol DecoderServicable{
     func decode<T: Decodable>(_ data: Data, complition: @escaping (Result<T, Error>) -> Void)
 }
 
-final class DecoderServise{
+final class DecoderService{
     private let jsonDecoder = JSONDecoder()
 }
 
-extension DecoderServise: DecoderServicable {
+extension DecoderService: DecoderServicable {
     func decode<T: Decodable>(_ data: Data, complition: @escaping (Result<T, Error>) -> Void) {
         DispatchQueue.global(qos: .utility).async {
             do {

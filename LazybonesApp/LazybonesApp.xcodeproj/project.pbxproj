@@ -26,6 +26,7 @@
 		E83F35F029095E0600C979D8 /* ComingDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35EF29095E0600C979D8 /* ComingDetailsPresenter.swift */; };
 		E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35F1290BB35B00C979D8 /* ComingModel.swift */; };
 		E83F35F4290BC9DA00C979D8 /* SbisShortComingListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */; };
+		E83F36362910FB7100C979D8 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F36352910FB7100C979D8 /* KeychainService.swift */; };
 		E875D0AB28F2E118000B6A08 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */; };
 		E875D0AF28F2E407000B6A08 /* DetailInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */; };
 		E875D0B228F2E573000B6A08 /* DetailInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */; };
@@ -93,6 +94,7 @@
 		E83F35EF29095E0600C979D8 /* ComingDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingDetailsPresenter.swift; sourceTree = "<group>"; };
 		E83F35F1290BB35B00C979D8 /* ComingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingModel.swift; sourceTree = "<group>"; };
 		E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisShortComingListResponse.swift; sourceTree = "<group>"; };
+		E83F36352910FB7100C979D8 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		E875D0AE28F2E407000B6A08 /* DetailInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoViewController.swift; sourceTree = "<group>"; };
 		E875D0B128F2E573000B6A08 /* DetailInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInfoPresenter.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				E8AF8A3928FD864C0058884F /* MoyaService.swift */,
 				E8AF8A3528FD5B780058884F /* DecoderService.swift */,
 				E8AF8A3728FD646C0058884F /* APIService.swift */,
+				E83F36352910FB7100C979D8 /* KeychainService.swift */,
 				E83F35DC29090BC600C979D8 /* Network */,
 			);
 			path = ServiceLayer;
@@ -815,6 +818,7 @@
 				E8B566B228F1CBDB006C89F8 /* PlaseHolderViewController.swift in Sources */,
 				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E83F35F4290BC9DA00C979D8 /* SbisShortComingListResponse.swift in Sources */,
+				E83F36362910FB7100C979D8 /* KeychainService.swift in Sources */,
 				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
 				E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */,
 				E8B566B028F1CB85006C89F8 /* JSONPlaceHolderTableViewPresenter.swift in Sources */,
