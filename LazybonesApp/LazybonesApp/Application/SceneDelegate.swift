@@ -23,7 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ModuleBuilder.lounchDashboardVC()
+        let moduleBuilder = ModuleBuilder()
+        window.rootViewController = moduleBuilder.buildTabBarController()
         window.makeKeyAndVisible()
         self.window = window
     }
