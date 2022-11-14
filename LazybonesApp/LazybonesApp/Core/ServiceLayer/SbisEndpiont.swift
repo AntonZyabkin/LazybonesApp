@@ -18,9 +18,9 @@ extension SbisEndpoint: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .fetchComingList:
+        case .fetchComingList(let request):
             //Исправить передачу токена в заголовок
-            return ["Content-Type": "application/json-rpc;charset=utf-8", "X-SBISSessionID": "00d2f6d4-00d2f6d5-0bba-e97ca3f7a748f868__"]
+            return ["Content-Type": "application/json-rpc;charset=utf-8", "X-SBISSessionID": request.sbisToken]
         case .auth:
             return ["Content-Type": "application/json-rpc;charset=utf-8"]
         }
@@ -48,13 +48,12 @@ extension SbisEndpoint: TargetType {
     
     var parameters: [String: Any] {
         switch self {
-        case .auth(let request):
+        case .auth:
             return [:]
         case .fetchComingList:
             return [:]
         }
     }
-    //TODO: ищи ошибку в переопределенном методе, если запрос возвращает фэйл
     var task: Task {
         switch self {
         case .auth(let auth):

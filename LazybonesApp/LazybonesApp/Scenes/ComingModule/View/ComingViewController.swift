@@ -7,70 +7,69 @@
 
 import UIKit
 
-protocol ComingInfoViewProtocol: AnyObject {
-    func succes(_ response: SbisShortComingListResponse)
-    func failure(error: Error)
+protocol ComingViewProtocol: UIViewController {
+    func updateTableView(viewModel: [Document])
+    func showErrorAlert(_ error: Error)
 }
 
-class ComingViewController: UIViewController {
+final class ComingViewController: UIViewController {
 
     var presenter: ComingViewPresenterProtocol?
-    let reuseItentifire = "contractor"
-    var docsArray: [Document] = []
-    let tableView = UITableView()
+    let reuseIdentifier = "contractor"
+    private var viewModel: [Document] = []
+    private let tableView = UITableView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         view.backgroundColor = .white
-        presenter?.downloadComingData()
+        presenter?.viewDidLoad()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-}
-
-//MARK: - ComingInfoViewProtocol confirm
-extension ComingViewController: ComingInfoViewProtocol {
-    func succes(_ response: SbisShortComingListResponse) {
-        docsArray = response.result.document
-        setupTableView(response)
-    }
     
-    func failure(error: Error) {
-        print(error.localizedDescription)
-    }
-}
-
-extension ComingViewController {
-    func setupTableView(_ comingList: SbisShortComingListResponse) {
- 
-        tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseItentifire)
+    private func setupTableView() {
+        tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         tableView.frame = view.frame
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 100
-        
     }
 }
 
-//MARK: - TableViewDataSource
-extension ComingViewController: UITableViewDataSource, UITableViewDelegate {
+//MARK: - ComingInfoViewProtocol confirm
+extension ComingViewController: ComingViewProtocol {
+    func updateTableView(viewModel: [Document]) {
+        self.viewModel = viewModel
+        tableView.reloadData()
+    }
+    func showErrorAlert(_ error: Error) {
+        let errorAlert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        let alertButton = UIAlertAction(title: "Ok", style: .cancel)
+        errorAlert.addAction(alertButton)
+        present(errorAlert, animated: true)
+    }
+}
+
+//MARK: - UITableViewDataSource
+extension ComingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        docsArray.count
+        viewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseItentifire, for: indexPath) as? CominTableViewCell
-        cell?.setupCellContent(comingList: docsArray[indexPath.row])
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell
+        cell?.setupCellContent(comingList: viewModel[indexPath.row])
         return cell ?? UITableViewCell()
     }
+}
+//MARK: - UITableViewDelegate
+extension ComingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: перенести метод в Билдер
-        let vc = ComingDetailsViewController()
-        vc.urlTest = docsArray[indexPath.row].linkToPDF
-        navigationController?.pushViewController(vc, animated: true)
+        presenter?.didTabComingDocument(at: indexPath.row)
     }
 }
-    

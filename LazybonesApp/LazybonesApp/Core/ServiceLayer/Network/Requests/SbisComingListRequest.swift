@@ -10,6 +10,11 @@ import Foundation
 // MARK: - SbisComingListRequest
 struct SbisComingListRequest: Codable {
     var body: SbisComingListBodyRequest
+    var sbisToken: String
+    init(_ token: String){
+        self.sbisToken = token
+        self.body = SbisComingListBodyRequest()
+    }
 }
 
 // MARK: - SbisComingListBody
@@ -51,7 +56,6 @@ struct Filter: Codable {
     }
 }
 
-//TODO: задавать параметры навигации из UI
 struct Navigation: Codable {
     let pageSize: String = "125"
     let currentPage = "0"

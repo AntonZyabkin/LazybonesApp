@@ -5,7 +5,6 @@
 //  Created by Anton Zyabkin on 26.10.2022.
 //
 //
-//TODO: delete useless parameters
 
 // MARK: - SbisComingListResponse
 struct SbisComingListResponse: Codable {

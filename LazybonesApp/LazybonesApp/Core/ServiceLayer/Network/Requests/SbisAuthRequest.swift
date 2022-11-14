@@ -9,6 +9,10 @@ import Foundation
 
 struct SbisAuthRequest: Codable {
     let body: SbisAuthBody
+    
+    init(_ login: String, _ password: String) {
+        self.body = SbisAuthBody(params: Params(parameter: Parameter(login: login, password: password)))
+    }
 }
 struct SbisAuthBody: Codable {
     let jsonrpc: String = "2.0"
@@ -21,10 +25,6 @@ struct SbisAuthBody: Codable {
         case method
         case params
         case id
-    }
-    
-    init(login: String, pass: String) {
-        self.params = Params(parameter: Parameter(login: login, password: pass))
     }
 }
 

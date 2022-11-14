@@ -28,7 +28,7 @@ final class TabBarController: UITabBarController {
     
     private func setupTabBarController() {
         
-        let paymentViewController = moduleBuilder.buildTabBarController()
+        let paymentViewController = moduleBuilder.buildPaymentViewController()
         let comingViewController = moduleBuilder.buildComingViewCOntroller()
         let teamViewController = moduleBuilder.buildTeamViewController()
         let dashboardViewController = moduleBuilder.buildDashboardViewController()

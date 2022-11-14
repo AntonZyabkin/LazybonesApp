@@ -12,7 +12,7 @@ protocol ComingDetailsViewControllerProtocol {
     
 }
 
-class ComingDetailsViewController: UIViewController {
+final class ComingDetailsViewController: UIViewController {
 
     let webView = WKWebView()
     let activityIndicator = UIActivityIndicatorView()

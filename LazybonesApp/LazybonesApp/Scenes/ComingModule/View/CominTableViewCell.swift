@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CominTableViewCell: UITableViewCell {
+final class CominTableViewCell: UITableViewCell {
     
     var contractorLogoImageView = UIImageView()
     var contractorNameLabel = UILabel()

@@ -6,32 +6,51 @@
 //
 
 import Foundation
+import SwiftKeychainWrapper
 
 protocol ComingViewPresenterProtocol{
-    func downloadComingData()
+    func viewDidLoad()
+    func didTabComingDocument(at index: Int)
 }
 
 final class ComingViewPresenter {
-    weak var view: ComingInfoViewProtocol?
+    weak var view: ComingViewProtocol?
     
-    let sbisAPIService: SbisApiServicable
+    private var documentsArray: [Document] = []
     
-    init(sbisAPIService: SbisApiServicable) {
+    private let moduleBuilder: Builder
+    private let sbisAPIService: SbisApiServicable
+    private let keychainService: KeychainServicable
+    
+    init(sbisAPIService: SbisApiServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.sbisAPIService = sbisAPIService
+        self.keychainService = keychainService
+        self.moduleBuilder = moduleBuilder
     }
 }
 
 extension ComingViewPresenter: ComingViewPresenterProtocol {
-    func downloadComingData() {
-        let request = SbisComingListRequest(body: SbisComingListBodyRequest())
+    func viewDidLoad() {
+        guard let sbisToken = keychainService.fetch(for: .sbisSessionID) else {
+            print("Token error")
+            //если нет токена,  пушим экран авторизации
+            self.view?.navigationController?.pushViewController(moduleBuilder.buildSbisAuthViewController(), animated: true)
+            return
+        }
+        let request = SbisComingListRequest(sbisToken)
         sbisAPIService.fetchComingList(request: request) { result in
-            guard let view = self.view else { return }
             switch result {
             case .success(let response):
-                view.succes(response)
+                self.view?.updateTableView(viewModel: response.result.document)
             case .failure(let error):
-                view.failure(error: error)
+                self.view?.showErrorAlert(error)
             }
         }
+    }
+    
+    func didTabComingDocument(at index: Int) {
+        let vc = moduleBuilder.buildComingDetailsViewController()
+        vc.urlTest = documentsArray[index].linkToPDF
+        self.view?.navigationController?.pushViewController(vc, animated: true)
     }
 }
