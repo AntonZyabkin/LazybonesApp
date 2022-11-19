@@ -45,10 +45,12 @@ struct Document: Codable {
 struct Attachment: Codable {
     let name: String
     let linkToPDF: String
+    let summAttachment: String
 
     enum CodingKeys: String, CodingKey {
         case name = "Название"
         case linkToPDF = "СсылкаНаPDF"
+        case summAttachment = "Сумма"
     }
 }
 

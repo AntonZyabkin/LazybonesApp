@@ -63,7 +63,7 @@ extension NetworkService: Networkable {
                         break
                     case 500...599:
                         print("Status code \(urlResponse.statusCode)")
-                        //do something
+                        self.decoderService.decode(response.data, complition: complition)
                         break
                     default:
                         let error = NetworkError.unknownError

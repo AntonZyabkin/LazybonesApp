@@ -11,6 +11,7 @@ import SwiftKeychainWrapper
 protocol ComingViewPresenterProtocol{
     func viewDidLoad()
     func didTabComingDocument(at index: Int)
+    func logOutItemDidPress()
 }
 
 final class ComingViewPresenter {
@@ -32,18 +33,17 @@ final class ComingViewPresenter {
 extension ComingViewPresenter: ComingViewPresenterProtocol {
     func viewDidLoad() {
         guard let sbisToken = keychainService.fetch(for: .sbisSessionID) else {
-            print("Token error")
-            //если нет токена,  пушим экран авторизации
             self.view?.navigationController?.pushViewController(moduleBuilder.buildSbisAuthViewController(), animated: true)
             return
         }
         let request = SbisComingListRequest(sbisToken)
-        sbisAPIService.fetchComingList(request: request) { result in
+        sbisAPIService.fetchComingList(request: request) { [weak self] result in
             switch result {
             case .success(let response):
-                self.view?.updateTableView(viewModel: response.result.document)
+                self?.documentsArray = response.result.document
+                self?.view?.updateTableView(viewModel: response.result.document)
             case .failure(let error):
-                self.view?.showErrorAlert(error)
+                self?.view?.showErrorAlert(error)
             }
         }
     }
@@ -51,6 +51,13 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
     func didTabComingDocument(at index: Int) {
         let vc = moduleBuilder.buildComingDetailsViewController()
         vc.urlTest = documentsArray[index].linkToPDF
+        print(documentsArray[index].linkToPDF)
         self.view?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func logOutItemDidPress() {
+        self.view?.updateTableView(viewModel: [])
+        keychainService.deleteAll()
+        viewDidLoad()
     }
 }

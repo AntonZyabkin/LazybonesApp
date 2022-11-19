@@ -7,23 +7,32 @@
 
 import Foundation
 
-// MARK: - SbisAuthResponse
+// MARK: - SbisAuthResponse Success
 struct SbisAuthResponse: Codable {
     let jsonrpc: String
     let result: String?
-    let id: Int
+    let id: String
     let error: AuthError?
 }
 
 // MARK: - Error
 struct AuthError: Codable {
-    let code: Int
-    let message, details: String
-    let data: DataClass
+    let code: Int?
+    let message, details, type: String?
+    let data: DataClass?
 }
 
 // MARK: - DataClass
 struct DataClass: Codable {
-    let classid: String
+    let classid: String?
+    let errorCode: Int?
     let addinfo: String?
+
+    enum CodingKeys: String, CodingKey {
+        case classid
+        case errorCode = "error_code"
+        case addinfo
+    }
 }
+
+

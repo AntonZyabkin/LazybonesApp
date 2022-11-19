@@ -24,8 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func setupRootViewController(windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
         let moduleBuilder = ModuleBuilder()
-        let navigationController = UINavigationController(rootViewController: moduleBuilder.buildTabBarController())
-        window.rootViewController = navigationController
+        window.rootViewController = moduleBuilder.buildTabBarController()
         window.makeKeyAndVisible()
         self.window = window
     }

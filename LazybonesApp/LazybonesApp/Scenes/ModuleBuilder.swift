@@ -11,7 +11,7 @@ import Moya
 protocol Builder {
     func buildTabBarController() -> TabBarController
     func buildPaymentViewController() -> PaymentViewController
-    func buildComingViewCOntroller() -> ComingViewController
+    func buildComingViewCOntroller() -> UINavigationController
     func buildDashboardViewController() -> DashboardViewController
     func buildTeamViewController() -> TeamViewController
     func buildComingDetailsViewController() -> ComingDetailsViewController
@@ -45,12 +45,13 @@ extension ModuleBuilder: Builder {
         return viewControlelr
     }
     
-    func buildComingViewCOntroller() -> ComingViewController {
+    func buildComingViewCOntroller() -> UINavigationController {
         let viewController = ComingViewController()
         let presenter = ComingViewPresenter(sbisAPIService: sbisAPIService, keychainService: keychainService, moduleBuilder: self)
         viewController.presenter = presenter
         presenter.view = viewController
-        return viewController
+        let navController = UINavigationController(rootViewController: viewController)
+        return navController
     }
     
     func buildDashboardViewController() -> DashboardViewController {

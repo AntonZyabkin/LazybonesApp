@@ -18,11 +18,13 @@ final class ComingViewController: UIViewController {
     let reuseIdentifier = "contractor"
     private var viewModel: [Document] = []
     private let tableView = UITableView()
+    private var logOutSbisNavBarItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         view.backgroundColor = .white
+        configeNavBar()
         presenter?.viewDidLoad()
     }
     
@@ -31,13 +33,26 @@ final class ComingViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.viewDidLoad()
+    }
+    
     private func setupTableView() {
         tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         tableView.frame = view.frame
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 100
+        tableView.rowHeight = view.frame.height/8
+    }
+    
+    private func configeNavBar() {
+        logOutSbisNavBarItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(logOutItemDidPress))
+        navigationItem.rightBarButtonItem = logOutSbisNavBarItem
+    }
+    
+    @objc func logOutItemDidPress() {
+        presenter?.logOutItemDidPress()
     }
 }
 
