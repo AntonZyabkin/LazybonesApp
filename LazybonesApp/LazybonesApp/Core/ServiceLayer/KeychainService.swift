@@ -52,5 +52,6 @@ extension KeychainWrapper {
         case sbisSessionID = "X-SBISSessionID"
         case sbisLogon = "Логин"
         case sbisPassword = "Пароль"
+        case tochkaAccessToken = "accessToken"
     }
 }

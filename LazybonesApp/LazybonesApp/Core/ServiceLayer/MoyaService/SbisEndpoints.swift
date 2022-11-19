@@ -64,23 +64,7 @@ extension SbisEndpoints: TargetType {
     }
 }
 
-//MARK: - asDictionary extention
-private extension SbisEndpoints {
-    
-    func requestCompositeParameters(_ body: Encodable) -> Task {
-        var bodyDict: [String: Any] = [:]
-        do {
-            bodyDict = try body.asDictionary()
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        return .requestCompositeParameters(
-            bodyParameters: bodyDict,
-            bodyEncoding: JSONEncoding(),
-            urlParameters: self.parameters)
-    }
-}
-private extension Moya.TargetType {
+extension Moya.TargetType {
     func requestCompositeParameters(_ body: Encodable, _ parameters: [String: Any]) -> Task {
         var bodyDict: [String: Any] = [:]
         do {

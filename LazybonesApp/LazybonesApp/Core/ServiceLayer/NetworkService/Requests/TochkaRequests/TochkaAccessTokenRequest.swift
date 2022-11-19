@@ -25,5 +25,19 @@ struct TochkaAccessTokenRequest: Codable {
         case clientId = "client_id"
         case clientSecret = "client_secret"
         case grantType = "grant_type"
+        case scope
+        case state
+    }
+}
+
+extension TochkaAccessTokenRequest {
+    func asParameters() -> [String: Any] {
+        var bodyDict: [String: Any] = [:]
+        do {
+            bodyDict = try self.asDictionary()
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        return bodyDict
     }
 }

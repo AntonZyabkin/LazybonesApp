@@ -9,6 +9,8 @@ import Foundation
 
 protocol TochkaAPIServicable {
     func getAccessToken(_ request: TochkaAccessTokenRequest, complition: @escaping (Result<TochkaAccessTokenResponse, Error>) -> Void)
+    func createPermissionsList(_ request: TochkaPermissionsListRequest, complition: @escaping (Result<TochkaPermissionsListResponse, Error>) -> Void)
+
 }
 
 final class TochkaAPIService{
@@ -22,5 +24,9 @@ final class TochkaAPIService{
 extension TochkaAPIService: TochkaAPIServicable {
     func getAccessToken(_ request: TochkaAccessTokenRequest, complition: @escaping (Result<TochkaAccessTokenResponse, Error>) -> Void) {
         networkService.request(TochkaEndpoints.getTochkaAccessToken(request: request), complition: complition)
+    }
+    
+    func createPermissionsList(_ request: TochkaPermissionsListRequest, complition: @escaping (Result<TochkaPermissionsListResponse, Error>) -> Void) {
+        networkService.request(TochkaEndpoints.createPermissionsList(request: request), complition: complition)
     }
 }

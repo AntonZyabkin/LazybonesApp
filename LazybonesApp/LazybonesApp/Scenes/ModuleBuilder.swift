@@ -53,8 +53,8 @@ extension ModuleBuilder: Builder {
         let presenter = ComingViewPresenter(sbisAPIService: sbisAPIService, keychainService: keychainService, moduleBuilder: self)
         viewController.presenter = presenter
         presenter.view = viewController
-        let navController = UINavigationController(rootViewController: viewController)
-        return navController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
     }
     
     func buildDashboardViewController() -> DashboardViewController {
