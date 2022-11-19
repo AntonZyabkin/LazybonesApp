@@ -9,19 +9,19 @@ import Foundation
 import Moya
 //MARK: - Moya Sbis methods
 
-enum SbisEndpoint {
-    case auth(request: SbisAuthRequest)
-    case fetchComingList(request: SbisComingListRequest)
+enum SbisEndpoints {
+    case sbisAuth(request: SbisAuthRequest)
+    case fetchSbisComingList(request: SbisComingListRequest)
 }
 
-extension SbisEndpoint: TargetType {
+extension SbisEndpoints: TargetType {
     
     var headers: [String: String]? {
         switch self {
-        case .fetchComingList(let request):
+        case .fetchSbisComingList(let request):
             //Исправить передачу токена в заголовок
             return ["Content-Type": "application/json-rpc;charset=utf-8", "X-SBISSessionID": request.sbisToken]
-        case .auth:
+        case .sbisAuth:
             return ["Content-Type": "application/json-rpc;charset=utf-8"]
         }
     }
@@ -32,40 +32,40 @@ extension SbisEndpoint: TargetType {
     
     var path: String {
         switch self {
-        case .auth:
+        case .sbisAuth:
             return "/auth/service/"
-        case .fetchComingList:
+        case .fetchSbisComingList:
             return "/service/?srv=1"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .auth, .fetchComingList:
+        case .sbisAuth, .fetchSbisComingList:
             return .post
         }
     }
-    
+
     var parameters: [String: Any] {
         switch self {
-        case .auth:
+        case .sbisAuth:
             return [:]
-        case .fetchComingList:
+        case .fetchSbisComingList:
             return [:]
         }
     }
     var task: Task {
         switch self {
-        case .auth(let auth):
+        case .sbisAuth(let auth):
             return self.requestCompositeParameters(auth.body, parameters)
-        case .fetchComingList(let comingList):
+        case .fetchSbisComingList(let comingList):
             return self.requestCompositeParameters(comingList.body, parameters)
         }
     }
 }
 
 //MARK: - asDictionary extention
-private extension SbisEndpoint {
+private extension SbisEndpoints {
     
     func requestCompositeParameters(_ body: Encodable) -> Task {
         var bodyDict: [String: Any] = [:]

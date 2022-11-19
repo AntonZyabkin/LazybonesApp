@@ -7,14 +7,20 @@
 
 import UIKit
 
+protocol PaymentViewProtocol {
+    
+}
 final class PaymentViewController: UIViewController {
 
+    var presenter: PaymentViewPresenterProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        setVC()
-    }
-    
-    private func setVC() {
         view.backgroundColor = .systemPink
+        presenter?.viewDidLoad()
     }
+}
+
+
+extension PaymentViewController: PaymentViewProtocol {
+    
 }

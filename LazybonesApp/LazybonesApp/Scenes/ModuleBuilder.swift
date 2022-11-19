@@ -19,17 +19,18 @@ protocol Builder {
 }
 
 final class ModuleBuilder {
-    //TODO: typealies где согдается? Вообще, где все глобальные переменные, цвета, шрифты хранить?
     private let sbisAPIService: (SbisApiServicable & SbisAuthApiServicable)
     private let networkService: Networkable
     private let decoderService: DecoderServicable
     private let keychainService: KeychainServicable
+    private let tochkaAPIService: TochkaAPIServicable
     
     init() {
         decoderService = DecoderService()
         keychainService = KeychainService()
         networkService = NetworkService(decoderService: decoderService)
         sbisAPIService = SbisAPIService(networkService: networkService)
+        tochkaAPIService = TochkaAPIService(networkService: networkService)
     }
 }
 
@@ -41,8 +42,10 @@ extension ModuleBuilder: Builder {
     }
     
     func buildPaymentViewController() -> PaymentViewController {
-        let viewControlelr = PaymentViewController()
-        return viewControlelr
+        let viewController = PaymentViewController()
+        let presenter = PaymentViewPresenter(tochkaAPIService: tochkaAPIService, keychainService: keychainService, moduleBuilder: self)
+        viewController.presenter = presenter
+        return viewController
     }
     
     func buildComingViewCOntroller() -> UINavigationController {
@@ -75,4 +78,5 @@ extension ModuleBuilder: Builder {
         presenter.view = viewController
         return viewController
     }
+    
 }

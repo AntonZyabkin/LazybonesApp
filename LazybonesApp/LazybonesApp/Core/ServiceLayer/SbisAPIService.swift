@@ -26,13 +26,13 @@ final class SbisAPIService{
 
 extension SbisAPIService: SbisAuthApiServicable {
     func sendAuthRequest(request: SbisAuthRequest, complition: @escaping (Result<SbisAuthResponse, Error>) -> Void) {
-        networkService.request(SbisEndpoint.auth(request: request), complition: complition)
+        networkService.request(SbisEndpoints.sbisAuth(request: request), complition: complition)
     }
 
 }
 
 extension SbisAPIService: SbisApiServicable {
     func fetchComingList(request: SbisComingListRequest, complition: @escaping (Result<SbisShortComingListResponse, Error>) -> Void) {
-        networkService.request(SbisEndpoint.fetchComingList(request: request), complition: complition)
+        networkService.request(SbisEndpoints.fetchSbisComingList(request: request), complition: complition)
     }
 }

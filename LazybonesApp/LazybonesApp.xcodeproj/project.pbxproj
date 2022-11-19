@@ -10,6 +10,11 @@
 		3F52A3A8336F9629E070F5DA /* Pods_LazybonesApp_LazybonesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */; };
 		5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47C28F1615C008D4499 /* NetworkService.swift */; };
 		9911AB4B3C022A32EACDBEE7 /* Pods_LazybonesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */; };
+		E828D9402928AAD2001F7817 /* PaymentViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */; };
+		E828D9442928ABE4001F7817 /* TochkaAccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */; };
+		E828D9462928B72A001F7817 /* TochkaEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9452928B72A001F7817 /* TochkaEndpoints.swift */; };
+		E828D9492928BABC001F7817 /* TochkaAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9482928BABC001F7817 /* TochkaAPIService.swift */; };
+		E828D94D2928BE0A001F7817 /* TochkaAccessTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */; };
 		E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35CF290803A100C979D8 /* PaymentViewController.swift */; };
 		E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D1290803C200C979D8 /* TeamViewController.swift */; };
 		E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D3290803E300C979D8 /* ComingViewController.swift */; };
@@ -40,7 +45,7 @@
 		E8B5669228ED6888006C89F8 /* LazybonesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669128ED6888006C89F8 /* LazybonesAppTests.swift */; };
 		E8B5669C28ED6888006C89F8 /* LazybonesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */; };
 		E8B5669E28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */; };
-		E8B65C03291CE4CD00FF902C /* SbisEndpiont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B65C02291CE4CD00FF902C /* SbisEndpiont.swift */; };
+		E8B65C03291CE4CD00FF902C /* SbisEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */; };
 		E8B65C06291CE63700FF902C /* Extensions+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B65C05291CE63700FF902C /* Extensions+Encodable.swift */; };
 		F630BF613E79AD8A914EE95E /* Pods_LazybonesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFDD0A524DE7BE145842C232 /* Pods_LazybonesApp.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +77,11 @@
 		BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.release.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewPresenter.swift; sourceTree = "<group>"; };
+		E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaAccessTokenRequest.swift; sourceTree = "<group>"; };
+		E828D9452928B72A001F7817 /* TochkaEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaEndpoints.swift; sourceTree = "<group>"; };
+		E828D9482928BABC001F7817 /* TochkaAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaAPIService.swift; sourceTree = "<group>"; };
+		E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaAccessTokenResponse.swift; sourceTree = "<group>"; };
 		E83F35CF290803A100C979D8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E83F35D1290803C200C979D8 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		E83F35D3290803E300C979D8 /* ComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +116,7 @@
 		E8B5669728ED6888006C89F8 /* LazybonesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LazybonesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITests.swift; sourceTree = "<group>"; };
 		E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E8B65C02291CE4CD00FF902C /* SbisEndpiont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisEndpiont.swift; sourceTree = "<group>"; };
+		E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisEndpoints.swift; sourceTree = "<group>"; };
 		E8B65C05291CE63700FF902C /* Extensions+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Encodable.swift"; sourceTree = "<group>"; };
 		FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazybonesApp_LazybonesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,12 +186,12 @@
 		5737A47F28F164AC008D4499 /* ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E8AF8A3928FD864C0058884F /* MoyaService.swift */,
-				E8B65C02291CE4CD00FF902C /* SbisEndpiont.swift */,
+				E83F35DC29090BC600C979D8 /* NetworkService */,
+				E828D9472928B9CA001F7817 /* MoyaService */,
 				E8AF8A3528FD5B780058884F /* DecoderService.swift */,
 				E8AF8A3728FD646C0058884F /* SbisAPIService.swift */,
+				E828D9482928BABC001F7817 /* TochkaAPIService.swift */,
 				E83F36352910FB7100C979D8 /* KeychainService.swift */,
-				E83F35DC29090BC600C979D8 /* Network */,
 			);
 			path = ServiceLayer;
 			sourceTree = "<group>";
@@ -218,6 +228,51 @@
 				BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E828D9412928AB8F001F7817 /* TochkaRequests */ = {
+			isa = PBXGroup;
+			children = (
+				E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */,
+			);
+			path = TochkaRequests;
+			sourceTree = "<group>";
+		};
+		E828D9422928ABA8001F7817 /* SbisRequests */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35DF29091C3500C979D8 /* SbisAuthRequest.swift */,
+				E83F35E129091D8300C979D8 /* SbisComingListRequest.swift */,
+			);
+			path = SbisRequests;
+			sourceTree = "<group>";
+		};
+		E828D9472928B9CA001F7817 /* MoyaService */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF8A3928FD864C0058884F /* MoyaService.swift */,
+				E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */,
+				E828D9452928B72A001F7817 /* TochkaEndpoints.swift */,
+			);
+			path = MoyaService;
+			sourceTree = "<group>";
+		};
+		E828D94A2928BDCE001F7817 /* SbisResponses */ = {
+			isa = PBXGroup;
+			children = (
+				E83F35E52909238700C979D8 /* SbisAuthResponse.swift */,
+				E83F35E32909227000C979D8 /* SbisComingListResponse.swift */,
+				E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */,
+			);
+			path = SbisResponses;
+			sourceTree = "<group>";
+		};
+		E828D94B2928BDDB001F7817 /* TochkaResponses */ = {
+			isa = PBXGroup;
+			children = (
+				E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */,
+			);
+			path = TochkaResponses;
 			sourceTree = "<group>";
 		};
 		E83F35BF2908027F00C979D8 /* DashboardModule */ = {
@@ -263,6 +318,7 @@
 		E83F35C32908030C00C979D8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -351,21 +407,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		E83F35DC29090BC600C979D8 /* Network */ = {
+		E83F35DC29090BC600C979D8 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				5737A47C28F1615C008D4499 /* NetworkService.swift */,
 				E83F35DD29090BD900C979D8 /* Requests */,
 				E83F35DE29090BE100C979D8 /* Responses */,
 			);
-			path = Network;
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		E83F35DD29090BD900C979D8 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35DF29091C3500C979D8 /* SbisAuthRequest.swift */,
-				E83F35E129091D8300C979D8 /* SbisComingListRequest.swift */,
+				E828D9412928AB8F001F7817 /* TochkaRequests */,
+				E828D9422928ABA8001F7817 /* SbisRequests */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -373,9 +429,8 @@
 		E83F35DE29090BE100C979D8 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35E52909238700C979D8 /* SbisAuthResponse.swift */,
-				E83F35E32909227000C979D8 /* SbisComingListResponse.swift */,
-				E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */,
+				E828D94B2928BDDB001F7817 /* TochkaResponses */,
+				E828D94A2928BDCE001F7817 /* SbisResponses */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -733,18 +788,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8B65C03291CE4CD00FF902C /* SbisEndpiont.swift in Sources */,
+				E8B65C03291CE4CD00FF902C /* SbisEndpoints.swift in Sources */,
 				E8AF8A3828FD646C0058884F /* SbisAPIService.swift in Sources */,
 				E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */,
 				E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */,
 				E83F35E229091D8300C979D8 /* SbisComingListRequest.swift in Sources */,
 				E83F35EA29095D7A00C979D8 /* ComingDetailsViewController.swift in Sources */,
+				E828D9402928AAD2001F7817 /* PaymentViewPresenter.swift in Sources */,
 				E83F35F029095E0600C979D8 /* ComingDetailsPresenter.swift in Sources */,
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
 				E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */,
 				E873F072291E68B90010048C /* SbisAuthPresenter.swift in Sources */,
 				E83F35E029091C3500C979D8 /* SbisAuthRequest.swift in Sources */,
 				E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */,
+				E828D9462928B72A001F7817 /* TochkaEndpoints.swift in Sources */,
+				E828D9442928ABE4001F7817 /* TochkaAccessTokenRequest.swift in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
 				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E83F35F4290BC9DA00C979D8 /* SbisShortComingListResponse.swift in Sources */,
@@ -752,8 +810,10 @@
 				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
 				E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */,
 				E8B65C06291CE63700FF902C /* Extensions+Encodable.swift in Sources */,
+				E828D9492928BABC001F7817 /* TochkaAPIService.swift in Sources */,
 				E83F35E42909227000C979D8 /* SbisComingListResponse.swift in Sources */,
 				E83F35D62908040400C979D8 /* DashboardViewController.swift in Sources */,
+				E828D94D2928BE0A001F7817 /* TochkaAccessTokenResponse.swift in Sources */,
 				E873F070291E68A80010048C /* SbisAuthViewController.swift in Sources */,
 				E83F35E829095CD200C979D8 /* CominTableViewCell.swift in Sources */,
 				E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */,
