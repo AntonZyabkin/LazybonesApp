@@ -49,8 +49,8 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
     }
     
     func didTabComingDocument(at index: Int) {
-        let vc = moduleBuilder.buildComingDetailsViewController()
-        vc.urlTest = documentsArray[index].linkToPDF
+        let vc = moduleBuilder.buildWebPageViewController()
+        vc.urlString = documentsArray[index].linkToPDF
         print(documentsArray[index].linkToPDF)
         self.view?.navigationController?.pushViewController(vc, animated: true)
     }

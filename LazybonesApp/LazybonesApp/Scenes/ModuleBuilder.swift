@@ -10,12 +10,13 @@ import Moya
 
 protocol Builder {
     func buildTabBarController() -> TabBarController
-    func buildPaymentViewController() -> PaymentViewController
+    func buildPaymentViewController() -> UINavigationController
     func buildComingViewCOntroller() -> UINavigationController
     func buildDashboardViewController() -> DashboardViewController
     func buildTeamViewController() -> TeamViewController
-    func buildComingDetailsViewController() -> ComingDetailsViewController
+    func buildWebPageViewController() -> WebPageViewController
     func buildSbisAuthViewController() -> SbisAuthViewController
+    func buildTochkaJWTViewController() -> TochkaJWTViewController
 }
 
 final class ModuleBuilder {
@@ -41,11 +42,13 @@ extension ModuleBuilder: Builder {
         return tabBarController
     }
     
-    func buildPaymentViewController() -> PaymentViewController {
+    func buildPaymentViewController() -> UINavigationController {
         let viewController = PaymentViewController()
         let presenter = PaymentViewPresenter(tochkaAPIService: tochkaAPIService, keychainService: keychainService, moduleBuilder: self)
         viewController.presenter = presenter
-        return viewController
+        presenter.view = viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        return navigationController
     }
     
     func buildComingViewCOntroller() -> UINavigationController {
@@ -67,8 +70,8 @@ extension ModuleBuilder: Builder {
         return viewControlelr
     }
     
-    func buildComingDetailsViewController() -> ComingDetailsViewController {
-        return ComingDetailsViewController()
+    func buildWebPageViewController() -> WebPageViewController {
+        return WebPageViewController()
     }
     
     func buildSbisAuthViewController() -> SbisAuthViewController {
@@ -79,4 +82,11 @@ extension ModuleBuilder: Builder {
         return viewController
     }
     
+    func buildTochkaJWTViewController() -> TochkaJWTViewController {
+        let viewController = TochkaJWTViewController()
+        let presenter = TochkaJWTViewPresenter(keychainService: keychainService, tochkaAPIService: tochkaAPIService, moduleBuilder: self)
+        presenter.view = viewController
+        viewController.presenter = presenter
+        return viewController
+    }
 }

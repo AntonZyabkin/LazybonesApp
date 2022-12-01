@@ -23,7 +23,6 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBarController()
-        view.backgroundColor = .red
     }
     
     private func setupTabBarController() {

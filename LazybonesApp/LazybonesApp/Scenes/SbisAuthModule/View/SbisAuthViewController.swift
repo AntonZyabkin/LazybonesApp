@@ -24,6 +24,7 @@ final class SbisAuthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 0.8959923954, green: 0.8734336579, blue: 0.9013788562, alpha: 1)
         configureLoginTextfield()
         configurePasswordTextfield()
         configureAuthButton()
@@ -32,7 +33,7 @@ final class SbisAuthViewController: UIViewController {
     
     private func configureLoginTextfield() {
         view.addSubview(loginTextfield)
-        loginTextfield.backgroundColor = .systemGray2
+        loginTextfield.backgroundColor = .white
         loginTextfield.layer.cornerRadius = 10
         loginTextfield.layer.masksToBounds = true
         loginTextfield.placeholder = "Enter Sbis login"
@@ -46,7 +47,7 @@ final class SbisAuthViewController: UIViewController {
     
     private func configurePasswordTextfield() {
         view.addSubview(passwordTextfield)
-        passwordTextfield.backgroundColor = .systemGray2
+        passwordTextfield.backgroundColor = .white
         passwordTextfield.layer.cornerRadius = 10
         passwordTextfield.layer.masksToBounds = true
         passwordTextfield.placeholder = "Enter password"
@@ -88,7 +89,7 @@ final class SbisAuthViewController: UIViewController {
     
     @objc func authRequest() {
         guard let login = loginTextfield.text, let password = passwordTextfield.text else {
-            print("Enter login and/or password")
+            tipsLabel.text = "Enter login and/or password"
             return
         }
         presenter?.authButtonDidPressed(login, password)

@@ -53,5 +53,6 @@ extension KeychainWrapper {
         case sbisLogon = "Логин"
         case sbisPassword = "Пароль"
         case tochkaAccessToken = "accessToken"
+        case tochkaJWT = "JWT"
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PaymentViewProtocol {
+protocol PaymentViewProtocol: UIViewController {
     
 }
 final class PaymentViewController: UIViewController {
@@ -15,7 +15,10 @@ final class PaymentViewController: UIViewController {
     var presenter: PaymentViewPresenterProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         presenter?.viewDidLoad()
     }
 }

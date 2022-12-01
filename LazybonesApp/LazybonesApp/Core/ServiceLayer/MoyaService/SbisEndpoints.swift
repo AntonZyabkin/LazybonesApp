@@ -19,7 +19,6 @@ extension SbisEndpoints: TargetType {
     var headers: [String: String]? {
         switch self {
         case .fetchSbisComingList(let request):
-            //Исправить передачу токена в заголовок
             return ["Content-Type": "application/json-rpc;charset=utf-8", "X-SBISSessionID": request.sbisToken]
         case .sbisAuth:
             return ["Content-Type": "application/json-rpc;charset=utf-8"]

@@ -8,22 +8,21 @@
 import UIKit
 import WebKit
 
-protocol ComingDetailsViewControllerProtocol {
+protocol WebPageViewControllerProtocol {
     
 }
 
-final class ComingDetailsViewController: UIViewController {
+final class WebPageViewController: UIViewController {
 
     let webView = WKWebView()
     let activityIndicator = UIActivityIndicatorView()
      
-//    var urlTest = "https://www.orimi.com/pdf-test.pdf"
-    var urlTest = "https://online.sbis.ru/shared/disk/9a36ee65-fd08-4792-8a1e-fa48353ab733"
+    var urlString = "https://online.sbis.ru/shared/disk/9a36ee65-fd08-4792-8a1e-fa48353ab733"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
-        openPDFFile(urlTest)
+        openWebPage(from: urlString)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,8 +34,8 @@ final class ComingDetailsViewController: UIViewController {
     }
     
     
-    func openPDFFile(_ filePath: String) {
-        guard let url = URL(string: filePath) else { return }
+    func openWebPage(from url: String) {
+        guard let url = URL(string: url) else { return }
         let request = URLRequest(url: url)
         webView.load(request)
     }

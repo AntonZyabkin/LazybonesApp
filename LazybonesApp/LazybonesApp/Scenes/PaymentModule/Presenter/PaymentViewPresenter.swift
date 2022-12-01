@@ -16,14 +16,14 @@ final class PaymentViewPresenter {
     private let moduleBuilder: Builder
     private let tochkaAPIService: TochkaAPIServicable
     private let keychainService: KeychainServicable
-    private var view: PaymentViewProtocol?
+    var view: PaymentViewProtocol?
     
     init(tochkaAPIService: TochkaAPIServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.tochkaAPIService = tochkaAPIService
         self.keychainService = keychainService
         self.moduleBuilder = moduleBuilder
     }
-    
+    //MARK: - создает лист разрешений - то какие методы может обрабатывать сервер по ауф данным
     private func createPermissionList() {
         guard let accessToken = self.keychainService.fetch(for: .tochkaAccessToken) else {
             print("fetch access token from keychainService error")
@@ -39,11 +39,10 @@ final class PaymentViewPresenter {
             }
         }
     }
-}
-
-extension PaymentViewPresenter: PaymentViewPresenterProtocol {
-    func viewDidLoad() {
-        let request = TochkaAccessTokenRequest("ygkOmK173dqPQzF8ZVIE8kVaceBMAFcM", clientSecret: "JANSdSxEEhds44L3uMV6ENbEiuuDCrxM")
+    
+    //MARK: - запрашивает accessToken по clientID и clientSecret, осхраняет его в keychain
+    private func accessTokenRequest() {
+        let request = TochkaAccessTokenRequest(" ", clientSecret: " ")
         tochkaAPIService.getAccessToken(request) { [weak self] result in
             switch result {
             case .success(let responce):
@@ -57,5 +56,36 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    private func checkJWT() {
+        if let token = keychainService.fetch(for: .tochkaJWT) {
+            fetchBalance(token)
+        } else {
+            print("where is no JWT")
+            self.view?.navigationController?.pushViewController(moduleBuilder.buildTochkaJWTViewController(), animated: true)
+        }
+    }
+    
+    private func fetchBalance(_ JWT: String) {
+        let getJWTrequest = TochkaBalanceRequest(JWT: JWT)
+        tochkaAPIService.getBalanceInfo(getJWTrequest) { [weak self] result in
+            switch result {
+            case .success(let responce):
+                if let currentAmount = responce.data?.balance.first?.amount.amount {
+                    print(currentAmount)
+                } else {
+                    print(responce.errors?.first?.message ?? "unexpected error")
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension PaymentViewPresenter: PaymentViewPresenterProtocol {
+    func viewDidLoad() {
+        checkJWT()
     }
 }

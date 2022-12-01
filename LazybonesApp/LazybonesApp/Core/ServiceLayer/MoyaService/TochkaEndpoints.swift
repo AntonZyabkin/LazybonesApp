@@ -11,6 +11,7 @@ import Moya
 enum TochkaEndpoints {
     case getTochkaAccessToken(request: TochkaAccessTokenRequest)
     case createPermissionsList(request: TochkaPermissionsListRequest)
+    case getBalanceInfo(request: TochkaBalanceRequest)
 }
 
 extension TochkaEndpoints: TargetType {
@@ -21,12 +22,14 @@ extension TochkaEndpoints: TargetType {
             return ["Content-Type": "application/x-www-form-urlencoded"]
         case .createPermissionsList(let request):
             return ["Authorization": request.tochkaAccessToken, "Content-Type": "application/json"]
+        case .getBalanceInfo(let request):
+            return ["Authorization": "Bearer \(request.JWT)"]
         }
     }
     
     var baseURL: URL {
         switch self {
-        case .getTochkaAccessToken, .createPermissionsList:
+        case .getTochkaAccessToken, .createPermissionsList, .getBalanceInfo:
             return URL(string: "https://enter.tochka.com")!
         }
     }
@@ -37,6 +40,8 @@ extension TochkaEndpoints: TargetType {
             return "/connect/token"
         case .createPermissionsList:
             return "/uapi/v1.0/consents"
+        case .getBalanceInfo:
+            return "/uapi/open-banking/v1.0/balances"
         }
     }
     
@@ -44,6 +49,8 @@ extension TochkaEndpoints: TargetType {
         switch self {
         case .getTochkaAccessToken, .createPermissionsList:
             return .post
+        case .getBalanceInfo:
+            return .get
         }
     }
     
@@ -51,7 +58,7 @@ extension TochkaEndpoints: TargetType {
         switch self {
         case .getTochkaAccessToken(let request):
             return request.asParameters()
-        case .createPermissionsList:
+        case .createPermissionsList, .getBalanceInfo:
             return [:]
         }
     }
@@ -62,6 +69,8 @@ extension TochkaEndpoints: TargetType {
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .createPermissionsList(let request):
             return .requestParameters(parameters: ["Data": ["permissions": request.body.data.permissions]], encoding: JSONEncoding.default)
+        case .getBalanceInfo:
+            return .requestPlain
         }
     }
 }

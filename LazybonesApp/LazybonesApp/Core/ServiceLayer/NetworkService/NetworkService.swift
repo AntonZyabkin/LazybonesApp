@@ -59,6 +59,8 @@ extension NetworkService: Networkable {
                         break
                     case 400...499:
                         print("Status code \(urlResponse.statusCode)")
+                        self.decoderService.decode(response.data, complition: complition)
+
                         //do something
                         break
                     case 500...599:

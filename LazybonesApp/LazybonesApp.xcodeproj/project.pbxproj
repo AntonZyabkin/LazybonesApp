@@ -17,6 +17,10 @@
 		E828D94D2928BE0A001F7817 /* TochkaAccessTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */; };
 		E828D94F29291473001F7817 /* TochkaPermissionsListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D94E29291473001F7817 /* TochkaPermissionsListRequest.swift */; };
 		E828D951292940BC001F7817 /* TochkaPermissionsListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D950292940BC001F7817 /* TochkaPermissionsListResponse.swift */; };
+		E828D95329327591001F7817 /* TochkaBalanceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D95229327591001F7817 /* TochkaBalanceRequest.swift */; };
+		E828D955293277F4001F7817 /* TochkaBalanceInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D954293277F4001F7817 /* TochkaBalanceInfoResponse.swift */; };
+		E828D9802932921D001F7817 /* TochkaJWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */; };
+		E828D9822932924F001F7817 /* TochkaJWTViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */; };
 		E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35CF290803A100C979D8 /* PaymentViewController.swift */; };
 		E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D1290803C200C979D8 /* TeamViewController.swift */; };
 		E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D3290803E300C979D8 /* ComingViewController.swift */; };
@@ -28,8 +32,8 @@
 		E83F35E42909227000C979D8 /* SbisComingListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35E32909227000C979D8 /* SbisComingListResponse.swift */; };
 		E83F35E62909238700C979D8 /* SbisAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35E52909238700C979D8 /* SbisAuthResponse.swift */; };
 		E83F35E829095CD200C979D8 /* CominTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35E729095CD200C979D8 /* CominTableViewCell.swift */; };
-		E83F35EA29095D7A00C979D8 /* ComingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35E929095D7A00C979D8 /* ComingDetailsViewController.swift */; };
-		E83F35F029095E0600C979D8 /* ComingDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35EF29095E0600C979D8 /* ComingDetailsPresenter.swift */; };
+		E83F35EA29095D7A00C979D8 /* WebPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35E929095D7A00C979D8 /* WebPageViewController.swift */; };
+		E83F35F029095E0600C979D8 /* WebPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35EF29095E0600C979D8 /* WebPagePresenter.swift */; };
 		E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35F1290BB35B00C979D8 /* ComingModel.swift */; };
 		E83F35F4290BC9DA00C979D8 /* SbisShortComingListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */; };
 		E83F36362910FB7100C979D8 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F36352910FB7100C979D8 /* KeychainService.swift */; };
@@ -86,6 +90,10 @@
 		E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaAccessTokenResponse.swift; sourceTree = "<group>"; };
 		E828D94E29291473001F7817 /* TochkaPermissionsListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaPermissionsListRequest.swift; sourceTree = "<group>"; };
 		E828D950292940BC001F7817 /* TochkaPermissionsListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaPermissionsListResponse.swift; sourceTree = "<group>"; };
+		E828D95229327591001F7817 /* TochkaBalanceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaBalanceRequest.swift; sourceTree = "<group>"; };
+		E828D954293277F4001F7817 /* TochkaBalanceInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaBalanceInfoResponse.swift; sourceTree = "<group>"; };
+		E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaJWTViewController.swift; sourceTree = "<group>"; };
+		E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaJWTViewPresenter.swift; sourceTree = "<group>"; };
 		E83F35CF290803A100C979D8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E83F35D1290803C200C979D8 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		E83F35D3290803E300C979D8 /* ComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingViewController.swift; sourceTree = "<group>"; };
@@ -97,8 +105,8 @@
 		E83F35E32909227000C979D8 /* SbisComingListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisComingListResponse.swift; sourceTree = "<group>"; };
 		E83F35E52909238700C979D8 /* SbisAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisAuthResponse.swift; sourceTree = "<group>"; };
 		E83F35E729095CD200C979D8 /* CominTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CominTableViewCell.swift; sourceTree = "<group>"; };
-		E83F35E929095D7A00C979D8 /* ComingDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingDetailsViewController.swift; sourceTree = "<group>"; };
-		E83F35EF29095E0600C979D8 /* ComingDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingDetailsPresenter.swift; sourceTree = "<group>"; };
+		E83F35E929095D7A00C979D8 /* WebPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPageViewController.swift; sourceTree = "<group>"; };
+		E83F35EF29095E0600C979D8 /* WebPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebPagePresenter.swift; sourceTree = "<group>"; };
 		E83F35F1290BB35B00C979D8 /* ComingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingModel.swift; sourceTree = "<group>"; };
 		E83F35F3290BC9DA00C979D8 /* SbisShortComingListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisShortComingListResponse.swift; sourceTree = "<group>"; };
 		E83F36352910FB7100C979D8 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -171,9 +179,10 @@
 				E873F06B291E68530010048C /* SbisAuthModule */,
 				E83F35BF2908027F00C979D8 /* DashboardModule */,
 				E83F35C02908029D00C979D8 /* ComingModule */,
-				E83F35EB29095DA800C979D8 /* ComingDetailsModule */,
+				E83F35EB29095DA800C979D8 /* webPageViewController */,
 				E83F35C1290802D000C979D8 /* TeamModule */,
 				E83F35C2290802DD00C979D8 /* PaymentModule */,
+				E828D97A2932919D001F7817 /* TochkaJWTModule */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -239,6 +248,7 @@
 			children = (
 				E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */,
 				E828D94E29291473001F7817 /* TochkaPermissionsListRequest.swift */,
+				E828D95229327591001F7817 /* TochkaBalanceRequest.swift */,
 			);
 			path = TochkaRequests;
 			sourceTree = "<group>";
@@ -277,8 +287,42 @@
 			children = (
 				E828D94C2928BE0A001F7817 /* TochkaAccessTokenResponse.swift */,
 				E828D950292940BC001F7817 /* TochkaPermissionsListResponse.swift */,
+				E828D954293277F4001F7817 /* TochkaBalanceInfoResponse.swift */,
 			);
 			path = TochkaResponses;
+			sourceTree = "<group>";
+		};
+		E828D97A2932919D001F7817 /* TochkaJWTModule */ = {
+			isa = PBXGroup;
+			children = (
+				E828D97E29329200001F7817 /* Model */,
+				E828D97D293291FD001F7817 /* View */,
+				E828D97C293291F9001F7817 /* Presenter */,
+			);
+			path = TochkaJWTModule;
+			sourceTree = "<group>";
+		};
+		E828D97C293291F9001F7817 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E828D97D293291FD001F7817 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E828D97E29329200001F7817 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E83F35BF2908027F00C979D8 /* DashboardModule */ = {
@@ -441,20 +485,20 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		E83F35EB29095DA800C979D8 /* ComingDetailsModule */ = {
+		E83F35EB29095DA800C979D8 /* webPageViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E83F35EE29095DCC00C979D8 /* Model */,
 				E83F35ED29095DC700C979D8 /* View */,
 				E83F35EC29095DC000C979D8 /* Presenter */,
 			);
-			path = ComingDetailsModule;
+			path = webPageViewController;
 			sourceTree = "<group>";
 		};
 		E83F35EC29095DC000C979D8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35EF29095E0600C979D8 /* ComingDetailsPresenter.swift */,
+				E83F35EF29095E0600C979D8 /* WebPagePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -462,7 +506,7 @@
 		E83F35ED29095DC700C979D8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35E929095D7A00C979D8 /* ComingDetailsViewController.swift */,
+				E83F35E929095D7A00C979D8 /* WebPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -799,13 +843,16 @@
 				E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */,
 				E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */,
 				E83F35E229091D8300C979D8 /* SbisComingListRequest.swift in Sources */,
-				E83F35EA29095D7A00C979D8 /* ComingDetailsViewController.swift in Sources */,
+				E83F35EA29095D7A00C979D8 /* WebPageViewController.swift in Sources */,
 				E828D951292940BC001F7817 /* TochkaPermissionsListResponse.swift in Sources */,
 				E828D9402928AAD2001F7817 /* PaymentViewPresenter.swift in Sources */,
-				E83F35F029095E0600C979D8 /* ComingDetailsPresenter.swift in Sources */,
+				E828D9802932921D001F7817 /* TochkaJWTViewController.swift in Sources */,
+				E83F35F029095E0600C979D8 /* WebPagePresenter.swift in Sources */,
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
+				E828D955293277F4001F7817 /* TochkaBalanceInfoResponse.swift in Sources */,
 				E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */,
 				E828D94F29291473001F7817 /* TochkaPermissionsListRequest.swift in Sources */,
+				E828D9822932924F001F7817 /* TochkaJWTViewPresenter.swift in Sources */,
 				E873F072291E68B90010048C /* SbisAuthPresenter.swift in Sources */,
 				E83F35E029091C3500C979D8 /* SbisAuthRequest.swift in Sources */,
 				E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */,
@@ -828,6 +875,7 @@
 				E83F35DB290836BC00C979D8 /* ComingViewPresenter.swift in Sources */,
 				E83F35D8290812EA00C979D8 /* TabBarController.swift in Sources */,
 				E875D0AB28F2E118000B6A08 /* ModuleBuilder.swift in Sources */,
+				E828D95329327591001F7817 /* TochkaBalanceRequest.swift in Sources */,
 				E83F35E62909238700C979D8 /* SbisAuthResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

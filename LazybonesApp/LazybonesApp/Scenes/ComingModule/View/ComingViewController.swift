@@ -19,25 +19,23 @@ final class ComingViewController: UIViewController {
     private var viewModel: [Document] = []
     private let tableView = UITableView()
     private var logOutSbisNavBarItem = UIBarButtonItem()
+    private let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
+        configeTableView()
         view.backgroundColor = .white
         configeNavBar()
         presenter?.viewDidLoad()
+        configeActivityIndicator()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        presenter?.viewDidLoad()
-    }
-    
-    private func setupTableView() {
+
+    private func configeTableView() {
         tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         tableView.frame = view.frame
@@ -51,6 +49,12 @@ final class ComingViewController: UIViewController {
         navigationItem.rightBarButtonItem = logOutSbisNavBarItem
     }
     
+    private func configeActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+    }
+    
     @objc func logOutItemDidPress() {
         presenter?.logOutItemDidPress()
     }
@@ -61,6 +65,7 @@ extension ComingViewController: ComingViewProtocol {
     func updateTableView(viewModel: [Document]) {
         self.viewModel = viewModel
         tableView.reloadData()
+        activityIndicator.stopAnimating()
     }
     func showErrorAlert(_ error: Error) {
         let errorAlert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
