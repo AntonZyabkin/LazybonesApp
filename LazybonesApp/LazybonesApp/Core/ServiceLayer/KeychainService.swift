@@ -41,6 +41,10 @@ extension KeychainService: KeychainServicable {
     func deleteAll() -> Bool {
         return KeychainWrapper.standard.removeAllKeys()
     }
+    
+    func save(_ data: Data, key: KeychainWrapper.Keys) {
+        KeychainWrapper.standard.set(data, forKey: key.rawValue)
+    }
     //TODO: как сделать метод для кодабл
 //    func saveCodable<T: Codable>(_ value: T, for key: KeychainWrapper.Key) throws -> Bool {
 //        return KeychainWrapper.standard.set(
@@ -54,5 +58,7 @@ extension KeychainWrapper {
         case sbisPassword = "Пароль"
         case tochkaAccessToken = "accessToken"
         case tochkaJWT = "JWT"
+        case lastPaymentDate = "lastPaymentDate"
+        case tochkaAccountID = "accountID"
     }
 }

@@ -11,6 +11,8 @@ protocol TochkaAPIServicable {
     func getAccessToken(_ request: TochkaAccessTokenRequest, complition: @escaping (Result<TochkaAccessTokenResponse, Error>) -> Void)
     func createPermissionsList(_ request: TochkaPermissionsListRequest, complition: @escaping (Result<TochkaPermissionsListResponse, Error>) -> Void)
     func getBalanceInfo(_ request: TochkaBalanceRequest, complition: @escaping (Result<TochkaBalanceInfoResponse, Error>) -> Void)
+    func initStatement(_ request: TochkaInitStatementRequest, complition: @escaping (Result<TochkaInitStatementResponse, Error>) -> Void)
+    func getStatement(_ request: TochkaGetStatementRequest, complition: @escaping (Result<TochkaGetStatementResponse, Error>) -> Void)
 }
 
 final class TochkaAPIService{
@@ -32,5 +34,13 @@ extension TochkaAPIService: TochkaAPIServicable {
     
     func getBalanceInfo(_ request: TochkaBalanceRequest, complition: @escaping (Result<TochkaBalanceInfoResponse, Error>) -> Void) {
         networkService.request(TochkaEndpoints.getBalanceInfo(request: request), complition: complition)
+    }
+    
+    func initStatement(_ request: TochkaInitStatementRequest, complition: @escaping (Result<TochkaInitStatementResponse, Error>) -> Void) {
+        networkService.request(TochkaEndpoints.initStatement(request: request), complition: complition)
+    }
+    
+    func getStatement(_ request: TochkaGetStatementRequest, complition: @escaping (Result<TochkaGetStatementResponse, Error>) -> Void) {
+        networkService.request(TochkaEndpoints.getStatement(request: request), complition: complition)
     }
 }

@@ -10,15 +10,11 @@ import Foundation
 // MARK: - TochkaBalanceInfoResponse
 struct TochkaBalanceInfoResponse: Codable {
     let data: BalanceDataClass?
-    let links: Links?
-    let meta: Meta?
     let code, id, message: String?
-    let errors: [BalanceError]?
+    let errors: [TochkaError]?
     
     enum CodingKeys: String, CodingKey {
         case data = "Data"
-        case links = "Links"
-        case meta = "Meta"
         case code, id, message
         case errors = "Errors"
     }
@@ -51,6 +47,6 @@ struct Amount: Codable {
     let currency: String
 }
 
-struct BalanceError: Codable {
+struct TochkaError: Codable {
     let errorCode, message, url: String
 }

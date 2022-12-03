@@ -10,6 +10,7 @@ import UIKit
 protocol ComingViewProtocol: UIViewController {
     func updateTableView(viewModel: [Document])
     func showErrorAlert(_ error: Error)
+    func configeActivityIndicator()
 }
 
 final class ComingViewController: UIViewController {
@@ -26,7 +27,6 @@ final class ComingViewController: UIViewController {
         configeTableView()
         view.backgroundColor = .white
         configeNavBar()
-        presenter?.viewDidLoad()
         configeActivityIndicator()
     }
     
@@ -49,12 +49,6 @@ final class ComingViewController: UIViewController {
         navigationItem.rightBarButtonItem = logOutSbisNavBarItem
     }
     
-    private func configeActivityIndicator() {
-        view.addSubview(activityIndicator)
-        activityIndicator.center = view.center
-        activityIndicator.startAnimating()
-    }
-    
     @objc func logOutItemDidPress() {
         presenter?.logOutItemDidPress()
     }
@@ -72,6 +66,11 @@ extension ComingViewController: ComingViewProtocol {
         let alertButton = UIAlertAction(title: "Ok", style: .cancel)
         errorAlert.addAction(alertButton)
         present(errorAlert, animated: true)
+    }
+    func configeActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
     }
 }
 

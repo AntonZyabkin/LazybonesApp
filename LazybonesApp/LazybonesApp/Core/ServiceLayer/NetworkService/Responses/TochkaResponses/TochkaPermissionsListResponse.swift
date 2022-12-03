@@ -9,13 +9,9 @@ import Foundation
 // MARK: - Welcome
 struct TochkaPermissionsListResponse: Codable {
     let data: DataClassResponse
-    let links: Links
-    let meta: Meta
 
     enum CodingKeys: String, CodingKey {
         case data = "Data"
-        case links = "Links"
-        case meta = "Meta"
     }
 }
 
@@ -30,18 +26,4 @@ struct DataClassResponse: Codable {
         case consentID = "consentId"
         case consumerID = "consumerId"
     }
-}
-
-// MARK: - Links
-struct Links: Codable {
-    let linksSelf: String
-
-    enum CodingKeys: String, CodingKey {
-        case linksSelf = "self"
-    }
-}
-
-// MARK: - Meta
-struct Meta: Codable {
-    let totalPages: Int
 }

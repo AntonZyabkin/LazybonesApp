@@ -58,12 +58,13 @@ final class PaymentViewPresenter {
         }
     }
     
+    //MARK: - Производит проверку наличия токера в КииЧейн
     private func checkJWT() {
         if let token = keychainService.fetch(for: .tochkaJWT) {
             fetchBalance(token)
         } else {
             print("where is no JWT")
-            self.view?.navigationController?.pushViewController(moduleBuilder.buildTochkaJWTViewController(), animated: true)
+            self.showJWTViewController()
         }
     }
     
@@ -73,12 +74,66 @@ final class PaymentViewPresenter {
             switch result {
             case .success(let responce):
                 if let currentAmount = responce.data?.balance.first?.amount.amount {
-                    print(currentAmount)
-                } else {
+                    self?.setBalanceLabel(currentAmount)
+                    self?.initStatement(jwt: JWT, accountId: responce.data?.balance.first?.accountID ?? "")
+                } else if responce.errors != nil {
+                    self?.showJWTViewController()
                     print(responce.errors?.first?.message ?? "unexpected error")
                 }
             case .failure(let error):
                 print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    private func setBalanceLabel(_ balance: Double) {
+        self.view?.currentBalanceLabel.text = String(balance) + " \u{20BD}"
+    }
+    
+    private func showJWTViewController() {
+        self.view?.navigationController?.pushViewController(moduleBuilder.buildTochkaJWTViewController(), animated: true)
+    }
+    
+    
+    //MARK: - Создаем выписку по выбранному диапазону времени
+    func initStatement(jwt: String, accountId: String) {
+        let initStatemenrRequest = TochkaInitStatementRequest(
+            JWT: jwt,
+            accountID: accountId+"/044525999",
+            startDateTime: "2022-11-10",
+            endDateTime: "2022-11-13")
+        tochkaAPIService.initStatement(initStatemenrRequest) { result in
+            switch result {
+            case .success(let response):
+                guard
+                    let statementId = response.data?.statement.statementID,
+                    let accountId = response.data?.statement.accountID
+                else {
+                    print(response.message)
+                    print(response.errors)
+                    return
+                }
+                let getStatementRequest = TochkaGetStatementRequest(
+                    statementId: statementId,
+                    accountId: accountId,
+                    jwt: jwt
+                )
+                self.getStatement(getStatementRequest)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    //MARK: - Запрашиваем конкретную выписку с транзакциями по счету, созданную в initStatement
+    func getStatement(_ request: TochkaGetStatementRequest) {
+        tochkaAPIService.getStatement(request) { result in
+            switch result {
+            case .success(let responce):
+                print(responce)
+            case .failure(let error):
+                print(error)
             }
         }
     }
@@ -87,5 +142,10 @@ final class PaymentViewPresenter {
 extension PaymentViewPresenter: PaymentViewPresenterProtocol {
     func viewDidLoad() {
         checkJWT()
+        guard let lastPaymentDate = keychainService.fetch(for: .lastPaymentDate) else {
+            print(keychainService.save("28.11.2022", for: .lastPaymentDate))
+            return
+        }
+        print(lastPaymentDate)
     }
 }

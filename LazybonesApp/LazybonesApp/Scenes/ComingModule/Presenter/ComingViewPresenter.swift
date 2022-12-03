@@ -16,9 +16,7 @@ protocol ComingViewPresenterProtocol{
 
 final class ComingViewPresenter {
     weak var view: ComingViewProtocol?
-    
     private var documentsArray: [Document] = []
-    
     private let moduleBuilder: Builder
     private let sbisAPIService: SbisApiServicable
     private let keychainService: KeychainServicable
@@ -32,6 +30,7 @@ final class ComingViewPresenter {
 
 extension ComingViewPresenter: ComingViewPresenterProtocol {
     func viewDidLoad() {
+        view?.configeActivityIndicator()
         guard let sbisToken = keychainService.fetch(for: .sbisSessionID) else {
             self.view?.navigationController?.pushViewController(moduleBuilder.buildSbisAuthViewController(), animated: true)
             return
@@ -57,7 +56,6 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
     
     func logOutItemDidPress() {
         self.view?.updateTableView(viewModel: [])
-        keychainService.deleteAll()
         viewDidLoad()
     }
 }

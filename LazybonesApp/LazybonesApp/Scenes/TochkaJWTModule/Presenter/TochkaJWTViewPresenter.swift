@@ -24,6 +24,7 @@ final class TochkaJWTViewPresenter {
         self.tochkaAPIService = tochkaAPIService
         self.moduleBuilder = moduleBuilder
     }
+    
 }
 
 extension TochkaJWTViewPresenter: TochkaJWTViewPresenterProtocol {
@@ -34,7 +35,7 @@ extension TochkaJWTViewPresenter: TochkaJWTViewPresenterProtocol {
     }
     
     func checkAndSaveJWTButtonDidPressed() {
-        //TODO: нужел ли мне тут clientId?
+        //TODO: нужен ли мне тут clientId?
         if let jwt = view?.jwtTextField.text, let clientId = view?.clientIdTextField.text {
             let balanceRequest = TochkaBalanceRequest(JWT:jwt)
             tochkaAPIService.getBalanceInfo(balanceRequest) { [weak self] resuls in

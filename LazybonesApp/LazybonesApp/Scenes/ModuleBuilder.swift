@@ -56,6 +56,7 @@ extension ModuleBuilder: Builder {
         let presenter = ComingViewPresenter(sbisAPIService: sbisAPIService, keychainService: keychainService, moduleBuilder: self)
         viewController.presenter = presenter
         presenter.view = viewController
+        presenter.viewDidLoad()
         let navigationController = UINavigationController(rootViewController: viewController)
         return navigationController
     }
