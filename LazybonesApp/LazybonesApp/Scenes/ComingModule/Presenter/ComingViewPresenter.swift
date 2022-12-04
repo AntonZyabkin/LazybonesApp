@@ -12,10 +12,16 @@ protocol ComingViewPresenterProtocol{
     func viewDidLoad()
     func didTabComingDocument(at index: Int)
     func logOutItemDidPress()
+    var dataSource: PaymentViewPresenterDataSource? { get set }
+}
+
+protocol ComigDataProtocol {
+    var documentsArray: [Document] { get }
 }
 
 final class ComingViewPresenter {
     weak var view: ComingViewProtocol?
+    weak var dataSource: PaymentViewPresenterDataSource?
     private var documentsArray: [Document] = []
     private let moduleBuilder: Builder
     private let sbisAPIService: SbisApiServicable
@@ -41,6 +47,7 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
             case .success(let response):
                 self?.documentsArray = response.result.document
                 self?.view?.updateTableView(viewModel: response.result.document)
+                self?.dataSource?.updateModel(response)
             case .failure(let error):
                 self?.view?.showErrorAlert(error)
             }

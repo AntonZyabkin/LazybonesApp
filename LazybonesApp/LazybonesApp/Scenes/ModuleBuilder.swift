@@ -45,6 +45,8 @@ extension ModuleBuilder: Builder {
     func buildPaymentViewController() -> UINavigationController {
         let viewController = PaymentViewController()
         let presenter = PaymentViewPresenter(tochkaAPIService: tochkaAPIService, keychainService: keychainService, moduleBuilder: self)
+        let model = PaymentModel()
+        presenter.model = model
         viewController.presenter = presenter
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)

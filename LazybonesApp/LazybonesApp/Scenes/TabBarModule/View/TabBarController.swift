@@ -32,6 +32,8 @@ final class TabBarController: UITabBarController {
         let teamViewController = moduleBuilder.buildTeamViewController()
         let dashboardViewController = moduleBuilder.buildDashboardViewController()
         
+        (comingViewController.topViewController as! ComingViewController).presenter?.dataSource = (paymentViewController.topViewController as? PaymentViewController)?.presenter as! PaymentViewPresenterDataSource
+        
         paymentViewController.tabBarItem.title = "Оплата"
         paymentViewController.tabBarItem.image = UIImage(systemName: "creditcard.fill")
 

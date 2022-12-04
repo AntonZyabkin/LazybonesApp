@@ -32,9 +32,9 @@ struct DataClassTochkaGetStatement: Codable {
 struct StatementTochkaGetStatement: Codable {
     let accountID, statementID, status, startDateTime: String
     let endDateTime: String
-    let startDateBalance, endDateBalance: Double
+    let startDateBalance, endDateBalance: Double?
     let creationDateTime: String
-    let transaction: [Transaction]
+    let transaction: [Transaction]?
 
     enum CodingKeys: String, CodingKey {
         case accountID = "accountId"

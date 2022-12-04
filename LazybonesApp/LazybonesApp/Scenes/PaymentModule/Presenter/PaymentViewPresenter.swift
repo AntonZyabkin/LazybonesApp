@@ -11,12 +11,17 @@ protocol PaymentViewPresenterProtocol {
     func viewDidLoad()
 }
 
+protocol PaymentViewPresenterDataSource: AnyObject {
+    func updateModel(_ documents: SbisShortComingListResponse)
+}
+
 final class PaymentViewPresenter {
     
     private let moduleBuilder: Builder
     private let tochkaAPIService: TochkaAPIServicable
     private let keychainService: KeychainServicable
     var view: PaymentViewProtocol?
+    var model: PaymentModelProtocol?
     
     init(tochkaAPIService: TochkaAPIServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.tochkaAPIService = tochkaAPIService
@@ -58,7 +63,7 @@ final class PaymentViewPresenter {
         }
     }
     
-    //MARK: - Производит проверку наличия токера в КииЧейн
+    //MARK: - Производит проверку наличия токена в Keychain
     private func checkJWT() {
         if let token = keychainService.fetch(for: .tochkaJWT) {
             fetchBalance(token)
@@ -98,14 +103,19 @@ final class PaymentViewPresenter {
     
     //MARK: - Создаем выписку по выбранному диапазону времени
     func initStatement(jwt: String, accountId: String) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let today: String = dateFormatter.string(from: date)
         let initStatemenrRequest = TochkaInitStatementRequest(
             JWT: jwt,
             accountID: accountId+"/044525999",
-            startDateTime: "2022-11-10",
-            endDateTime: "2022-11-13")
+            startDateTime: "2022-12-1",
+            endDateTime: today)
         tochkaAPIService.initStatement(initStatemenrRequest) { result in
             switch result {
             case .success(let response):
+                print(response)
                 guard
                     let statementId = response.data?.statement.statementID,
                     let accountId = response.data?.statement.accountID
@@ -128,12 +138,19 @@ final class PaymentViewPresenter {
     
     //MARK: - Запрашиваем конкретную выписку с транзакциями по счету, созданную в initStatement
     func getStatement(_ request: TochkaGetStatementRequest) {
-        tochkaAPIService.getStatement(request) { result in
-            switch result {
-            case .success(let responce):
-                print(responce)
-            case .failure(let error):
-                print(error)
+        DispatchQueue.global(qos: .default).async {
+            sleep(3)
+            self.tochkaAPIService.getStatement(request) { result in
+                switch result {
+                case .success(let responce):
+                    if responce.data?.statement.first?.transaction == nil {
+                        sleep(1)
+                        self.getStatement(request)
+                    }
+                    print(responce)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
@@ -147,5 +164,12 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
             return
         }
         print(lastPaymentDate)
+    }
+}
+
+
+extension PaymentViewPresenter: PaymentViewPresenterDataSource {
+    func updateModel(_ documents: SbisShortComingListResponse) {
+        model?.createDebtsDictionary(coming: documents)
     }
 }
