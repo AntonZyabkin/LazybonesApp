@@ -41,7 +41,7 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
             self.view?.navigationController?.pushViewController(moduleBuilder.buildSbisAuthViewController(), animated: true)
             return
         }
-        let request = SbisComingListRequest(sbisToken)
+        let request = SbisComingListRequest(sbisToken, dateDDMMYYYY: "01.12.2022")
         sbisAPIService.fetchComingList(request: request) { [weak self] result in
             switch result {
             case .success(let response):

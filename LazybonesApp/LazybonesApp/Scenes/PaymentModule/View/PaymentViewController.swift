@@ -15,7 +15,7 @@ protocol PaymentViewProtocol: UIViewController {
 final class PaymentViewController: UIViewController {
     
     let currentBalanceLabel = UILabel()
-    private let payOffDebtButton = UIButton()
+    @objc private let payOffDebtButton = UIButton()
     var debtToSuppliersCollectionView: UICollectionView!
     var presenter: PaymentViewPresenterProtocol?
     
@@ -24,9 +24,7 @@ final class PaymentViewController: UIViewController {
         view.backgroundColor = .white
         configureCurrentBalanceLabel()
         configureDebtToSuppliersCollectionView()
-        if let comingViewController = tabBarController?.viewControllers?[1] as? ComingViewController {
-//            comingViewController.presenter.get
-        }
+        configurePayOffDebtButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +61,45 @@ final class PaymentViewController: UIViewController {
         debtToSuppliersCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(self.tabBarController?.tabBar.frame.height ?? 0)).isActive = true
         debtToSuppliersCollectionView.delegate = self
         debtToSuppliersCollectionView.dataSource = self
+    }
+    
+    func configurePayOffDebtButton() {
+        view.addSubview(payOffDebtButton)
+        payOffDebtButton.backgroundColor = #colorLiteral(red: 0.8708042971, green: 0.5296641443, blue: 1, alpha: 0.5981608006)
+        payOffDebtButton.layer.cornerRadius = 15
+        payOffDebtButton.layer.masksToBounds = true
+        payOffDebtButton.setTitle("Сформировать платежи", for: .normal)
+        payOffDebtButton.tintColor = #colorLiteral(red: 0.1185451327, green: 0.1170155068, blue: 0.1250142976, alpha: 1)
+        payOffDebtButton.titleLabel?.text = "Сформировать платежи"
+        payOffDebtButton.titleLabel?.textAlignment = .center
+        payOffDebtButton.titleLabel?.textColor = #colorLiteral(red: 0.1185451327, green: 0.1170155068, blue: 0.1250142976, alpha: 1)
+        payOffDebtButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
+        payOffDebtButton.addTarget(self, action: #selector(payOffButtonDidPressed), for: .touchUpInside)
+        
+        payOffDebtButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/5).isActive = true
+        payOffDebtButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/7).isActive = true
+        payOffDebtButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: view.frame.width/10).isActive =         true
+        payOffDebtButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -view.frame.width/10).isActive =      true
+        payOffDebtButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    @objc func payOffButtonDidPressed() {
+        animateView(payOffDebtButton)
+        presenter?.payOffDebtButtonDidPressed()
+    }
+    
+    fileprivate func animateView (_ viewToAnimate : UIView) {
+        UIView.animate(withDuration: 0.05, delay: 0, usingSpringWithDamping: 20, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            viewToAnimate.transform = CGAffineTransform (scaleX: 0.95, y: 0.95)
+            
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+                viewToAnimate.transform = CGAffineTransform (scaleX: 1, y: 1)
+                
+            }, completion: nil)
+            
+        }
     }
 }
 

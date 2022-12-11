@@ -28,7 +28,7 @@ final class ModuleBuilder {
     
     init() {
         decoderService = DecoderService()
-        keychainService = KeychainService()
+        keychainService = KeychainService(decoder: decoderService)
         networkService = NetworkService(decoderService: decoderService)
         sbisAPIService = SbisAPIService(networkService: networkService)
         tochkaAPIService = TochkaAPIService(networkService: networkService)
@@ -45,8 +45,6 @@ extension ModuleBuilder: Builder {
     func buildPaymentViewController() -> UINavigationController {
         let viewController = PaymentViewController()
         let presenter = PaymentViewPresenter(tochkaAPIService: tochkaAPIService, keychainService: keychainService, moduleBuilder: self)
-        let model = PaymentModel()
-        presenter.model = model
         viewController.presenter = presenter
         presenter.view = viewController
         let navigationController = UINavigationController(rootViewController: viewController)

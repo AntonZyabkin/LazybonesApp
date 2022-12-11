@@ -14,6 +14,7 @@ enum TochkaEndpoints {
     case getBalanceInfo(request: TochkaBalanceRequest)
     case initStatement(request: TochkaInitStatementRequest)
     case getStatement(request: TochkaGetStatementRequest)
+    case createPaymentForSign(request: TochkaPaymentForSignRequest)
 }
 
 extension TochkaEndpoints: TargetType {
@@ -30,12 +31,14 @@ extension TochkaEndpoints: TargetType {
             return ["Authorization": "Bearer \(request.JWT)", "Content-Type": "application/json"]
         case .getStatement(let request):
             return ["Authorization": "Bearer \(request.jwt)", "Content-Type": "application/json"]
+        case .createPaymentForSign(let request):
+            return ["Authorization": "Bearer \(request.jwt)", "Content-Type": "application/json"]
         }
     }
     
     var baseURL: URL {
         switch self {
-        case .getTochkaAccessToken, .createPermissionsList, .getBalanceInfo, .initStatement, .getStatement:
+        case .getTochkaAccessToken, .createPermissionsList, .getBalanceInfo, .initStatement, .getStatement, .createPaymentForSign:
             return URL(string: "https://enter.tochka.com")!
         }
     }
@@ -52,12 +55,14 @@ extension TochkaEndpoints: TargetType {
             return "/uapi/open-banking/v1.0/statements"
         case .getStatement(let request):
             return "/uapi/open-banking/v1.0/accounts/\(request.accountId)/statements/\(request.statementId)"
+        case .createPaymentForSign:
+            return "/uapi/payment/v1.0/for-sign"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .getTochkaAccessToken, .createPermissionsList, .initStatement:
+        case .getTochkaAccessToken, .createPermissionsList, .initStatement, .createPaymentForSign:
             return .post
         case .getBalanceInfo, .getStatement:
             return .get
@@ -68,7 +73,7 @@ extension TochkaEndpoints: TargetType {
         switch self {
         case .getTochkaAccessToken(let request):
             return request.asParameters()
-        case .createPermissionsList, .getBalanceInfo, .initStatement, .getStatement:
+        case .createPermissionsList, .getBalanceInfo, .initStatement, .getStatement, .createPaymentForSign:
             return [:]
         }
     }
@@ -82,7 +87,9 @@ extension TochkaEndpoints: TargetType {
         case .getBalanceInfo, .getStatement:
             return .requestPlain
         case .initStatement(let request):
-            return self.requestCompositeParameters(request.data, parameters)
+            return self.requestCompositeParameters(request.body, parameters)
+        case .createPaymentForSign(let request):
+            return self.requestCompositeParameters(request.body, parameters)
         }
     }
 }

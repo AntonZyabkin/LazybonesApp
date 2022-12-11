@@ -9,7 +9,6 @@
 struct SbisShortComingListResponse: Codable {
     let jsonrpc: String
     let result: ResponseResult
-    let id: String
 }
 
 // MARK: - Result
@@ -56,15 +55,12 @@ struct Attachment: Codable {
 
 // MARK: - Сounterparty
 struct Сounterparty: Codable {
-    let email, description: String
+    let description: String
     let companyDetails: CompanyDetails
-    let phoneNumber: String
 
     enum CodingKeys: String, CodingKey {
-        case email = "Email"
         case description = "Описание"
         case companyDetails = "СвЮЛ"
-        case phoneNumber = "Телефон"
     }
 }
 

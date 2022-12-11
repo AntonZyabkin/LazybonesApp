@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct TochkaGetStatementRequest: Codable {
     
     let statementId, accountId, jwt: String

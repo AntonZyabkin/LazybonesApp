@@ -26,6 +26,8 @@
 		E83C82AF293A40790007A8A1 /* TochkaGetStatementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82AE293A40790007A8A1 /* TochkaGetStatementResponse.swift */; };
 		E83C82B1293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82B0293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift */; };
 		E83C82D3293C761D0007A8A1 /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82D2293C761D0007A8A1 /* PaymentModel.swift */; };
+		E83C82D5293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82D4293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift */; };
+		E83C82D7293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82D6293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift */; };
 		E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35CF290803A100C979D8 /* PaymentViewController.swift */; };
 		E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D1290803C200C979D8 /* TeamViewController.swift */; };
 		E83F35D4290803E300C979D8 /* ComingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83F35D3290803E300C979D8 /* ComingViewController.swift */; };
@@ -104,6 +106,8 @@
 		E83C82AE293A40790007A8A1 /* TochkaGetStatementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaGetStatementResponse.swift; sourceTree = "<group>"; };
 		E83C82B0293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaGetStatementRequest.swift; sourceTree = "<group>"; };
 		E83C82D2293C761D0007A8A1 /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		E83C82D4293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaPaymentForSignRequest.swift; sourceTree = "<group>"; };
+		E83C82D6293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaPaymentForSignResponse.swift; sourceTree = "<group>"; };
 		E83F35CF290803A100C979D8 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		E83F35D1290803C200C979D8 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		E83F35D3290803E300C979D8 /* ComingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				E828D95229327591001F7817 /* TochkaBalanceRequest.swift */,
 				E83C82A82939E33D0007A8A1 /* TochkaInitStatementRequest.swift */,
 				E83C82B0293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift */,
+				E83C82D4293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift */,
 			);
 			path = TochkaRequests;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				E828D954293277F4001F7817 /* TochkaBalanceInfoResponse.swift */,
 				E83C82AA293A270B0007A8A1 /* TochkaInitStatementResponse.swift */,
 				E83C82AE293A40790007A8A1 /* TochkaGetStatementResponse.swift */,
+				E83C82D6293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift */,
 			);
 			path = TochkaResponses;
 			sourceTree = "<group>";
@@ -918,12 +924,14 @@
 				E828D9492928BABC001F7817 /* TochkaAPIService.swift in Sources */,
 				E83F35E42909227000C979D8 /* SbisComingListResponse.swift in Sources */,
 				E83F35D62908040400C979D8 /* DashboardViewController.swift in Sources */,
+				E83C82D5293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift in Sources */,
 				E828D94D2928BE0A001F7817 /* TochkaAccessTokenResponse.swift in Sources */,
 				E873F070291E68A80010048C /* SbisAuthViewController.swift in Sources */,
 				E83F35E829095CD200C979D8 /* CominTableViewCell.swift in Sources */,
 				E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */,
 				E83F35DB290836BC00C979D8 /* ComingViewPresenter.swift in Sources */,
 				E83C82AF293A40790007A8A1 /* TochkaGetStatementResponse.swift in Sources */,
+				E83C82D7293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift in Sources */,
 				E83F35D8290812EA00C979D8 /* TabBarController.swift in Sources */,
 				E83C82B1293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift in Sources */,
 				E875D0AB28F2E118000B6A08 /* ModuleBuilder.swift in Sources */,

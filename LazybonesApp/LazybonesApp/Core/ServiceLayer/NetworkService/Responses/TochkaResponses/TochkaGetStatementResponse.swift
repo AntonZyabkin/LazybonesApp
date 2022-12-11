@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - TochkaGetStatementResponse
 struct TochkaGetStatementResponse: Codable {
-    let data: DataClassTochkaGetStatement?
+    var data: DataClassTochkaGetStatement?
     let code, id, message: String?
     let errors: [TochkaError]?
 
@@ -21,7 +21,7 @@ struct TochkaGetStatementResponse: Codable {
 
 // MARK: - DataClass
 struct DataClassTochkaGetStatement: Codable {
-    let statement: [StatementTochkaGetStatement]
+    var statement: [StatementTochkaGetStatement]
 
     enum CodingKeys: String, CodingKey {
         case statement = "Statement"
@@ -34,7 +34,7 @@ struct StatementTochkaGetStatement: Codable {
     let endDateTime: String
     let startDateBalance, endDateBalance: Double?
     let creationDateTime: String
-    let transaction: [Transaction]?
+    var transaction: [Transaction]?
 
     enum CodingKeys: String, CodingKey {
         case accountID = "accountId"

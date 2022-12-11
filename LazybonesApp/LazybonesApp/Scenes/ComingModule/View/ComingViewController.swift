@@ -62,6 +62,7 @@ extension ComingViewController: ComingViewProtocol {
         activityIndicator.stopAnimating()
     }
     func showErrorAlert(_ error: Error) {
+        print(error)
         let errorAlert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
         let alertButton = UIAlertAction(title: "Ok", style: .cancel)
         errorAlert.addAction(alertButton)

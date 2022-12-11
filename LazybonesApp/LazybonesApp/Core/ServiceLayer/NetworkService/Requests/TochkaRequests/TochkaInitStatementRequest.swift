@@ -9,12 +9,12 @@ import Foundation
 
 // MARK: - TochkaInitStatementRequest
 struct TochkaInitStatementRequest {
-    let data: TochkaInitStatementData
+    let body: TochkaInitStatementData
     let JWT: String
     
     init(JWT:String, accountID: String, startDateTime: String, endDateTime: String) {
         self.JWT = JWT
-        self.data = TochkaInitStatementData(
+        self.body = TochkaInitStatementData(
             data: DataClassInitStatement(
                 statement: Statement(
                     accountID: accountID,

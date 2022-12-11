@@ -11,9 +11,9 @@ import Foundation
 struct SbisComingListRequest: Codable {
     var body: SbisComingListBodyRequest
     var sbisToken: String
-    init(_ token: String){
+    init(_ token: String, dateDDMMYYYY: String){
         self.sbisToken = token
-        self.body = SbisComingListBodyRequest()
+        self.body = SbisComingListBodyRequest(params: ComingListParams(filter: Filter(dateFrom: dateDDMMYYYY)))
     }
 }
 
@@ -22,17 +22,11 @@ struct SbisComingListBodyRequest: Codable {
     let jsonrpc: String = "2.0"
     let method: String = "СБИС.СписокДокументов"
     let params: ComingListParams
-    let id: String = "0"
     
     enum CodingKeys: String, CodingKey {
         case jsonrpc
         case method
         case params
-        case id
-    }
-    
-    init() {
-        self.params = ComingListParams(filter: Filter(navigation: Navigation()))
     }
 }
 
@@ -47,21 +41,12 @@ struct ComingListParams: Codable {
 
 // MARK: - Filter
 struct Filter: Codable {
+    
+    let dateFrom: String
     let type: String = "ДокОтгрВх"
-    let navigation: Navigation
 
     enum CodingKeys: String, CodingKey {
         case type = "Тип"
-        case navigation = "Навигация"
-    }
-}
-
-struct Navigation: Codable {
-    let pageSize: String = "125"
-    let currentPage = "0"
-    
-    enum CodingKeys: String, CodingKey {
-        case pageSize = "РазмерСтраницы"
-        case currentPage = "Страница"
+        case dateFrom = "ДатаС"
     }
 }

@@ -13,6 +13,7 @@ protocol TochkaAPIServicable {
     func getBalanceInfo(_ request: TochkaBalanceRequest, complition: @escaping (Result<TochkaBalanceInfoResponse, Error>) -> Void)
     func initStatement(_ request: TochkaInitStatementRequest, complition: @escaping (Result<TochkaInitStatementResponse, Error>) -> Void)
     func getStatement(_ request: TochkaGetStatementRequest, complition: @escaping (Result<TochkaGetStatementResponse, Error>) -> Void)
+    func createPaymentForSign(_ request: TochkaPaymentForSignRequest, complition: @escaping (Result<TochkaPaymentForSignResponse, Error>) -> Void)
 }
 
 final class TochkaAPIService{
@@ -42,5 +43,8 @@ extension TochkaAPIService: TochkaAPIServicable {
     
     func getStatement(_ request: TochkaGetStatementRequest, complition: @escaping (Result<TochkaGetStatementResponse, Error>) -> Void) {
         networkService.request(TochkaEndpoints.getStatement(request: request), complition: complition)
+    }
+    func createPaymentForSign(_ request: TochkaPaymentForSignRequest, complition: @escaping (Result<TochkaPaymentForSignResponse, Error>) -> Void) {
+        networkService.request(TochkaEndpoints.createPaymentForSign(request: request), complition: complition)
     }
 }
