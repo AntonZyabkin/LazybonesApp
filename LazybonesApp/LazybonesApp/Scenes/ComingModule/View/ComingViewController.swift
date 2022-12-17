@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ComingViewProtocol: UIViewController {
-    func updateTableView(viewModel: [Document])
+    func updateTableView(_ withDocuments: [Document])
     func showErrorAlert(_ error: Error)
     func configeActivityIndicator()
 }
@@ -17,7 +17,7 @@ final class ComingViewController: UIViewController {
 
     var presenter: ComingViewPresenterProtocol?
     let reuseIdentifier = "contractor"
-    private var viewModel: [Document] = []
+    private var comingDocumentArray: [Document] = []
     private let tableView = UITableView()
     private var logOutSbisNavBarItem = UIBarButtonItem()
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -27,7 +27,6 @@ final class ComingViewController: UIViewController {
         configeTableView()
         view.backgroundColor = .white
         configeNavBar()
-        configeActivityIndicator()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,7 +44,7 @@ final class ComingViewController: UIViewController {
     }
     
     private func configeNavBar() {
-        logOutSbisNavBarItem = UIBarButtonItem(title: "Выйти", style: .plain, target: self, action: #selector(logOutItemDidPress))
+        logOutSbisNavBarItem = UIBarButtonItem(title: "Выйти из Сбис", style: .plain, target: self, action: #selector(logOutItemDidPress))
         navigationItem.rightBarButtonItem = logOutSbisNavBarItem
     }
     
@@ -56,10 +55,15 @@ final class ComingViewController: UIViewController {
 
 //MARK: - ComingInfoViewProtocol confirm
 extension ComingViewController: ComingViewProtocol {
-    func updateTableView(viewModel: [Document]) {
-        self.viewModel = viewModel
+    func updateTableView(_ withDocuments: [Document]) {
+        if withDocuments.isEmpty {
+            logOutSbisNavBarItem.title = "Войти в Сбис"
+        } else {
+            logOutSbisNavBarItem.title = "Выйти из Сбис"
+        }
+        self.comingDocumentArray = withDocuments
         tableView.reloadData()
-        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
     }
     func showErrorAlert(_ error: Error) {
         print(error)
@@ -78,12 +82,12 @@ extension ComingViewController: ComingViewProtocol {
 //MARK: - UITableViewDataSource
 extension ComingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.count
+        comingDocumentArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell
-        cell?.setupCellContent(comingList: viewModel[indexPath.row])
+        cell?.setupCellContent(comingList: comingDocumentArray[indexPath.row])
         return cell ?? UITableViewCell()
     }
 }

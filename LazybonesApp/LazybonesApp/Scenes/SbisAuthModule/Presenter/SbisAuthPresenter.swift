@@ -29,10 +29,10 @@ final class SbisAuthPresenter {
 extension SbisAuthPresenter: SbisAuthPresenterProtocol {
     
     func viewDidLoad() {
-        guard let login = keychainService.fetch(for: .sbisLogon), let password = keychainService.fetch(for: .sbisPassword) else {
+        guard let login = keychainService.fetch(for: .sbisLogin), let password = keychainService.fetch(for: .sbisPassword) else {
             return
         }
-        authButtonDidPressed(login, password)
+        view?.showAuthData(login: login, password: password)
     }
     
     func authButtonDidPressed(_ login: String, _ password: String) {
@@ -47,7 +47,7 @@ extension SbisAuthPresenter: SbisAuthPresenterProtocol {
                     return
                 }
                 self?.view?.showErrorMessage("")
-                self?.keychainService.save(login, for: .sbisLogon)
+                self?.keychainService.save(login, for: .sbisLogin)
                 self?.keychainService.save(password, for: .sbisPassword)
                 self?.keychainService.save(token, for: .sbisSessionID)
                 self?.view?.navigationController?.popViewController(animated: true)

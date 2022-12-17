@@ -10,6 +10,15 @@
 		3F52A3A8336F9629E070F5DA /* Pods_LazybonesApp_LazybonesAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */; };
 		5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5737A47C28F1615C008D4499 /* NetworkService.swift */; };
 		9911AB4B3C022A32EACDBEE7 /* Pods_LazybonesAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0198F200474BE39310B1471D /* Pods_LazybonesAppTests.framework */; };
+		E804F852294C45C100815E20 /* DashboardViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F851294C45C100815E20 /* DashboardViewPresenter.swift */; };
+		E804F855294C46E800815E20 /* OfdAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F854294C46E800815E20 /* OfdAPIService.swift */; };
+		E804F85A294C4B8B00815E20 /* OfdAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F859294C4B8B00815E20 /* OfdAuthViewController.swift */; };
+		E804F85C294C4BB800815E20 /* OfdAuthViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F85B294C4BB800815E20 /* OfdAuthViewPresenter.swift */; };
+		E804F85E294C87DF00815E20 /* OfdEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F85D294C87DF00815E20 /* OfdEndpoints.swift */; };
+		E804F862294C88AC00815E20 /* OfdAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F861294C88AC00815E20 /* OfdAuthRequest.swift */; };
+		E804F864294C8EC000815E20 /* OfdAuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F863294C8EC000815E20 /* OfdAuthResponse.swift */; };
+		E804F866294CC4EC00815E20 /* OfdGetReportsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F865294CC4EC00815E20 /* OfdGetReportsRequest.swift */; };
+		E804F868294CD09000815E20 /* OfdGetReportsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804F867294CD09000815E20 /* OfdGetReportsResponse.swift */; };
 		E828D9402928AAD2001F7817 /* PaymentViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */; };
 		E828D9442928ABE4001F7817 /* TochkaAccessTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */; };
 		E828D9462928B72A001F7817 /* TochkaEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9452928B72A001F7817 /* TochkaEndpoints.swift */; };
@@ -49,7 +58,6 @@
 		E875D0AB28F2E118000B6A08 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */; };
 		E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3528FD5B780058884F /* DecoderService.swift */; };
 		E8AF8A3828FD646C0058884F /* SbisAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3728FD646C0058884F /* SbisAPIService.swift */; };
-		E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AF8A3928FD864C0058884F /* MoyaService.swift */; };
 		E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667728ED6886006C89F8 /* AppDelegate.swift */; };
 		E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667928ED6886006C89F8 /* SceneDelegate.swift */; };
 		E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */; };
@@ -90,6 +98,15 @@
 		BBED85E757EE3E3D01E4C365 /* Pods-LazybonesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.release.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		C747CDA187AFBBC77483F2AE /* Pods-LazybonesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesAppTests/Pods-LazybonesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D04F19DBA60F1806377B80FF /* Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-LazybonesApp-LazybonesAppUITests/Pods-LazybonesApp-LazybonesAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E804F851294C45C100815E20 /* DashboardViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewPresenter.swift; sourceTree = "<group>"; };
+		E804F854294C46E800815E20 /* OfdAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdAPIService.swift; sourceTree = "<group>"; };
+		E804F859294C4B8B00815E20 /* OfdAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdAuthViewController.swift; sourceTree = "<group>"; };
+		E804F85B294C4BB800815E20 /* OfdAuthViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdAuthViewPresenter.swift; sourceTree = "<group>"; };
+		E804F85D294C87DF00815E20 /* OfdEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdEndpoints.swift; sourceTree = "<group>"; };
+		E804F861294C88AC00815E20 /* OfdAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdAuthRequest.swift; sourceTree = "<group>"; };
+		E804F863294C8EC000815E20 /* OfdAuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdAuthResponse.swift; sourceTree = "<group>"; };
+		E804F865294CC4EC00815E20 /* OfdGetReportsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdGetReportsRequest.swift; sourceTree = "<group>"; };
+		E804F867294CD09000815E20 /* OfdGetReportsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfdGetReportsResponse.swift; sourceTree = "<group>"; };
 		E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewPresenter.swift; sourceTree = "<group>"; };
 		E828D9432928ABE4001F7817 /* TochkaAccessTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaAccessTokenRequest.swift; sourceTree = "<group>"; };
 		E828D9452928B72A001F7817 /* TochkaEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaEndpoints.swift; sourceTree = "<group>"; };
@@ -129,7 +146,6 @@
 		E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		E8AF8A3528FD5B780058884F /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
 		E8AF8A3728FD646C0058884F /* SbisAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisAPIService.swift; sourceTree = "<group>"; };
-		E8AF8A3928FD864C0058884F /* MoyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaService.swift; sourceTree = "<group>"; };
 		E8B5667428ED6886006C89F8 /* LazybonesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazybonesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5667728ED6886006C89F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8B5667928ED6886006C89F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +208,7 @@
 				E83C82A72938EB380007A8A1 /* TabBarModule */,
 				E873F06B291E68530010048C /* SbisAuthModule */,
 				E83F35BF2908027F00C979D8 /* DashboardModule */,
+				E804F856294C4B2600815E20 /* OfdAuthModule */,
 				E83F35C02908029D00C979D8 /* ComingModule */,
 				E83F35EB29095DA800C979D8 /* webPageViewController */,
 				E83F35C1290802D000C979D8 /* TeamModule */,
@@ -215,9 +232,8 @@
 			children = (
 				E83F35DC29090BC600C979D8 /* NetworkService */,
 				E828D9472928B9CA001F7817 /* MoyaService */,
+				E804F853294C46C600815E20 /* APIServices */,
 				E8AF8A3528FD5B780058884F /* DecoderService.swift */,
-				E8AF8A3728FD646C0058884F /* SbisAPIService.swift */,
-				E828D9482928BABC001F7817 /* TochkaAPIService.swift */,
 				E83F36352910FB7100C979D8 /* KeychainService.swift */,
 			);
 			path = ServiceLayer;
@@ -257,6 +273,59 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E804F853294C46C600815E20 /* APIServices */ = {
+			isa = PBXGroup;
+			children = (
+				E8AF8A3728FD646C0058884F /* SbisAPIService.swift */,
+				E828D9482928BABC001F7817 /* TochkaAPIService.swift */,
+				E804F854294C46E800815E20 /* OfdAPIService.swift */,
+			);
+			path = APIServices;
+			sourceTree = "<group>";
+		};
+		E804F856294C4B2600815E20 /* OfdAuthModule */ = {
+			isa = PBXGroup;
+			children = (
+				E804F858294C4B4C00815E20 /* View */,
+				E804F857294C4B4500815E20 /* Presenter */,
+			);
+			path = OfdAuthModule;
+			sourceTree = "<group>";
+		};
+		E804F857294C4B4500815E20 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E804F85B294C4BB800815E20 /* OfdAuthViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E804F858294C4B4C00815E20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E804F859294C4B8B00815E20 /* OfdAuthViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E804F85F294C885500815E20 /* OfdRequests */ = {
+			isa = PBXGroup;
+			children = (
+				E804F861294C88AC00815E20 /* OfdAuthRequest.swift */,
+				E804F865294CC4EC00815E20 /* OfdGetReportsRequest.swift */,
+			);
+			path = OfdRequests;
+			sourceTree = "<group>";
+		};
+		E804F860294C887D00815E20 /* OfdResponses */ = {
+			isa = PBXGroup;
+			children = (
+				E804F863294C8EC000815E20 /* OfdAuthResponse.swift */,
+				E804F867294CD09000815E20 /* OfdGetReportsResponse.swift */,
+			);
+			path = OfdResponses;
+			sourceTree = "<group>";
+		};
 		E828D9412928AB8F001F7817 /* TochkaRequests */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,9 +351,9 @@
 		E828D9472928B9CA001F7817 /* MoyaService */ = {
 			isa = PBXGroup;
 			children = (
-				E8AF8A3928FD864C0058884F /* MoyaService.swift */,
 				E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */,
 				E828D9452928B72A001F7817 /* TochkaEndpoints.swift */,
+				E804F85D294C87DF00815E20 /* OfdEndpoints.swift */,
 			);
 			path = MoyaService;
 			sourceTree = "<group>";
@@ -444,6 +513,7 @@
 		E83F35C62908034100C979D8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E804F851294C45C100815E20 /* DashboardViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -525,6 +595,7 @@
 			children = (
 				E828D9412928AB8F001F7817 /* TochkaRequests */,
 				E828D9422928ABA8001F7817 /* SbisRequests */,
+				E804F85F294C885500815E20 /* OfdRequests */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -534,6 +605,7 @@
 			children = (
 				E828D94B2928BDDB001F7817 /* TochkaResponses */,
 				E828D94A2928BDCE001F7817 /* SbisResponses */,
+				E804F860294C887D00815E20 /* OfdResponses */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -893,7 +965,7 @@
 			files = (
 				E8B65C03291CE4CD00FF902C /* SbisEndpoints.swift in Sources */,
 				E8AF8A3828FD646C0058884F /* SbisAPIService.swift in Sources */,
-				E8AF8A3A28FD864C0058884F /* MoyaService.swift in Sources */,
+				E804F855294C46E800815E20 /* OfdAPIService.swift in Sources */,
 				E83F35D0290803A100C979D8 /* PaymentViewController.swift in Sources */,
 				E83F35E229091D8300C979D8 /* SbisComingListRequest.swift in Sources */,
 				E83F35EA29095D7A00C979D8 /* WebPageViewController.swift in Sources */,
@@ -909,12 +981,15 @@
 				E828D94F29291473001F7817 /* TochkaPermissionsListRequest.swift in Sources */,
 				E83C82A92939E33D0007A8A1 /* TochkaInitStatementRequest.swift in Sources */,
 				E828D9822932924F001F7817 /* TochkaJWTViewPresenter.swift in Sources */,
+				E804F85E294C87DF00815E20 /* OfdEndpoints.swift in Sources */,
 				E873F072291E68B90010048C /* SbisAuthPresenter.swift in Sources */,
 				E83F35E029091C3500C979D8 /* SbisAuthRequest.swift in Sources */,
+				E804F862294C88AC00815E20 /* OfdAuthRequest.swift in Sources */,
 				E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */,
 				E828D9462928B72A001F7817 /* TochkaEndpoints.swift in Sources */,
 				E828D9442928ABE4001F7817 /* TochkaAccessTokenRequest.swift in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
+				E804F85C294C4BB800815E20 /* OfdAuthViewPresenter.swift in Sources */,
 				5737A47D28F1615C008D4499 /* NetworkService.swift in Sources */,
 				E83F35F4290BC9DA00C979D8 /* SbisShortComingListResponse.swift in Sources */,
 				E83F36362910FB7100C979D8 /* KeychainService.swift in Sources */,
@@ -929,12 +1004,17 @@
 				E873F070291E68A80010048C /* SbisAuthViewController.swift in Sources */,
 				E83F35E829095CD200C979D8 /* CominTableViewCell.swift in Sources */,
 				E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */,
+				E804F852294C45C100815E20 /* DashboardViewPresenter.swift in Sources */,
 				E83F35DB290836BC00C979D8 /* ComingViewPresenter.swift in Sources */,
+				E804F868294CD09000815E20 /* OfdGetReportsResponse.swift in Sources */,
 				E83C82AF293A40790007A8A1 /* TochkaGetStatementResponse.swift in Sources */,
 				E83C82D7293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift in Sources */,
 				E83F35D8290812EA00C979D8 /* TabBarController.swift in Sources */,
 				E83C82B1293B5A2C0007A8A1 /* TochkaGetStatementRequest.swift in Sources */,
 				E875D0AB28F2E118000B6A08 /* ModuleBuilder.swift in Sources */,
+				E804F85A294C4B8B00815E20 /* OfdAuthViewController.swift in Sources */,
+				E804F864294C8EC000815E20 /* OfdAuthResponse.swift in Sources */,
+				E804F866294CC4EC00815E20 /* OfdGetReportsRequest.swift in Sources */,
 				E828D95329327591001F7817 /* TochkaBalanceRequest.swift in Sources */,
 				E83F35E62909238700C979D8 /* SbisAuthResponse.swift in Sources */,
 			);

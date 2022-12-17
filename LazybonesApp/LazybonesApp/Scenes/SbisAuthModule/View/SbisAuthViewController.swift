@@ -10,20 +10,22 @@ import UIKit
 
 protocol SbisAuthViewProtocol: UIViewController {
     func showErrorMessage(_ message: String)
+    func showAuthData(login: String, password: String)
 }
 
 
-final class SbisAuthViewController: UIViewController {
+class SbisAuthViewController: UIViewController {
     
     var presenter: SbisAuthPresenterProtocol?
     
     private let loginTextfield = UITextField()
     private let passwordTextfield = UITextField()
-    private let tipsLabel = UILabel()
+    let tipsLabel = UILabel()
     private var authButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0.8959923954, green: 0.8734336579, blue: 0.9013788562, alpha: 1)
         configureLoginTextfield()
         configurePasswordTextfield()
@@ -111,5 +113,10 @@ final class SbisAuthViewController: UIViewController {
 extension SbisAuthViewController: SbisAuthViewProtocol {
     func showErrorMessage(_ error: String) {
         tipsLabel.text = error
+    }
+    
+    func showAuthData(login: String, password: String) {
+        loginTextfield.text = login
+        passwordTextfield.text = password
     }
 }

@@ -36,7 +36,7 @@ extension TochkaJWTViewPresenter: TochkaJWTViewPresenterProtocol {
     
     func checkAndSaveJWTButtonDidPressed() {
         //TODO: нужен ли мне тут clientId?
-        if let jwt = view?.jwtTextField.text, let clientId = view?.clientIdTextField.text {
+        if let jwt = view?.jwtTextField.text, let _ = view?.clientIdTextField.text {
             let balanceRequest = TochkaBalanceRequest(JWT:jwt)
             tochkaAPIService.getBalanceInfo(balanceRequest) { [weak self] resuls in
                 switch resuls {
@@ -49,7 +49,7 @@ extension TochkaJWTViewPresenter: TochkaJWTViewPresenterProtocol {
                         self?.view?.tipsLabel.text = responceMessage
                         return
                     }
-                    self?.keychainService.save(jwt, for: .tochkaJWT)
+                    print("status of savinf JWT: \(self?.keychainService.save(jwt, for: .tochkaJWT))")
                     self?.view?.navigationController?.popViewController(animated: true)
                     
                 case .failure(let error):

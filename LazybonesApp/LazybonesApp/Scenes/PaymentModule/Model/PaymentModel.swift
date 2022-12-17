@@ -10,4 +10,5 @@ import Foundation
 struct Contractor {
     let inn: String
     var debt: Double = 0
+    let name: String
 }

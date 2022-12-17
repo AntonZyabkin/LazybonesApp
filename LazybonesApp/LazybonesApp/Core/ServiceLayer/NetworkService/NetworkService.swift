@@ -35,7 +35,7 @@ extension NetworkService: Networkable {
                 complition(result)
             }
         }
-        DispatchQueue.global(qos: .utility).async {  [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async {  [weak self] in
             guard let self = self else {
                 return
             }
@@ -59,6 +59,7 @@ extension NetworkService: Networkable {
                         break
                     case 400...499:
                         print("Status code \(urlResponse.statusCode)")
+                        print(String(decoding: response.data, as: UTF8.self))
                         self.decoderService.decode(response.data, complition: complition)
 
                         //do something

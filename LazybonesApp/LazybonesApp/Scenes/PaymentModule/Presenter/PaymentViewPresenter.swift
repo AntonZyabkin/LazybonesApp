@@ -19,7 +19,7 @@ protocol PaymentViewPresenterDataSource: AnyObject {
 final class PaymentViewPresenter {
     
     private var debtDict: [String: Contractor]!
-    var paymentRequestArray: [TochkaPaymentForSignRequest] = []
+    var paymentRequestDictionary: [String: TochkaPaymentForSignRequest] = [:]
     private var initResponse: TochkaInitStatementResponse? = TochkaInitStatementResponse(data: nil, code: nil, id: nil, message: nil, errors: nil)
     private var statement: TochkaGetStatementResponse? = TochkaGetStatementResponse(data: nil, code: nil, id: nil, message: nil, errors: nil)
 
@@ -77,17 +77,26 @@ final class PaymentViewPresenter {
     
     //MARK: - Создадим словарь с задолжностями
     func createDebtsDictionary(coming: SbisShortComingListResponse) -> [String: Contractor] {
+        let lastPaymentDateString = "12.12.2022 14.30.00"
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
+        let lastPaymentDateLikeDate = dateFormater.date(from: lastPaymentDateString) ?? Date()
         var contractorsDictionary: [String: Contractor] = [:]
         for document in coming.result.document {
-            if (contractorsDictionary[document.counterparty.companyDetails.INN] == nil) {
-                var contractor = Contractor(inn: document.counterparty.companyDetails.INN)
-                contractor.debt += Double(document.summ) ?? 0
-                contractorsDictionary[contractor.inn] = contractor
-            } else {
-                contractorsDictionary[document.counterparty.companyDetails.INN]?.debt += Double(document.summ) ?? 0
+            let dateTimeCreatingDate = dateFormater.date(from: document.dateTimeCreating) ?? Date()
+            if dateTimeCreatingDate > lastPaymentDateLikeDate {
+                if (contractorsDictionary[document.counterparty.companyDetails.INN] == nil) {
+                    var contractor = Contractor(inn: document.counterparty.companyDetails.INN, name: document.counterparty.companyDetails.name)
+                    contractor.debt += Double(document.summ) ?? 0
+                    contractorsDictionary[contractor.inn] = contractor
+                } else {
+                    contractorsDictionary[document.counterparty.companyDetails.INN]?.debt += Double(document.summ) ?? 0
+                }
             }
+
         }
         print(contractorsDictionary)
+        self.viewDidLoad()
         return contractorsDictionary
     }
     
@@ -105,13 +114,11 @@ final class PaymentViewPresenter {
         tochkaAPIService.initStatement(initStatemenrRequest) { result in
             switch result {
             case .success(let response):
-                print(self.paymentRequestArray)
-                print(response.data?.statement.status ?? "status of request not found")
                 guard let statementId = response.data?.statement.statementID else {
                     print("statementIs not found")
                     return
                 }
-                let getStatementRequest = TochkaGetStatementRequest(statementId: statementId, accountId: accountId+"/044525999", jwt: jwt)
+                let getStatementRequest = TochkaGetStatementRequest(statementId: statementId, accountId: accountIDLocal, jwt: jwt)
                 self.getStatement(getStatementRequest)
             case .failure(let error):
                 print(error)
@@ -121,24 +128,26 @@ final class PaymentViewPresenter {
     
     //MARK: - Запрашиваем конкретную выписку с транзакциями по счету, созданную в initStatement
     func getStatement(_ request: TochkaGetStatementRequest) {
-        self.tochkaAPIService.getStatement(request) { result in
-            switch result {
-            case .success(let responce):
-                if responce.data?.statement.first?.transaction == nil {
-                    sleep(1)
-                    self.getStatement(request)
-                } else {
-                    if self.statement?.data == nil {
-                        self.statement = responce
-                    } else if let newTransactions = responce.data?.statement.first?.transaction {
-                        self.statement?.data?.statement[0].transaction! += newTransactions
+        DispatchQueue.global().async {
+            self.tochkaAPIService.getStatement(request) { result in
+                switch result {
+                case .success(let responce):
+                    if responce.data?.statement.first?.transaction == nil {
+                        sleep(1)
+                        self.getStatement(request)
                     } else {
-                        print("no transaction in response GetStatement")
+                        if self.statement?.data == nil {
+                            self.statement = responce
+                        } else if let newTransactions = responce.data?.statement.first?.transaction {
+                            self.statement?.data?.statement[0].transaction! += newTransactions
+                        } else {
+                            print("no transaction in response GetStatement")
+                        }
+                        self.fillPaymentRequestArray(jwt: request.jwt, accountId: request.accountId)
                     }
-                    self.fillPaymentRequestArray(jwt: request.jwt, accountId: request.accountId)
+                case .failure(let error):
+                    print(error)
                 }
-            case .failure(let error):
-                print(error)
             }
         }
     }
@@ -148,7 +157,6 @@ final class PaymentViewPresenter {
         tochkaAPIService.createPaymentForSign(paymentRequest) { result in
             switch result {
             case .success(let response):
-                self.debtDict.removeValue(forKey: paymentRequest.body.data.counterpartyINN)
                 print(response)
             case .failure(let error):
                 print(error)
@@ -157,12 +165,14 @@ final class PaymentViewPresenter {
     }
 
     func fillPaymentRequestArray(jwt: String, accountId: String) {
-        if paymentRequestArray.isEmpty {
+        if paymentRequestDictionary.isEmpty {
             for debt in debtDict {
                 if var request = findPayment(key: debt.key) {
-                    request.body.data.paymentNumber = String(paymentRequestArray.count + 1)
+                    request.jwt = jwt
+                    request.body.data.paymentNumber = String(paymentRequestDictionary.count + 1)
                     request.body.data.paymentAmount = String(debt.value.debt)
-                    paymentRequestArray.append(request)
+                    paymentRequestDictionary[debt.key] = request
+                    keychainService.saveCodable(request, for: debt.key)
                     debtDict.removeValue(forKey: debt.key)
                 }
             }
@@ -170,9 +180,8 @@ final class PaymentViewPresenter {
 
         if !debtDict.isEmpty {
             tryCreatePaymentRequest(jwt: jwt, accountId: accountId)
-        } else if !paymentRequestArray.isEmpty {
+        } else if !paymentRequestDictionary.isEmpty {
             print("all payments was created")
-            print(paymentRequestArray)
         } else {
             print("there is nothing to pay")
         }
@@ -192,9 +201,15 @@ final class PaymentViewPresenter {
                     debt.key,
                     debt: String(debt.value.debt),
                     transaction: transaction,
-                    paymentNumber: String(paymentRequestArray.count + 1)
+                    paymentNumber: String(paymentRequestDictionary.count + 1)
                 )
-                paymentRequestArray.append(request)
+                //MARK: - Сохраняем платежку в Keychain
+                if keychainService.saveCodable(request, for: debt.key) {
+                    print("payment request for INN \(debt.key) was saved")
+                } else {
+                    print("keychain error while saving request for INN \(debt.key)")
+                }
+                paymentRequestDictionary[debt.key] = request
                 debtDict.removeValue(forKey: debt.key)
             }
             if !debtDict.isEmpty {
@@ -202,10 +217,10 @@ final class PaymentViewPresenter {
                     print ("not date found in last element of [transaction]")
                     return
                 }
-                let firstDate = dateMinusSomeDays(lastDateOfPeriod: lastDateOfPeriod, periodSize: 4)
+                let firstDate = dateMinusSomeDays(lastDateOfPeriod: lastDateOfPeriod, periodSize: 20)
                 initStatement(jwt: jwt, accountId: accountId, startDateTime: firstDate, endDateTime: lastDateOfPeriod)
             } else {
-                print(paymentRequestArray)
+                print(paymentRequestDictionary)
             }
             
         }
@@ -263,6 +278,7 @@ final class PaymentViewPresenter {
         return dateFormatter.string(from: date)
     }
     
+    //MARK: - Возвращает переданную дату - заданный период
     func dateMinusSomeDays(lastDateOfPeriod: String, periodSize: Int) -> String {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd"
@@ -274,77 +290,26 @@ final class PaymentViewPresenter {
 
 extension PaymentViewPresenter: PaymentViewPresenterProtocol {
     func viewDidLoad() {
-        checkJWT()
-        
-        //TODO: не забудь убрать delete
-        keychainService.deleteItem(for: .lastPaymentDate)
-        guard let lastPaymentDate = keychainService.fetch(for: .lastPaymentDate) else {
-            print(keychainService.save("2022-12-05", for: .lastPaymentDate))
-            return
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.checkJWT()
         }
     }
     
     func payOffDebtButtonDidPressed() {
-        guard let jwt = self.keychainService.fetch(for: .tochkaJWT), let accountId = self.keychainService.fetch(for: .tochkaAccountID) else {
-            self.showJWTViewController()
-            return
+        print("go")
+        DispatchQueue.global(qos: .userInitiated).async {
+            for request in self.paymentRequestDictionary {
+                self.createPaymentForSign(request.value)
+                self.paymentRequestDictionary.removeValue(forKey: request.key)
+            }
         }
-        let endDateTime = currentDate()
-        let startDateTime = keychainService.fetch(for: .lastPaymentDate) ?? "2022-12-01"
-//        DispatchQueue.global().async {
-//            self.paymentRequestConstructor(jwt: jwt, accountId: accountId, startDateTime: startDateTime, endDateTime: endDateTime)
-//        }
-        
-        print("test12")
+    //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"
+        // как
     }
 }
-
 
 extension PaymentViewPresenter: PaymentViewPresenterDataSource {
     func updateModel(_ documents: SbisShortComingListResponse) {
         debtDict = self.createDebtsDictionary(coming: documents)
     }
 }
-
-
-
-
-
-
-//useless code
-
-//    //MARK: - создает лист разрешений - то какие методы может обрабатывать сервер по ауф данным
-//    private func createPermissionList() {
-//        guard let accessToken = self.keychainService.fetch(for: .tochkaAccessToken) else {
-//            print("fetch access token from keychainService error")
-//            return
-//        }
-//        let request = TochkaPermissionsListRequest(accessToken)
-//        tochkaAPIService.createPermissionsList(request) { result in
-//            switch result {
-//            case .success(let responce):
-//                print(responce)
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    //MARK: - запрашивает accessToken по clientID и clientSecret, осхраняет его в keychain
-//    private func accessTokenRequest() {
-//        let request = TochkaAccessTokenRequest(" ", clientSecret: " ")
-//        tochkaAPIService.getAccessToken(request) { [weak self] result in
-//            switch result {
-//            case .success(let responce):
-//                if let tochkaAccessToken = responce.accessToken {
-//                    self?.keychainService.save(tochkaAccessToken, for: .tochkaAccessToken)
-//                    self?.createPermissionList()
-//                } else {
-//                    print(responce.errorDescription ?? "unexpected error")
-//                }
-//            case .failure(let error):
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-

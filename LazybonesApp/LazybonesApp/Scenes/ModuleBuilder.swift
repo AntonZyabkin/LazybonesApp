@@ -12,19 +12,21 @@ protocol Builder {
     func buildTabBarController() -> TabBarController
     func buildPaymentViewController() -> UINavigationController
     func buildComingViewCOntroller() -> UINavigationController
-    func buildDashboardViewController() -> DashboardViewController
+    func buildDashboardViewController() -> UINavigationController
     func buildTeamViewController() -> TeamViewController
     func buildWebPageViewController() -> WebPageViewController
     func buildSbisAuthViewController() -> SbisAuthViewController
     func buildTochkaJWTViewController() -> TochkaJWTViewController
+    func buildOFDAuthViewController() -> OfdAuthViewController
 }
 
 final class ModuleBuilder {
     private let sbisAPIService: (SbisApiServicable & SbisAuthApiServicable)
+    private let tochkaAPIService: TochkaAPIServicable
+    private let ofdAPIService: OfdAPIServicable
     private let networkService: Networkable
     private let decoderService: DecoderServicable
     private let keychainService: KeychainServicable
-    private let tochkaAPIService: TochkaAPIServicable
     
     init() {
         decoderService = DecoderService()
@@ -32,6 +34,7 @@ final class ModuleBuilder {
         networkService = NetworkService(decoderService: decoderService)
         sbisAPIService = SbisAPIService(networkService: networkService)
         tochkaAPIService = TochkaAPIService(networkService: networkService)
+        ofdAPIService = OfdAPIService(networkService: networkService)
     }
 }
 
@@ -61,9 +64,12 @@ extension ModuleBuilder: Builder {
         return navigationController
     }
     
-    func buildDashboardViewController() -> DashboardViewController {
-        let viewControlelr = DashboardViewController()
-        return viewControlelr
+    func buildDashboardViewController() -> UINavigationController {
+        let viewController = DashboardViewController()
+        let presenter = DashboardViewPresenter(ofdAPIService: ofdAPIService, keychainService: keychainService, moduleBuilder: self)
+        viewController.presenter = presenter
+        presenter.view = viewController
+        return UINavigationController(rootViewController: viewController)
     }
     
     func buildTeamViewController() -> TeamViewController {
@@ -88,6 +94,14 @@ extension ModuleBuilder: Builder {
         let presenter = TochkaJWTViewPresenter(keychainService: keychainService, tochkaAPIService: tochkaAPIService, moduleBuilder: self)
         presenter.view = viewController
         viewController.presenter = presenter
+        return viewController
+    }
+    
+    func buildOFDAuthViewController() -> OfdAuthViewController {
+        let viewController = OfdAuthViewController()
+        let presenter = OfdAuthViewPresenter(ofdAPIService: ofdAPIService, keychainService: keychainService)
+        viewController.presenter = presenter
+        presenter.view = viewController
         return viewController
     }
 }

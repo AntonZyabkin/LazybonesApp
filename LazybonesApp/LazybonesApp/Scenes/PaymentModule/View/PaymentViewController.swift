@@ -28,7 +28,7 @@ final class PaymentViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        presenter?.viewDidLoad()
+//        presenter?.viewDidLoad()
     }
     
     func configureCurrentBalanceLabel() {

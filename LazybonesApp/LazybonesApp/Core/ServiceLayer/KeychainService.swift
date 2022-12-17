@@ -50,7 +50,7 @@ extension KeychainService: KeychainServicable {
         return KeychainWrapper.standard.removeAllKeys()
     }
 
-    func saveCodable<T: Codable>(_ value: T, for key: String) -> Bool {
+    func saveCodable<T: Encodable>(_ value: T, for key: String) -> Bool {
         var status: Bool = false
         decoder.encode(value) { result in
             switch result {
@@ -81,11 +81,14 @@ extension KeychainService: KeychainServicable {
 extension KeychainWrapper {
     enum Keys: String {
         case sbisSessionID = "X-SBISSessionID"
-        case sbisLogon = "Логин"
-        case sbisPassword = "Пароль"
+        case sbisLogin = "sbisLogin"
+        case sbisPassword = "sbisPassword"
         case tochkaAccessToken = "accessToken"
         case tochkaJWT = "JWT"
         case lastPaymentDate = "lastPaymentDate"
         case tochkaAccountID = "accountID"
+        case ofdAuthToken = "ofdAuthToken"
+        case ofdLogin = "ofdLogin"
+        case ofdPassword = "ofdPassword"
     }
 }
