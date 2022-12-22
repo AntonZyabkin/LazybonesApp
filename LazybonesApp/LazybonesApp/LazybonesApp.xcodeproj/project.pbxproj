@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667728ED6886006C89F8 /* AppDelegate.swift */; };
+		E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667928ED6886006C89F8 /* SceneDelegate.swift */; };
+		E8B5667C28ED6886006C89F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5667B28ED6886006C89F8 /* ViewController.swift */; };
+		E8B5667F28ED6886006C89F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B5667D28ED6886006C89F8 /* Main.storyboard */; };
+		E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */; };
+		E8B5668428ED6888006C89F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8B5668328ED6888006C89F8 /* Assets.xcassets */; };
+		E8B5668728ED6888006C89F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */; };
+		E8B5669228ED6888006C89F8 /* LazybonesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669128ED6888006C89F8 /* LazybonesAppTests.swift */; };
+		E8B5669C28ED6888006C89F8 /* LazybonesAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */; };
+		E8B5669E28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8B5668E28ED6888006C89F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8B5666C28ED6886006C89F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8B5667328ED6886006C89F8;
+			remoteInfo = LazybonesApp;
+		};
+		E8B5669828ED6888006C89F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8B5666C28ED6886006C89F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8B5667328ED6886006C89F8;
+			remoteInfo = LazybonesApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E8B5667428ED6886006C89F8 /* LazybonesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LazybonesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8B5667728ED6886006C89F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E8B5667928ED6886006C89F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E8B5667B28ED6886006C89F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E8B5667E28ED6886006C89F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8B5668128ED6886006C89F8 /* LazybonesApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LazybonesApp.xcdatamodel; sourceTree = "<group>"; };
+		E8B5668328ED6888006C89F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E8B5668628ED6888006C89F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E8B5668828ED6888006C89F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8B5668D28ED6888006C89F8 /* LazybonesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LazybonesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8B5669128ED6888006C89F8 /* LazybonesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppTests.swift; sourceTree = "<group>"; };
+		E8B5669728ED6888006C89F8 /* LazybonesAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LazybonesAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITests.swift; sourceTree = "<group>"; };
+		E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazybonesAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8B5667128ED6886006C89F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5668A28ED6888006C89F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5669428ED6888006C89F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E8B5666B28ED6886006C89F8 = {
+			isa = PBXGroup;
+			children = (
+				E8B5667628ED6886006C89F8 /* LazybonesApp */,
+				E8B5669028ED6888006C89F8 /* LazybonesAppTests */,
+				E8B5669A28ED6888006C89F8 /* LazybonesAppUITests */,
+				E8B5667528ED6886006C89F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E8B5667528ED6886006C89F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5667428ED6886006C89F8 /* LazybonesApp.app */,
+				E8B5668D28ED6888006C89F8 /* LazybonesAppTests.xctest */,
+				E8B5669728ED6888006C89F8 /* LazybonesAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8B5667628ED6886006C89F8 /* LazybonesApp */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5667728ED6886006C89F8 /* AppDelegate.swift */,
+				E8B5667928ED6886006C89F8 /* SceneDelegate.swift */,
+				E8B5667B28ED6886006C89F8 /* ViewController.swift */,
+				E8B5667D28ED6886006C89F8 /* Main.storyboard */,
+				E8B5668328ED6888006C89F8 /* Assets.xcassets */,
+				E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */,
+				E8B5668828ED6888006C89F8 /* Info.plist */,
+				E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */,
+			);
+			path = LazybonesApp;
+			sourceTree = "<group>";
+		};
+		E8B5669028ED6888006C89F8 /* LazybonesAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5669128ED6888006C89F8 /* LazybonesAppTests.swift */,
+			);
+			path = LazybonesAppTests;
+			sourceTree = "<group>";
+		};
+		E8B5669A28ED6888006C89F8 /* LazybonesAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E8B5669B28ED6888006C89F8 /* LazybonesAppUITests.swift */,
+				E8B5669D28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift */,
+			);
+			path = LazybonesAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8B5667328ED6886006C89F8 /* LazybonesApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B566A128ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesApp" */;
+			buildPhases = (
+				E8B5667028ED6886006C89F8 /* Sources */,
+				E8B5667128ED6886006C89F8 /* Frameworks */,
+				E8B5667228ED6886006C89F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LazybonesApp;
+			productName = LazybonesApp;
+			productReference = E8B5667428ED6886006C89F8 /* LazybonesApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8B5668C28ED6888006C89F8 /* LazybonesAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B566A428ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppTests" */;
+			buildPhases = (
+				E8B5668928ED6888006C89F8 /* Sources */,
+				E8B5668A28ED6888006C89F8 /* Frameworks */,
+				E8B5668B28ED6888006C89F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8B5668F28ED6888006C89F8 /* PBXTargetDependency */,
+			);
+			name = LazybonesAppTests;
+			productName = LazybonesAppTests;
+			productReference = E8B5668D28ED6888006C89F8 /* LazybonesAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E8B5669628ED6888006C89F8 /* LazybonesAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8B566A728ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppUITests" */;
+			buildPhases = (
+				E8B5669328ED6888006C89F8 /* Sources */,
+				E8B5669428ED6888006C89F8 /* Frameworks */,
+				E8B5669528ED6888006C89F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8B5669928ED6888006C89F8 /* PBXTargetDependency */,
+			);
+			name = LazybonesAppUITests;
+			productName = LazybonesAppUITests;
+			productReference = E8B5669728ED6888006C89F8 /* LazybonesAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8B5666C28ED6886006C89F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					E8B5667328ED6886006C89F8 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					E8B5668C28ED6888006C89F8 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = E8B5667328ED6886006C89F8;
+					};
+					E8B5669628ED6888006C89F8 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = E8B5667328ED6886006C89F8;
+					};
+				};
+			};
+			buildConfigurationList = E8B5666F28ED6886006C89F8 /* Build configuration list for PBXProject "LazybonesApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8B5666B28ED6886006C89F8;
+			productRefGroup = E8B5667528ED6886006C89F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8B5667328ED6886006C89F8 /* LazybonesApp */,
+				E8B5668C28ED6888006C89F8 /* LazybonesAppTests */,
+				E8B5669628ED6888006C89F8 /* LazybonesAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8B5667228ED6886006C89F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B5668728ED6888006C89F8 /* LaunchScreen.storyboard in Resources */,
+				E8B5668428ED6888006C89F8 /* Assets.xcassets in Resources */,
+				E8B5667F28ED6886006C89F8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5668B28ED6888006C89F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5669528ED6888006C89F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8B5667028ED6886006C89F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B5667C28ED6886006C89F8 /* ViewController.swift in Sources */,
+				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
+				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
+				E8B5667A28ED6886006C89F8 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5668928ED6888006C89F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B5669228ED6888006C89F8 /* LazybonesAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8B5669328ED6888006C89F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8B5669E28ED6888006C89F8 /* LazybonesAppUITestsLaunchTests.swift in Sources */,
+				E8B5669C28ED6888006C89F8 /* LazybonesAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8B5668F28ED6888006C89F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8B5667328ED6886006C89F8 /* LazybonesApp */;
+			targetProxy = E8B5668E28ED6888006C89F8 /* PBXContainerItemProxy */;
+		};
+		E8B5669928ED6888006C89F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8B5667328ED6886006C89F8 /* LazybonesApp */;
+			targetProxy = E8B5669828ED6888006C89F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E8B5667D28ED6886006C89F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8B5667E28ED6886006C89F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E8B5668528ED6888006C89F8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8B5668628ED6888006C89F8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E8B5669F28ED6888006C89F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E8B566A028ED6888006C89F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8B566A228ED6888006C89F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LazybonesApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E8B566A328ED6888006C89F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LazybonesApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		E8B566A528ED6888006C89F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LazybonesApp.app/LazybonesApp";
+			};
+			name = Debug;
+		};
+		E8B566A628ED6888006C89F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LazybonesApp.app/LazybonesApp";
+			};
+			name = Release;
+		};
+		E8B566A828ED6888006C89F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LazybonesApp;
+			};
+			name = Debug;
+		};
+		E8B566A928ED6888006C89F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AntonZyabkin.LazybonesAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LazybonesApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8B5666F28ED6886006C89F8 /* Build configuration list for PBXProject "LazybonesApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B5669F28ED6888006C89F8 /* Debug */,
+				E8B566A028ED6888006C89F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8B566A128ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B566A228ED6888006C89F8 /* Debug */,
+				E8B566A328ED6888006C89F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8B566A428ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B566A528ED6888006C89F8 /* Debug */,
+				E8B566A628ED6888006C89F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8B566A728ED6888006C89F8 /* Build configuration list for PBXNativeTarget "LazybonesAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8B566A828ED6888006C89F8 /* Debug */,
+				E8B566A928ED6888006C89F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E8B5668028ED6886006C89F8 /* LazybonesApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E8B5668128ED6886006C89F8 /* LazybonesApp.xcdatamodel */,
+			);
+			currentVersion = E8B5668128ED6886006C89F8 /* LazybonesApp.xcdatamodel */;
+			path = LazybonesApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E8B5666C28ED6886006C89F8 /* Project object */;
+}
