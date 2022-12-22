@@ -77,7 +77,10 @@ final class PaymentViewPresenter {
     
     //MARK: - Создадим словарь с задолжностями
     func createDebtsDictionary(coming: SbisShortComingListResponse) -> [String: Contractor] {
-        let lastPaymentDateString = "12.12.2022 14.30.00"
+        guard let lastPaymentDateString = keychainService.fetch(for: .lastPaymentDate) else {
+            print("last date keychain extract error")
+            return [:]
+        }
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
         let lastPaymentDateLikeDate = dateFormater.date(from: lastPaymentDateString) ?? Date()
@@ -296,15 +299,20 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
     }
     
     func payOffDebtButtonDidPressed() {
-        print("go")
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
             for request in self.paymentRequestDictionary {
                 self.createPaymentForSign(request.value)
                 self.paymentRequestDictionary.removeValue(forKey: request.key)
             }
+            guard self.paymentRequestDictionary.isEmpty else { return }
+            let date = Date()
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
+            let stringDate = dateFormater.string(from: date)
+            self.keychainService.save(stringDate, for: .lastPaymentDate)
         }
-    //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"
-        // как
+        //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"
     }
 }
 

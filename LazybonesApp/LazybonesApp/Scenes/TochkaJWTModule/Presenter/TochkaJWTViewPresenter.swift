@@ -39,21 +39,25 @@ extension TochkaJWTViewPresenter: TochkaJWTViewPresenterProtocol {
         if let jwt = view?.jwtTextField.text, let _ = view?.clientIdTextField.text {
             let balanceRequest = TochkaBalanceRequest(JWT:jwt)
             tochkaAPIService.getBalanceInfo(balanceRequest) { [weak self] resuls in
+                guard let self = self else {
+                    print("self is nil [checkAndSaveJWTButtonDidPressed]")
+                    return
+                }
                 switch resuls {
                 case .success(let response):
                     if let errorMessage = response.errors?.first?.message {
-                        self?.view?.tipsLabel.text = errorMessage
+                        self.view?.tipsLabel.text = errorMessage
                         return
                     }
                     if let responceMessage = response.message {
-                        self?.view?.tipsLabel.text = responceMessage
+                        self.view?.tipsLabel.text = responceMessage
                         return
                     }
-                    print("status of savinf JWT: \(self?.keychainService.save(jwt, for: .tochkaJWT))")
-                    self?.view?.navigationController?.popViewController(animated: true)
+                    print("status of savinf JWT: \(self.keychainService.save(jwt, for: .tochkaJWT))")
+                    self.view?.navigationController?.popViewController(animated: true)
                     
                 case .failure(let error):
-                    self?.view?.tipsLabel.text = error.localizedDescription
+                    self.view?.tipsLabel.text = error.localizedDescription
                 }
             }
         } else {

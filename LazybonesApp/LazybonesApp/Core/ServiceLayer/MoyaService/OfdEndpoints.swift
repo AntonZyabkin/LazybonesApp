@@ -20,8 +20,7 @@ extension OfdEndpoints: TargetType {
         case .ofdAuth:
             return ["Content-Type": "application/json"]
         case .fetch:
-            return nil
-
+            return [:]
 //            return ["Content-Type": "application/json"]
         }
     }
@@ -39,10 +38,9 @@ extension OfdEndpoints: TargetType {
             return "/Authorization/CreateAuthToken"
         case .fetch:
 //            return "/integration/v1/inn/\(request.inn)/zreports?dateFrom=\(request.dateFrom)&dateTo=\(request.dateTo)&AuthToken=\(request.authToken)"
-            return "/integration/v1/inn/5024198006/zreports?dateFrom=2022-12-01T09:28:51&dateTo=2022-12-10T15:47:36&AuthToken=f30e7a19120a46348026f7e83b22e72a"
+            return "/integration/v1/inn/5024198006/zreports?dateFrom=2022-12-01T09:28:51&dateTo=2022-12-10T15:47:36&AuthToken=ec12dabddd0f40ebb9f5c5f1f49a495c"
         }
     }
-    
     var method: Moya.Method {
         switch self {
         case .ofdAuth:

@@ -33,7 +33,7 @@ final class TabBarController: UITabBarController {
         let dashboardViewController = moduleBuilder.buildDashboardViewController()
         
         //внедрение зависимости между экранами оплаты и поступления
-        (comingViewController.topViewController as! ComingViewController).presenter?.dataSource = (paymentViewController.topViewController as? PaymentViewController)?.presenter as! PaymentViewPresenterDataSource
+        (comingViewController.topViewController as? ComingViewController)?.presenter?.dataSource = (paymentViewController.topViewController as? PaymentViewController)?.presenter as? PaymentViewPresenterDataSource
         
         paymentViewController.tabBarItem.title = "Оплата"
         paymentViewController.tabBarItem.image = UIImage(systemName: "creditcard.fill")
