@@ -30,7 +30,6 @@ enum NetworkError: Error {
 extension NetworkService: Networkable {
     func request<T>(_ target: TargetType, complition: @escaping (Result<T, Error>) -> Void) where T: Decodable {
         let multiTarget = MultiTarget(target)
-        print(target)
         func complitionHandler(_ result: Result<T, Error>) {
             DispatchQueue.main.async {
                 complition(result)
@@ -45,9 +44,6 @@ extension NetworkService: Networkable {
                 case .failure(let error):
                     complition(.failure(error))
                 case .success(let response):
-                    print(response)
-                    print(result)
-                    print()
                     guard let urlResponse = response.response else {
                         let error = NetworkError.responseError
                         complitionHandler(.failure(error))
@@ -63,9 +59,7 @@ extension NetworkService: Networkable {
                         break
                     case 400...499:
                         print("Status code \(urlResponse.statusCode)")
-                        print(String(decoding: response.data, as: UTF8.self))
                         self.decoderService.decode(response.data, complition: complition)
-
                         //do something
                         break
                     case 500...599:
