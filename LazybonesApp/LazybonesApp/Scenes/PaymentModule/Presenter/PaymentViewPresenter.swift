@@ -81,6 +81,7 @@ final class PaymentViewPresenter {
             print("last date keychain extract error")
             return [:]
         }
+        print(lastPaymentDateString)
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
         let lastPaymentDateLikeDate = dateFormater.date(from: lastPaymentDateString) ?? Date()
@@ -305,7 +306,10 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
                 self.createPaymentForSign(request.value)
                 self.paymentRequestDictionary.removeValue(forKey: request.key)
             }
-            guard self.paymentRequestDictionary.isEmpty else { return }
+            guard self.paymentRequestDictionary.isEmpty else {
+                print("some payment wasn't created")
+                return
+            }
             let date = Date()
             let dateFormater = DateFormatter()
             dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
