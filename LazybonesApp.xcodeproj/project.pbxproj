@@ -201,7 +201,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5737A47828F15B85008D4499 /* Scenes */ = {
+		5737A47828F15B85008D4499 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */,
@@ -215,7 +215,7 @@
 				E83F35C2290802DD00C979D8 /* PaymentModule */,
 				E828D97A2932919D001F7817 /* TochkaJWTModule */,
 			);
-			path = Scenes;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		5737A47E28F1649F008D4499 /* Core */ = {
@@ -286,26 +286,10 @@
 		E804F856294C4B2600815E20 /* OfdAuthModule */ = {
 			isa = PBXGroup;
 			children = (
-				E804F858294C4B4C00815E20 /* View */,
-				E804F857294C4B4500815E20 /* Presenter */,
-			);
-			path = OfdAuthModule;
-			sourceTree = "<group>";
-		};
-		E804F857294C4B4500815E20 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				E804F859294C4B8B00815E20 /* OfdAuthViewController.swift */,
 				E804F85B294C4BB800815E20 /* OfdAuthViewPresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E804F858294C4B4C00815E20 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E804F859294C4B8B00815E20 /* OfdAuthViewController.swift */,
-			);
-			path = View;
+			path = OfdAuthModule;
 			sourceTree = "<group>";
 		};
 		E804F85F294C885500815E20 /* OfdRequests */ = {
@@ -384,64 +368,16 @@
 		E828D97A2932919D001F7817 /* TochkaJWTModule */ = {
 			isa = PBXGroup;
 			children = (
-				E828D97E29329200001F7817 /* Model */,
-				E828D97D293291FD001F7817 /* View */,
-				E828D97C293291F9001F7817 /* Presenter */,
-			);
-			path = TochkaJWTModule;
-			sourceTree = "<group>";
-		};
-		E828D97C293291F9001F7817 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */,
 				E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E828D97D293291FD001F7817 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E828D97E29329200001F7817 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E83C82A42938EB160007A8A1 /* TabBarPresenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = TabBarPresenter;
-			sourceTree = "<group>";
-		};
-		E83C82A52938EB270007A8A1 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35D7290812EA00C979D8 /* TabBarController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83C82A62938EB300007A8A1 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = TochkaJWTModule;
 			sourceTree = "<group>";
 		};
 		E83C82A72938EB380007A8A1 /* TabBarModule */ = {
 			isa = PBXGroup;
 			children = (
-				E83C82A62938EB300007A8A1 /* Model */,
-				E83C82A52938EB270007A8A1 /* View */,
-				E83C82A42938EB160007A8A1 /* TabBarPresenter */,
+				E83F35D7290812EA00C979D8 /* TabBarController.swift */,
 			);
 			path = TabBarModule;
 			sourceTree = "<group>";
@@ -449,9 +385,8 @@
 		E83F35BF2908027F00C979D8 /* DashboardModule */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35C82908034B00C979D8 /* Model */,
-				E83F35C72908034600C979D8 /* View */,
-				E83F35C62908034100C979D8 /* Presenter */,
+				E83F35D52908040400C979D8 /* DashboardViewController.swift */,
+				E804F851294C45C100815E20 /* DashboardViewPresenter.swift */,
 			);
 			path = DashboardModule;
 			sourceTree = "<group>";
@@ -459,9 +394,10 @@
 		E83F35C02908029D00C979D8 /* ComingModule */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35CE2908036900C979D8 /* Model */,
-				E83F35CC2908036200C979D8 /* View */,
-				E83F35C92908035700C979D8 /* Presenter */,
+				E83F35F1290BB35B00C979D8 /* ComingModel.swift */,
+				E83F35D3290803E300C979D8 /* ComingViewController.swift */,
+				E83F35E729095CD200C979D8 /* CominTableViewCell.swift */,
+				E83F35DA290836BC00C979D8 /* ComingViewPresenter.swift */,
 			);
 			path = ComingModule;
 			sourceTree = "<group>";
@@ -469,9 +405,7 @@
 		E83F35C1290802D000C979D8 /* TeamModule */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35CD2908036700C979D8 /* Model */,
-				E83F35CB2908035F00C979D8 /* View */,
-				E83F35CA2908035A00C979D8 /* Presenter */,
+				E83F35D1290803C200C979D8 /* TeamViewController.swift */,
 			);
 			path = TeamModule;
 			sourceTree = "<group>";
@@ -479,105 +413,11 @@
 		E83F35C2290802DD00C979D8 /* PaymentModule */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35C52908031C00C979D8 /* Model */,
-				E83F35C42908031800C979D8 /* View */,
-				E83F35C32908030C00C979D8 /* Presenter */,
-			);
-			path = PaymentModule;
-			sourceTree = "<group>";
-		};
-		E83F35C32908030C00C979D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				E83C82D2293C761D0007A8A1 /* PaymentModel.swift */,
+				E83F35CF290803A100C979D8 /* PaymentViewController.swift */,
 				E828D93F2928AAD2001F7817 /* PaymentViewPresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E83F35C42908031800C979D8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35CF290803A100C979D8 /* PaymentViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83F35C52908031C00C979D8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E83C82D2293C761D0007A8A1 /* PaymentModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E83F35C62908034100C979D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				E804F851294C45C100815E20 /* DashboardViewPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E83F35C72908034600C979D8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35D52908040400C979D8 /* DashboardViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83F35C82908034B00C979D8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E83F35C92908035700C979D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35DA290836BC00C979D8 /* ComingViewPresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E83F35CA2908035A00C979D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E83F35CB2908035F00C979D8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35D1290803C200C979D8 /* TeamViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83F35CC2908036200C979D8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35D3290803E300C979D8 /* ComingViewController.swift */,
-				E83F35E729095CD200C979D8 /* CominTableViewCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83F35CD2908036700C979D8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		E83F35CE2908036900C979D8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35F1290BB35B00C979D8 /* ComingModel.swift */,
-			);
-			path = Model;
+			path = PaymentModule;
 			sourceTree = "<group>";
 		};
 		E83F35DC29090BC600C979D8 /* NetworkService */ = {
@@ -613,59 +453,19 @@
 		E83F35EB29095DA800C979D8 /* webPageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E83F35EE29095DCC00C979D8 /* Model */,
-				E83F35ED29095DC700C979D8 /* View */,
-				E83F35EC29095DC000C979D8 /* Presenter */,
-			);
-			path = webPageViewController;
-			sourceTree = "<group>";
-		};
-		E83F35EC29095DC000C979D8 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				E83F35E929095D7A00C979D8 /* WebPageViewController.swift */,
 				E83F35EF29095E0600C979D8 /* WebPagePresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E83F35ED29095DC700C979D8 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E83F35E929095D7A00C979D8 /* WebPageViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		E83F35EE29095DCC00C979D8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
+			path = webPageViewController;
 			sourceTree = "<group>";
 		};
 		E873F06B291E68530010048C /* SbisAuthModule */ = {
 			isa = PBXGroup;
 			children = (
-				E873F06D291E68700010048C /* View */,
-				E873F06C291E68660010048C /* Presenter */,
-			);
-			path = SbisAuthModule;
-			sourceTree = "<group>";
-		};
-		E873F06C291E68660010048C /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
+				E873F06F291E68A80010048C /* SbisAuthViewController.swift */,
 				E873F071291E68B90010048C /* SbisAuthPresenter.swift */,
 			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E873F06D291E68700010048C /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E873F06F291E68A80010048C /* SbisAuthViewController.swift */,
-			);
-			path = View;
+			path = SbisAuthModule;
 			sourceTree = "<group>";
 		};
 		E8B5666B28ED6886006C89F8 = {
@@ -695,7 +495,7 @@
 			children = (
 				5737A48028F164B9008D4499 /* Application */,
 				5737A47E28F1649F008D4499 /* Core */,
-				5737A47828F15B85008D4499 /* Scenes */,
+				5737A47828F15B85008D4499 /* Modules */,
 			);
 			path = LazybonesApp;
 			sourceTree = "<group>";
