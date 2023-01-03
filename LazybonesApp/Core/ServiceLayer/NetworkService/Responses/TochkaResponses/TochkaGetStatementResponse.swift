@@ -76,7 +76,12 @@ struct Transaction: Codable {
 
 // MARK: - Amount
 struct AmountTochkaGetStatement: Codable {
-    let amount, amountNat: Double
+    var amount: Double {
+        didSet {
+            amount = Double(round(100 * amount) / 100)
+        }
+    }
+    let amountNat: Double
     let currency: Currency
 }
 

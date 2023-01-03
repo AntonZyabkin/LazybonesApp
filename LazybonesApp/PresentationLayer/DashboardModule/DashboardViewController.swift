@@ -27,7 +27,8 @@ final class DashboardViewController: UIViewController {
         navigationItem.rightBarButtonItem = logOutOfdNavBarItem
     }
     
-    @objc func logOutItemDidPress() {
+    @objc
+    func logOutItemDidPress() {
         presenter?.logOutItemDidPress()
     }
 }

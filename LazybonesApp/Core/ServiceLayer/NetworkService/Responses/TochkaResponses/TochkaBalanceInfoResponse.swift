@@ -43,7 +43,11 @@ struct Balance: Codable {
 
 // MARK: - Amount
 struct Amount: Codable {
-    let amount: Double
+    var amount: Double {
+        didSet {
+            amount = Double(round(100 * amount) / 100)
+        }
+    }
     let currency: String
 }
 

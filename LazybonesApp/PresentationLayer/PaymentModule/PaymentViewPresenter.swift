@@ -8,8 +8,10 @@
 import Foundation
 
 protocol PaymentViewPresenterProtocol {
-    func viewDidLoad()
+    func startLoadData()
     func payOffDebtButtonDidPressed()
+    func numberOfItemsInSection() -> Int
+    func dataForPaymentCell(by indexPath:IndexPath) -> PaymentDetailModel?
 }
 
 protocol PaymentViewPresenterDataSource: AnyObject {
@@ -18,31 +20,21 @@ protocol PaymentViewPresenterDataSource: AnyObject {
 
 final class PaymentViewPresenter {
     
-    private var debtDict: [String: Contractor]!
-    var paymentRequestDictionary: [String: TochkaPaymentForSignRequest] = [:]
+    private var debtDict: [String: Contractor] = [:]
     private var initResponse: TochkaInitStatementResponse? = TochkaInitStatementResponse(data: nil, code: nil, id: nil, message: nil, errors: nil)
     private var statement: TochkaGetStatementResponse? = TochkaGetStatementResponse(data: nil, code: nil, id: nil, message: nil, errors: nil)
-
-    
     private let moduleBuilder: Builder
     private let tochkaAPIService: TochkaAPIServicable
     private let keychainService: KeychainServicable
-    var view: PaymentViewProtocol?
     
+    weak var view: PaymentViewProtocol?
+    var paymentRequestDictionary: [String: TochkaPaymentForSignRequest] = [:]
+    var keysForCollectionViewCell: [String] = []
+
     init(tochkaAPIService: TochkaAPIServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.tochkaAPIService = tochkaAPIService
         self.keychainService = keychainService
         self.moduleBuilder = moduleBuilder
-    }
-    
-    //MARK: - Производит проверку наличия токена в Keychain
-    private func checkJWT() {
-        if let token = keychainService.fetch(for: .tochkaJWT) {
-            fetchBalance(token)
-        } else {
-            print("where is no JWT")
-            self.showJWTViewController()
-        }
     }
     
     //MARK: - запрашивает баланс по счету и отображает на Вью
@@ -53,8 +45,8 @@ final class PaymentViewPresenter {
             case .success(let responce):
                 if let currentAmount = responce.data?.balance.first?.amount.amount, let accountId = responce.data?.balance.first?.accountID {
                     let _ = self?.keychainService.save(accountId, for: .tochkaAccountID)
+                    //TODO: Нужно ли переводить в главный поток операцию по обновлению Лейбла? Это же касается и остального UI
                     self?.setBalanceLabel(currentAmount)
-                    self?.fillPaymentRequestArray(jwt: JWT, accountId: accountId)
                 } else if responce.errors != nil || responce.message != nil {
                     self?.showJWTViewController()
                     print(responce.errors?.first?.message ?? "unexpected error")
@@ -81,7 +73,7 @@ final class PaymentViewPresenter {
             print("last date keychain extract error")
             return [:]
         }
-        print(lastPaymentDateString)
+        setLastPaymentDateLabel()
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
         let lastPaymentDateLikeDate = dateFormater.date(from: lastPaymentDateString) ?? Date()
@@ -99,8 +91,6 @@ final class PaymentViewPresenter {
             }
 
         }
-        print(contractorsDictionary)
-        self.viewDidLoad()
         return contractorsDictionary
     }
     
@@ -147,7 +137,7 @@ final class PaymentViewPresenter {
                         } else {
                             print("no transaction in response GetStatement")
                         }
-                        self.fillPaymentRequestArray(jwt: request.jwt, accountId: request.accountId)
+                        self.fillPaymentRequestArray()
                     }
                 case .failure(let error):
                     print(error)
@@ -168,7 +158,15 @@ final class PaymentViewPresenter {
         }
     }
 
-    func fillPaymentRequestArray(jwt: String, accountId: String) {
+    func fillPaymentRequestArray() {
+        guard let jwt = keychainService.fetch(for: .tochkaJWT), let accountId = keychainService.fetch(for: .tochkaAccountID) else {
+            print("no LWT or AccountID in keychain")
+            DispatchQueue.global(qos: .utility).async {
+                sleep(1)
+                self.fillPaymentRequestArray()
+            }
+            return
+        }
         if paymentRequestDictionary.isEmpty {
             for debt in debtDict {
                 if var request = findPayment(key: debt.key) {
@@ -176,6 +174,7 @@ final class PaymentViewPresenter {
                     request.body.data.paymentNumber = String(paymentRequestDictionary.count + 1)
                     request.body.data.paymentAmount = String(debt.value.debt)
                     paymentRequestDictionary[debt.key] = request
+                    keysForCollectionViewCell.append(debt.key)
                     keychainService.saveCodable(request, for: debt.key)
                     debtDict.removeValue(forKey: debt.key)
                 }
@@ -214,6 +213,7 @@ final class PaymentViewPresenter {
                     print("keychain error while saving request for INN \(debt.key)")
                 }
                 paymentRequestDictionary[debt.key] = request
+                keysForCollectionViewCell.append(debt.key)
                 debtDict.removeValue(forKey: debt.key)
             }
             if !debtDict.isEmpty {
@@ -293,10 +293,14 @@ final class PaymentViewPresenter {
 }
 
 extension PaymentViewPresenter: PaymentViewPresenterProtocol {
-    func viewDidLoad() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.checkJWT()
+    func startLoadData() {
+        guard let token = keychainService.fetch(for: .tochkaJWT) else {
+            print("where is no JWT")
+            self.showJWTViewController()
+            return
+            
         }
+        fetchBalance(token)
     }
     
     func payOffDebtButtonDidPressed() {
@@ -318,10 +322,29 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
         }
         //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"
     }
+    
+    func setLastPaymentDateLabel() {
+        guard let lastDateString = keychainService.fetch(for: .lastPaymentDate) else {
+            view?.lastPaymentDateLabel.text = "no last date in memory"
+            return
+        }
+        view?.lastPaymentDateLabel.text = "Дата последнего платежа \n\(lastDateString)"
+    }
+    
+    func numberOfItemsInSection() -> Int {
+        return paymentRequestDictionary.count
+    }
+    
+    func dataForPaymentCell(by indexPath:IndexPath) -> PaymentDetailModel? {
+        guard let request = paymentRequestDictionary[keysForCollectionViewCell[indexPath.row]] else { return nil }
+        let dataForCell = PaymentDetailModel(incomeData: request)
+        return dataForCell
+    }
 }
 
 extension PaymentViewPresenter: PaymentViewPresenterDataSource {
     func updateModel(_ documents: SbisShortComingListResponse) {
         debtDict = self.createDebtsDictionary(coming: documents)
+        self.fillPaymentRequestArray()
     }
 }

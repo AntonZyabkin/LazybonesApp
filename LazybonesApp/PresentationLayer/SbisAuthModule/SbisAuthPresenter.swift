@@ -9,7 +9,7 @@ import Foundation
 
 protocol SbisAuthPresenterProtocol{
     //проверить есть ли в Keychain Log + Pass
-    func viewDidLoad()
+    func viewWasLoaded()
     //выполнить авторизацию
     func authButtonDidPressed(_ login: String, _ password: String)
 }
@@ -28,7 +28,7 @@ final class SbisAuthPresenter {
 
 extension SbisAuthPresenter: SbisAuthPresenterProtocol {
     
-    func viewDidLoad() {
+    func viewWasLoaded() {
         guard let login = keychainService.fetch(for: .sbisLogin), let password = keychainService.fetch(for: .sbisPassword) else {
             return
         }
