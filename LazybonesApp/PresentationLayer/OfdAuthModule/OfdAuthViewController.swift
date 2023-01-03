@@ -13,7 +13,7 @@ class OfdAuthViewController: SbisAuthViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.loginTextfield.placeholder = "Введите логин OFD.RU"
     }
 }
 

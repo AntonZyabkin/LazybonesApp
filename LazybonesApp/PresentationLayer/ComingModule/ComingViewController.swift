@@ -16,31 +16,34 @@ protocol ComingViewProtocol: UIViewController {
 final class ComingViewController: UIViewController {
 
     var presenter: ComingViewPresenterProtocol?
-    let reuseIdentifier = "contractor"
     private var comingDocumentArray: [Document] = []
-    private let tableView = UITableView()
-    private var logOutSbisNavBarItem = UIBarButtonItem()
-    private let activityIndicator = UIActivityIndicatorView(style: .medium)
+    private lazy var tableView = UITableView()
+    private lazy var logOutSbisNavBarItem = UIBarButtonItem()
+    private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
+    //TODO: переделай реюз идентификатор как свойство ячейки
+    let reuseIdentifier = "contractor"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configeTableView()
-        view.backgroundColor = .white
         configeNavBar()
+        view.backgroundColor = .white
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+        tableView.frame = view.safeAreaLayoutGuide.layoutFrame
     }
 
     private func configeTableView() {
         tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         tableView.frame = view.frame
+        tableView.backgroundColor = .myGray
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = view.frame.height/8
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 160
     }
     
     private func configeNavBar() {
@@ -48,7 +51,8 @@ final class ComingViewController: UIViewController {
         navigationItem.rightBarButtonItem = logOutSbisNavBarItem
     }
     
-    @objc func logOutItemDidPress() {
+    @objc
+    func logOutItemDidPress() {
         presenter?.logOutItemDidPress()
     }
 }
@@ -68,8 +72,8 @@ extension ComingViewController: ComingViewProtocol {
     func showErrorAlert(_ error: Error) {
         print(error)
         let errorAlert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-        let alertButton = UIAlertAction(title: "Ok", style: .cancel)
-        errorAlert.addAction(alertButton)
+        let errorAlertButton = UIAlertAction(title: "Ok", style: .cancel)
+        errorAlert.addAction(errorAlertButton)
         present(errorAlert, animated: true)
     }
     func configeActivityIndicator() {
@@ -86,9 +90,11 @@ extension ComingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell
-        cell?.setupCellContent(comingList: comingDocumentArray[indexPath.row])
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell else { return UITableViewCell()}
+        cell.setupCellContent(comingList: comingDocumentArray[indexPath.row])
+        cell.backgroundColor = .clear
+        cell.configureSumLabel()
+        return cell
     }
 }
 //MARK: - UITableViewDelegate

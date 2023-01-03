@@ -53,6 +53,5 @@ final class TabBarController: UITabBarController {
             teamViewController,
             paymentViewController
         ]
-        tabBar.backgroundColor = #colorLiteral(red: 0.992157042, green: 0.9921569228, blue: 0.992157042, alpha: 0.4174497491)
     }
 }

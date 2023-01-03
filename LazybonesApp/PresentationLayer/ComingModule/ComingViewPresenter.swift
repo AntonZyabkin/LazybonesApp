@@ -34,6 +34,7 @@ final class ComingViewPresenter {
     }
     
     private func sendComingListRequest(_ token: String) {
+        //TODO: доделать вызов обновления ТайблВью при прокрутке скрола до конца - загружать следующую страницу документов)
         let request = SbisComingListRequest(token, pageSize: "100", numberOfPage: "0")
         sbisAPIService.fetchComingList(request: request) { [weak self] result in
             switch result {
@@ -61,13 +62,13 @@ extension ComingViewPresenter: ComingViewPresenterProtocol {
     func didTabComingDocument(at index: Int) {
         let webPageViewController = moduleBuilder.buildWebPageViewController()
         webPageViewController.urlString = documentsArray[index].linkToPDF
-        print(documentsArray[index].linkToPDF)
-        //TODO: как осуществить передачу данных между контроллерами в стеке НавВЬю?
         self.view?.navigationController?.pushViewController(webPageViewController, animated: true)
     }
-    //TODO:  можно ли посмотреть список запущенных функций до срабатывания какого либо БрейкПоинта?
+    
     func logOutItemDidPress() {
-        keychainService.deleteItem(for: .sbisSessionID)
+        if keychainService.deleteItem(for: .sbisSessionID) {
+            print ("sbisSessionId wasn't deleted")
+        }
         self.view?.updateTableView([])
         self.view?.navigationController?.pushViewController(moduleBuilder.buildSbisAuthViewController(), animated: true)
     }

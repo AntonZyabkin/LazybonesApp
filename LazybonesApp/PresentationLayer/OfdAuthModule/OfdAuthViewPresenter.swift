@@ -21,7 +21,7 @@ final class OfdAuthViewPresenter {
 
 extension OfdAuthViewPresenter: SbisAuthPresenterProtocol {
     
-    func viewDidLoad() {
+    func viewWasLoaded() {
         guard let login = keychainService.fetch(for: .ofdLogin), let password = keychainService.fetch(for: .ofdPassword) else {
             return
         }
