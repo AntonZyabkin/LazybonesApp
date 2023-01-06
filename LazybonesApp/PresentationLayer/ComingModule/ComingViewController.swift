@@ -17,7 +17,14 @@ final class ComingViewController: UIViewController {
 
     var presenter: ComingViewPresenterProtocol?
     private var comingDocumentArray: [Document] = []
-    private lazy var tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .myGray
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 160
+        return tableView
+    }()
+    
     private lazy var logOutSbisNavBarItem = UIBarButtonItem()
     private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
     //TODO: переделай реюз идентификатор как свойство ячейки
@@ -39,11 +46,8 @@ final class ComingViewController: UIViewController {
         tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
         tableView.frame = view.frame
-        tableView.backgroundColor = .myGray
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.separatorStyle = .none
-        tableView.rowHeight = 160
     }
     
     private func configeNavBar() {
@@ -92,8 +96,6 @@ extension ComingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell else { return UITableViewCell()}
         cell.setupCellContent(comingList: comingDocumentArray[indexPath.row])
-        cell.backgroundColor = .clear
-        cell.configureSumLabel()
         return cell
     }
 }

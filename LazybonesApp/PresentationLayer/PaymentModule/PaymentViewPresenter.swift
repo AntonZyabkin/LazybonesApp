@@ -58,11 +58,13 @@ final class PaymentViewPresenter {
     }
     
     //MARK: ВСПОМОГАТЕЛЬНАЯ ф-я для формата лейбла
+    //TODO: нужно вернуть данные на главный поток?
     private func setBalanceLabel(_ balance: Double) {
         self.view?.currentBalanceLabel.text = String(balance) + " \u{20BD}"
     }
     
     //MARK: - пуш ф-я для получения токена авторизации
+    //TODO: пушим на главном потоке?
     private func showJWTViewController() {
         self.view?.navigationController?.pushViewController(moduleBuilder.buildTochkaJWTViewController(), animated: true)
     }
@@ -158,9 +160,10 @@ final class PaymentViewPresenter {
         }
     }
 
+    //MARK: - сформировать массив с платежками
     func fillPaymentRequestArray() {
         guard let jwt = keychainService.fetch(for: .tochkaJWT), let accountId = keychainService.fetch(for: .tochkaAccountID) else {
-            print("no LWT or AccountID in keychain")
+            print("no JWT or AccountID in keychain")
             DispatchQueue.global(qos: .utility).async {
                 sleep(1)
                 self.fillPaymentRequestArray()
@@ -185,6 +188,7 @@ final class PaymentViewPresenter {
             tryCreatePaymentRequest(jwt: jwt, accountId: accountId)
         } else if !paymentRequestDictionary.isEmpty {
             print("all payments was created")
+            self.view?.showOrHidePayOffDebtButton()
         } else {
             print("there is nothing to pay")
         }
@@ -229,7 +233,7 @@ final class PaymentViewPresenter {
             
         }
     }
-
+    //TODO: надо синхронизировать очереди
     func findPayment(key: String) -> TochkaPaymentForSignRequest? {
         var request: TochkaPaymentForSignRequest?
         self.keychainService.fetchTochkaPaymentForSignRequest(key: key) { result in
@@ -298,7 +302,6 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
             print("where is no JWT")
             self.showJWTViewController()
             return
-            
         }
         fetchBalance(token)
     }
@@ -318,7 +321,9 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
             let dateFormater = DateFormatter()
             dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
             let stringDate = dateFormater.string(from: date)
-            self.keychainService.save(stringDate, for: .lastPaymentDate)
+            if self.keychainService.save(stringDate, for: .lastPaymentDate) {
+                self.view?.showOrHidePayOffDebtButton()
+            }
         }
         //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"
     }

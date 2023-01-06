@@ -15,10 +15,8 @@ protocol TochkaJWTViewControllerProtocol: UIViewController {
 }
 
 final class TochkaJWTViewController: UIViewController {
-    
     //MARK: - PROPERTIES
     var presenter: TochkaJWTViewPresenterProtocol?
-    
     lazy var jwtTextField: UITextField = {
         var jwtTextField = UITextField()
         jwtTextField.placeholderRect(forBounds: CGRect(x: 20, y: 0, width: 0, height: 0))
@@ -78,6 +76,7 @@ final class TochkaJWTViewController: UIViewController {
         stackView.distribution = .fillProportionally
         return stackView
     }()
+    
     //MARK: - METHODS
     override func viewDidLoad() {
         super.viewDidLoad()

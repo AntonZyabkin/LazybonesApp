@@ -12,12 +12,11 @@ protocol PaymentViewProtocol: UIViewController {
     var lastPaymentDateLabel: UILabel { get set }
     var paymentCollectionView: UICollectionView { get set }
     func reloadCollectionView()
+    func showOrHidePayOffDebtButton()
 }
 
 final class PaymentViewController: UIViewController {
-    
     var presenter: PaymentViewPresenterProtocol?
-
     lazy var currentBalanceLabel: UILabel = {
         let currentBalanceLabel = UILabel()
         currentBalanceLabel.backgroundColor = .clear
@@ -26,7 +25,6 @@ final class PaymentViewController: UIViewController {
         currentBalanceLabel.textColor = .tochkaIncome
         return currentBalanceLabel
     }()
-    
     lazy var lastPaymentDateLabel: UILabel = {
         let lastPaymentDateLabel = UILabel()
         lastPaymentDateLabel.backgroundColor = .clear
@@ -37,7 +35,6 @@ final class PaymentViewController: UIViewController {
         lastPaymentDateLabel.text = " "
         return lastPaymentDateLabel
     }()
-    
     private lazy var summaryStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [currentBalanceLabel, lastPaymentDateLabel])
         stackView.axis = .vertical
@@ -53,7 +50,6 @@ final class PaymentViewController: UIViewController {
         stackView.layer.cornerRadius = 25
         return stackView
     }()
-    
     private var payOffDebtButton: UIButton = {
         let payOffDebtButton = UIButton(type: .system)
         payOffDebtButton.backgroundColor = .tochkaPurpleAccent
@@ -68,9 +64,9 @@ final class PaymentViewController: UIViewController {
         payOffDebtButton.layer.shadowOffset = CGSize(width: 0, height: 15)
         payOffDebtButton.layer.shadowOpacity = 0.9
         payOffDebtButton.layer.cornerRadius = 15
+        payOffDebtButton.isHidden = true
         return payOffDebtButton
     }()
-    
     lazy var paymentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 30, left: 20, bottom: 0, right: 20)
@@ -82,14 +78,13 @@ final class PaymentViewController: UIViewController {
         )
         return debtToSuppliersCollectionView
     }()
-    
     private lazy var headerBackgroundView: UIView = {
        let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
         view.backgroundColor = .tochkaPurpleAccent
         view.layer.opacity = 0.8
         return view
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -157,6 +152,15 @@ final class PaymentViewController: UIViewController {
 extension PaymentViewController: PaymentViewProtocol {
     func reloadCollectionView() {
         paymentCollectionView.reloadData()
+    }
+    
+    func showOrHidePayOffDebtButton() {
+        switch payOffDebtButton.isHidden {
+        case true:
+            payOffDebtButton.isHidden = false
+        case false:
+            payOffDebtButton.isHidden = true
+        }
     }
 }
 

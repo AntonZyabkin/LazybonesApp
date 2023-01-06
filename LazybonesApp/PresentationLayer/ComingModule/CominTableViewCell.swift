@@ -9,15 +9,62 @@ import UIKit
 
 final class CominTableViewCell: UITableViewCell {
     
-    private lazy var contractorLogoImageView = UIImageView()
-    private lazy var contractorNameLabel = UILabel()
-    private lazy var sumOfComingLabel = UILabel()
-    private lazy var dateOfComingLabel = UILabel()
-    private lazy var docListLabel = UILabel()
-
+    private lazy var contractorLogoImageView: UIImageView = {
+        let contractorLogoImageView = UIImageView()
+        contractorLogoImageView.layer.cornerRadius = 25
+        contractorLogoImageView.clipsToBounds = true
+        contractorLogoImageView.backgroundColor = .red
+        contractorLogoImageView.image = UIImage(named: "магнит")
+        return contractorLogoImageView
+    }()
+    
+    private lazy var contractorNameLabel: UILabel = {
+        let contractorNameLabel = UILabel()
+        contractorNameLabel.numberOfLines = 1
+        contractorNameLabel.textColor = .textBlue
+        contractorNameLabel.font = .tochkaBoldArial(size: 18)
+        return contractorNameLabel
+    }()
+    
+    private lazy var sumOfComingLabel: UILabel = {
+        var sumOfComingLabel = UILabel()
+        sumOfComingLabel.numberOfLines = 1
+        sumOfComingLabel.textAlignment = .right
+        sumOfComingLabel.font = .tochkaBoldArial(size: 20)
+        return sumOfComingLabel
+    }()
+    
+    private lazy var dateOfComingLabel: UILabel = {
+        let dateOfComingLabel = UILabel()
+        dateOfComingLabel.numberOfLines = 1
+        dateOfComingLabel.textColor = .gray
+        dateOfComingLabel.font = UIFont.systemFont(ofSize: 13)
+        return dateOfComingLabel
+    }()
+    
+    private lazy var docListLabel: UILabel = {
+        let docListLabel = UILabel()
+        docListLabel.numberOfLines = 4
+        docListLabel.textColor = .systemGray2
+        docListLabel.lineBreakMode = .byWordWrapping
+        docListLabel.font = UIFont.systemFont(ofSize: 11)
+        return docListLabel
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        var stackView = UIStackView(
+            arrangedSubviews: [contractorNameLabel, docListLabel])
+        stackView.axis = .vertical
+        stackView.backgroundColor = .clear
+        stackView.alignment = .leading
+        stackView.distribution = .fillProportionally
+        return stackView
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureBackView()
+        backgroundColor = .clear
         contentView.backgroundColor = .white
     }
     
@@ -26,47 +73,57 @@ final class CominTableViewCell: UITableViewCell {
     }
     
     func configureBackView() {
-
+        addElementsAtCell()
         backgroundColor = .blue
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: 15),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
-        ])
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.layer.shadowColor = UIColor.systemGray3.cgColor
         contentView.layer.shadowRadius = 5
         contentView.layer.shadowOffset = CGSize(width: 4, height: 5)
         contentView.layer.shadowOpacity = 0.6
         contentView.layer.cornerRadius = 25
-        addElementsAtCell()
-        configureSumLabel()
-        configureDateLabel()
-        configureImageView()
-        configureNameLabel()
-        configureDocListLabel()
+        
+        //TODO: как мне сделать кастомный лейаут контентвью?
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contractorLogoImageView.translatesAutoresizingMaskIntoConstraints = false
+        sumOfComingLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateOfComingLabel.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            
+            contractorLogoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            contractorLogoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            contractorLogoImageView.widthAnchor.constraint(equalToConstant: 48),
+            contractorLogoImageView.heightAnchor.constraint(equalToConstant: 48),
+            
+            sumOfComingLabel.widthAnchor.constraint(equalToConstant: 128),
+            sumOfComingLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            sumOfComingLabel.heightAnchor.constraint(equalToConstant: 24),
+            sumOfComingLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+
+            stackView.leadingAnchor.constraint(equalTo: contractorLogoImageView.trailingAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            stackView.bottomAnchor.constraint(equalTo: sumOfComingLabel.topAnchor, constant: -8),
+
+            dateOfComingLabel.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
+            dateOfComingLabel.trailingAnchor.constraint(equalTo: sumOfComingLabel.leadingAnchor, constant: -8),
+            dateOfComingLabel.heightAnchor.constraint(equalToConstant: 24),
+            dateOfComingLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+        ])
     }
     
     func addElementsAtCell() {
         contentView.addSubview(contractorLogoImageView)
-        contentView.addSubview(contractorNameLabel)
         contentView.addSubview(sumOfComingLabel)
         contentView.addSubview(dateOfComingLabel)
-        contentView.addSubview(docListLabel)
+        contentView.addSubview(stackView)
     }
     
-    func configureImageView() {
-        contractorLogoImageView.layer.cornerRadius = 15
-        contractorLogoImageView.clipsToBounds = true
-        contractorLogoImageView.backgroundColor = .red
-        contractorLogoImageView.image = UIImage(named: "магнит")
-        contractorLogoImageView.translatesAutoresizingMaskIntoConstraints =                                 false
-        contractorLogoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive =    true
-        contractorLogoImageView.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 72).isActive =  true
-        contractorLogoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8).isActive =            true
-        contractorLogoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -38).isActive =    true
-    }
     
     func setupCellContent(comingList: Document) {
         contractorNameLabel.text = comingList.counterparty.companyDetails.name
@@ -75,6 +132,13 @@ final class CominTableViewCell: UITableViewCell {
         } else {
             sumOfComingLabel.text = comingList.summ
         }
+        
+        if (Double(sumOfComingLabel.text ?? "") ?? 0) > 0 {
+            sumOfComingLabel.textColor = .textRed
+        } else {
+            sumOfComingLabel.textColor = .textGreen
+        }
+        
         dateOfComingLabel.text = comingList.date
         contractorLogoImageView.image = UIImage(named: comingList.counterparty.companyDetails.name)
         var docText = ""
@@ -83,54 +147,5 @@ final class CominTableViewCell: UITableViewCell {
             docText += "\n"
         }
         docListLabel.text = docText
-    }
-    
-    func configureNameLabel() {
-        contractorNameLabel.numberOfLines = 1
-        contractorNameLabel.textColor = .systemGray2
-        contractorNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
-        contractorNameLabel.translatesAutoresizingMaskIntoConstraints =                                     false
-        contractorNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80).isActive =       true
-        contractorNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -160).isActive =   true
-        contractorNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25).isActive =               true
-        contractorNameLabel.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive =            true
-    }
-    
-    func configureSumLabel() {
-        sumOfComingLabel.numberOfLines = 1
-        if (Double(sumOfComingLabel.text ?? "") ?? 0) > 0 {
-            sumOfComingLabel.textColor = .textRed
-        } else {
-            sumOfComingLabel.textColor = .textGreen
-        }
-        sumOfComingLabel.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
-        sumOfComingLabel.translatesAutoresizingMaskIntoConstraints =                                        false
-        sumOfComingLabel.leadingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -150).isActive =       true
-        sumOfComingLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive =       true
-        sumOfComingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 25).isActive =                  true
-        sumOfComingLabel.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: 50).isActive =               true
-    }
-    
-    func configureDateLabel() {
-        dateOfComingLabel.numberOfLines = 2
-        dateOfComingLabel.textColor = .systemGray3
-        dateOfComingLabel.font = UIFont.systemFont(ofSize: 13)
-        dateOfComingLabel.translatesAutoresizingMaskIntoConstraints =                                       false
-        dateOfComingLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18).isActive =         true
-        dateOfComingLabel.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 58).isActive =        true
-        dateOfComingLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60).isActive =                 true
-        dateOfComingLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive =           true
-    }
-    
-    func configureDocListLabel() {
-        docListLabel.numberOfLines = 4
-        docListLabel.textColor = .systemGray3
-        docListLabel.lineBreakMode = .byWordWrapping
-        docListLabel.font = UIFont.systemFont(ofSize: 11)
-        docListLabel.translatesAutoresizingMaskIntoConstraints =                                            false
-        docListLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80).isActive =              true
-        docListLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50).isActive =           true
-        docListLabel.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -65).isActive =                  true
-        docListLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4).isActive =                true
     }
 }

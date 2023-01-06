@@ -14,9 +14,13 @@ protocol OfdAPIServicable {
 
 final class OfdAPIService{
     private let networkService: Networkable
+    private let networkServiceByURLSession: NetworkServicerPotocol
 
-    init(networkService: Networkable) {
+
+    init(networkService: Networkable, networkServiceByURLSession: NetworkServicerPotocol) {
         self.networkService = networkService
+        self.networkServiceByURLSession = networkServiceByURLSession
+
     }
 }
 
@@ -26,6 +30,6 @@ extension OfdAPIService: OfdAPIServicable {
     }
     
     func gerReportsRequest(request: OfdGetReportsRequest, complition: @escaping (Result<Welcome, Error>) -> Void) {
-        networkService.request(OfdEndpoints.fetch(request: request), complition: complition)
+        networkServiceByURLSession.request(request, complition: complition)
     }
 }

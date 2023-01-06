@@ -14,9 +14,7 @@ protocol SbisAuthViewProtocol: UIViewController {
 }
 
 class SbisAuthViewController: UIViewController {
-    
     var presenter: SbisAuthPresenterProtocol?
-    
     //TODO: как изменить приватное свойство в дочернем класе
     var loginTextfield: UITextField = {
         let loginTextfield = UITextField()

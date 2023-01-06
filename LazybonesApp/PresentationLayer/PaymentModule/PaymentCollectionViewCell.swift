@@ -7,9 +7,8 @@
 
 import UIKit
 
-class PaymentCollectionViewCell: UICollectionViewCell {
+final class PaymentCollectionViewCell: UICollectionViewCell {
     static let identifier = "PaymentCollectionViewCell"
-
     private lazy var counterpartyINNLabel: UILabel = {
         var label = UILabel()
         label.font = .mainLightHelvetica(size: 16)
@@ -35,7 +34,6 @@ class PaymentCollectionViewCell: UICollectionViewCell {
         label.textColor = .tochkaExpense
         return label
     }()
-    
     private lazy var stackView: UIStackView = {
         var stackView = UIStackView(
             arrangedSubviews: [paymentAmountLabel,
@@ -70,7 +68,6 @@ class PaymentCollectionViewCell: UICollectionViewCell {
         counterpartyINNLabel.text = "ИНН: " + dataForCell.counterpartyINN
         paymentPurposeLabel.text = dataForCell.paymentPurpose
     }
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()

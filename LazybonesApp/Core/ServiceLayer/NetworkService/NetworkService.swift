@@ -40,6 +40,7 @@ extension NetworkService: Networkable {
                 return
             }
             self.provider.request(multiTarget) { result in
+                print(result)
                 switch result {
                 case .failure(let error):
                     complition(.failure(error))
@@ -59,6 +60,7 @@ extension NetworkService: Networkable {
                         break
                     case 400...499:
                         print("Status code \(urlResponse.statusCode)")
+                        print(String(data: response.data, encoding: .utf8))
                         self.decoderService.decode(response.data, complition: complition)
                         //do something
                         break

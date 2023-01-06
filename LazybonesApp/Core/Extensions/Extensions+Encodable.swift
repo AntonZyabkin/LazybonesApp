@@ -58,8 +58,8 @@ extension UIColor {
     static let chartPurple = UIColor(hex: "7A25F8")
     static let myGray = UIColor(hex: "fafafa")
     static let textGreen = UIColor(hex: "1b8366")
+    static let textBlue = UIColor(hex: "334079")
     static let textRed = UIColor(hex: "BD3D3A")
-
 }
 
 extension UIFont {

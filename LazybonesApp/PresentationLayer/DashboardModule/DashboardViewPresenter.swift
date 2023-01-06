@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DashboardViewPresenterProtocol {
-    func viewDidLoad()
+    func startLoadData()
     func logOutItemDidPress()
 }
 
@@ -33,7 +33,7 @@ final class DashboardViewPresenter {
 
 extension DashboardViewPresenter: DashboardViewPresenterProtocol {
     
-    func viewDidLoad() {
+    func startLoadData() {
         print("did load DashBoard")
         guard let ofdAuthToket = keychainService.fetch(for: .ofdAuthToken) else {
             let authViewController = moduleBuilder.buildOFDAuthViewController()

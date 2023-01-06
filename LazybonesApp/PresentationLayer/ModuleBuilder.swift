@@ -27,6 +27,7 @@ final class ModuleBuilder {
     private let networkService: Networkable
     private let decoderService: DecoderServicable
     private let keychainService: KeychainServicable
+    private let networkServiceByURLSession: NetworkServicerPotocol
     
     init() {
         decoderService = DecoderService()
@@ -34,7 +35,8 @@ final class ModuleBuilder {
         networkService = NetworkService(decoderService: decoderService)
         sbisAPIService = SbisAPIService(networkService: networkService)
         tochkaAPIService = TochkaAPIService(networkService: networkService)
-        ofdAPIService = OfdAPIService(networkService: networkService)
+        networkServiceByURLSession = NetworkServiceByURLSession(decoderService: decoderService)
+        ofdAPIService = OfdAPIService(networkService: networkService, networkServiceByURLSession: networkServiceByURLSession)
     }
 }
 

@@ -7,10 +7,28 @@
 
 import Foundation
 
+protocol Urlable {
+    var urlString: String { get }
+}
+struct OfdGetReportsRequest: Encodable {
+    
+    private let inn: String
+    private let authToken: String
+    private let dateFrom: String
+    private let dateTo: String
+    
+    init(inn: String, authToken: String, dateFrom: String, dateTo: String) {
+        self.inn = inn
+        self.dateTo = dateTo
+        self.dateFrom = dateFrom
+        self.authToken = authToken
+    }
+}
 
-struct OfdGetReportsRequest {
-    let inn: String
-    let authToken: String
-    let dateFrom: String
-    let dateTo: String
+extension OfdGetReportsRequest: Urlable {
+    var urlString: String {
+        get {
+            return "https://ofd.ru/api/integration/v1/inn/\(inn)/zreports?dateFrom=\(dateFrom)&dateTo=\(dateTo)&AuthToken=\(authToken)"
+        }
+    }
 }

@@ -13,13 +13,13 @@ protocol DashboardViewControllerProtocol: UIViewController {
 final class DashboardViewController: UIViewController {
     
     var presenter: DashboardViewPresenterProtocol?
-    private var logOutOfdNavBarItem = UIBarButtonItem()
+    private lazy var logOutOfdNavBarItem = UIBarButtonItem()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
         configeNavBar()
-        presenter?.viewDidLoad()
+        presenter?.startLoadData()
     }
     
     private func configeNavBar() {
