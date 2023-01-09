@@ -40,7 +40,6 @@ extension NetworkService: Networkable {
                 return
             }
             self.provider.request(multiTarget) { result in
-                print(result)
                 switch result {
                 case .failure(let error):
                     complition(.failure(error))

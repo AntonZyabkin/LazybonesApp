@@ -31,6 +31,7 @@
 		E828D9802932921D001F7817 /* TochkaJWTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */; };
 		E828D9822932924F001F7817 /* TochkaJWTViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */; };
 		E83BB2E7296816CA00FE1110 /* NetworkServiceByURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83BB2E6296816CA00FE1110 /* NetworkServiceByURLSession.swift */; };
+		E83BB32D296AD5FD00FE1110 /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83BB32C296AD5FD00FE1110 /* DashboardModel.swift */; };
 		E83C82A92939E33D0007A8A1 /* TochkaInitStatementRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82A82939E33D0007A8A1 /* TochkaInitStatementRequest.swift */; };
 		E83C82AB293A270B0007A8A1 /* TochkaInitStatementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82AA293A270B0007A8A1 /* TochkaInitStatementResponse.swift */; };
 		E83C82AF293A40790007A8A1 /* TochkaGetStatementResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83C82AE293A40790007A8A1 /* TochkaGetStatementResponse.swift */; };
@@ -121,6 +122,7 @@
 		E828D97F2932921D001F7817 /* TochkaJWTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaJWTViewController.swift; sourceTree = "<group>"; };
 		E828D9812932924F001F7817 /* TochkaJWTViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaJWTViewPresenter.swift; sourceTree = "<group>"; };
 		E83BB2E6296816CA00FE1110 /* NetworkServiceByURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceByURLSession.swift; sourceTree = "<group>"; };
+		E83BB32C296AD5FD00FE1110 /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
 		E83C82A82939E33D0007A8A1 /* TochkaInitStatementRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaInitStatementRequest.swift; sourceTree = "<group>"; };
 		E83C82AA293A270B0007A8A1 /* TochkaInitStatementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaInitStatementResponse.swift; sourceTree = "<group>"; };
 		E83C82AE293A40790007A8A1 /* TochkaGetStatementResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TochkaGetStatementResponse.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		E83F35BF2908027F00C979D8 /* DashboardModule */ = {
 			isa = PBXGroup;
 			children = (
+				E83BB32C296AD5FD00FE1110 /* DashboardModel.swift */,
 				E83F35D52908040400C979D8 /* DashboardViewController.swift */,
 				E804F851294C45C100815E20 /* DashboardViewPresenter.swift */,
 			);
@@ -809,6 +812,7 @@
 				E83F35D62908040400C979D8 /* DashboardViewController.swift in Sources */,
 				E83C82D5293DAC010007A8A1 /* TochkaPaymentForSignRequest.swift in Sources */,
 				E828D94D2928BE0A001F7817 /* TochkaAccessTokenResponse.swift in Sources */,
+				E83BB32D296AD5FD00FE1110 /* DashboardModel.swift in Sources */,
 				E873F070291E68A80010048C /* SbisAuthViewController.swift in Sources */,
 				E83F35E829095CD200C979D8 /* CominTableViewCell.swift in Sources */,
 				E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */,

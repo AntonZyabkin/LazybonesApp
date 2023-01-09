@@ -56,6 +56,10 @@ extension UIColor {
     static let chartOrange = UIColor(hex: "FFBE70")
     static let chartGreen = UIColor(hex: "19F3E5")
     static let chartPurple = UIColor(hex: "7A25F8")
+    static let chartLightRed = UIColor(hex: "ffaca6")
+    static let chartRed = UIColor(hex: "fc4e42")
+    static let chartbrightRed = UIColor(hex: "d90e00")
+
     static let myGray = UIColor(hex: "fafafa")
     static let textGreen = UIColor(hex: "1b8366")
     static let textBlue = UIColor(hex: "334079")

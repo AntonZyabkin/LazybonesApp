@@ -8,6 +8,7 @@ target 'LazybonesApp' do
   # Pods for LazybonesApp
   pod 'Moya', '~> 15.0'
   pod 'SwiftKeychainWrapper'
+  pod 'Charts'
 
   target 'LazybonesAppTests' do
     inherit! :search_paths

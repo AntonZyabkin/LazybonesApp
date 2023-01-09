@@ -12,7 +12,7 @@ final class OfdAuthViewPresenter {
     
     private let ofdAPIService: OfdAPIServicable
     private let keychainService: KeychainServicable
-    
+
     init(ofdAPIService: OfdAPIServicable, keychainService: KeychainServicable) {
         self.ofdAPIService = ofdAPIService
         self.keychainService = keychainService
@@ -30,7 +30,7 @@ extension OfdAuthViewPresenter: SbisAuthPresenterProtocol {
     
     func authButtonDidPressed(_ login: String, _ password: String) {
         let request = OfdAuthRequest(login: login, password: password)
-        //TODO: Нужно ли объявлять лист захвата с слабыv селф [weak self] на след строке?
+        //TODO: Нужно ли объявлять лист захвата с слабых селф [weak self] на след строке?
         ofdAPIService.sendAuthRequest(request: request) { response in
             switch response {
             case .success(let result):

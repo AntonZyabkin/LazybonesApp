@@ -34,14 +34,12 @@ extension NetworkServiceByURLSession: NetworkServicerPotocol {
             guard let url = URL(string: request.urlString) else { return }
             let urlRequest = URLRequest(url: url)
             URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, response, error in
-                
                 if let error = error {
                     complition(.failure(error))
                 }
                 if let data = data {
                     self.decoderService.decode(data, complition: complition)
                 }
-                print(response)
             }).resume()
         }
     }
