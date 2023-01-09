@@ -12,7 +12,11 @@ protocol DashboardViewPresenterProtocol {
     func logOutItemDidPress()
 }
 
-final class DashboardViewPresenter {
+protocol DashboardLoaderProtocol {
+    func startLoadData()
+}
+
+final class DashboardViewPresenter: DashboardLoaderProtocol {
     private let moduleBuilder: Builder
     private let ofdAPIService: OfdAPIServicable
     private let keychainService: KeychainServicable
@@ -25,28 +29,48 @@ final class DashboardViewPresenter {
         self.moduleBuilder = moduleBuilder
     }
     
-    private func sendGetReportsRequest(token: String, inn: String, dateFrom: String, dateTo: String) {
-        let request = OfdGetReportsRequest(inn: inn, authToken: token, dateFrom: dateFrom, dateTo: dateTo)
-
+    private func showOFDAuthViewController() {
+        DispatchQueue.main.async {
+            let OFDAuthViewController = self.moduleBuilder.buildOFDAuthViewController()
+            OFDAuthViewController.loader = self
+            self.view?.navigationController?.pushViewController(OFDAuthViewController, animated: true)
+        }
     }
 }
 
 extension DashboardViewPresenter: DashboardViewPresenterProtocol {
     
     func startLoadData() {
-        print("did load DashBoard")
         guard let ofdAuthToket = keychainService.fetch(for: .ofdAuthToken) else {
             let authViewController = moduleBuilder.buildOFDAuthViewController()
             view?.navigationController?.pushViewController(authViewController, animated: true)
             print("go to auth OFD")
             return
         }
-        let request = OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: "2022-12-01T09:28:54", dateTo: "2022-12-17T15:47:36")
+        
+        let request = createOFDRequestForChart(ofdAuthToket: ofdAuthToket)
+//        let request = OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: "2022-12-26T00:00:01", dateTo: "2023-01-09T14:21:27")
+
         ofdAPIService.gerReportsRequest(request: request) { response in
             switch response {
             case .success(let result):
-                print(result)
+                if let massage = result.message {
+                    print("success OFD request, bud massage = \(massage)")
+                    self.showOFDAuthViewController()
+                    return
+                }
+                guard let data = result.data else {
+                    print("there is no Data in response")
+                    return
+                }
+                let barChartDataSetArray = DataForWeekChart(dailyReportArray: data).barChartDataSetArray
+                print("success OFD request")
+                DispatchQueue.main.async {
+                    self.view?.createBarChart(barChartDataSetArray: barChartDataSetArray)
+                }
             case .failure(let error):
+                print("error OFD request")
+                self.showOFDAuthViewController()
                 print(error)
             }
         }
@@ -54,7 +78,36 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
     
     func logOutItemDidPress() {
         keychainService.deleteItem(for: .ofdAuthToken)
-        self.view?.navigationController?.pushViewController(moduleBuilder.buildOFDAuthViewController(), animated: true)
-        view?.chengeBabButtonItem(title: "Войти в OFD.RU")
+        showOFDAuthViewController()
+        view?.changeBarButtonItem(title: "Войти в OFD.RU")
     }
+    private func createOFDRequestForChart(ofdAuthToket: String) -> OfdGetReportsRequest {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormater.locale = Locale(identifier: "ru_RU")
+        let todayDate = Date()
+        
+        var weekDayNumber = Calendar.current.component(.weekday, from: todayDate)
+        if weekDayNumber == 1 {
+            weekDayNumber = 7
+        } else {
+            weekDayNumber -= 1
+        }
+        let periodSize = 13 + weekDayNumber
+        
+        let datetoString = dateFormater.string(from: todayDate)
+        let dateFromDate = Calendar.current.date(byAdding: .day, value: -periodSize, to: todayDate) ?? Date()
+        dateFormater.dateFormat = "yyyy-MM-dd"
+        let dateFromString = dateFormater.string(from: dateFromDate) + "T00:00:01"
+        print(OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString))
+        return OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString)
+    }
+
+}
+
+
+enum Weeks {
+    case eldestWeek
+    case previousWeek
+    case currentWeek
 }

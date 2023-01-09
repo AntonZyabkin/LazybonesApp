@@ -9,7 +9,7 @@ import Foundation
 
 protocol OfdAPIServicable {
     func sendAuthRequest(request: OfdAuthRequest, complition: @escaping (Result<OfdAuthResponse, Error>) -> Void)
-    func gerReportsRequest(request: OfdGetReportsRequest, complition: @escaping (Result<Welcome, Error>) -> Void)
+    func gerReportsRequest(request: OfdGetReportsRequest, complition: @escaping (Result<OfdGetReportsResponse, Error>) -> Void)
 }
 
 final class OfdAPIService{
@@ -29,7 +29,7 @@ extension OfdAPIService: OfdAPIServicable {
         networkService.request(OfdEndpoints.ofdAuth(request: request), complition: complition)
     }
     
-    func gerReportsRequest(request: OfdGetReportsRequest, complition: @escaping (Result<Welcome, Error>) -> Void) {
+    func gerReportsRequest(request: OfdGetReportsRequest, complition: @escaping (Result<OfdGetReportsResponse, Error>) -> Void) {
         networkServiceByURLSession.request(request, complition: complition)
     }
 }

@@ -7,14 +7,16 @@
 
 import UIKit
 
-protocol OfdAuthViewControllerProtocol {}
-
-class OfdAuthViewController: SbisAuthViewController {
+final class OfdAuthViewController: SbisAuthViewController {
+    var loader: DashboardLoaderProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loginTextfield.placeholder = "Введите логин OFD.RU"
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        loader?.startLoadData()
+    }
 }
-
-extension OfdAuthViewController: OfdAuthViewControllerProtocol {}
