@@ -18,54 +18,54 @@ final class TochkaJWTViewController: UIViewController {
     //MARK: - PROPERTIES
     var presenter: TochkaJWTViewPresenterProtocol?
     lazy var jwtTextField: UITextField = {
-        var jwtTextField = UITextField()
-        jwtTextField.placeholderRect(forBounds: CGRect(x: 20, y: 0, width: 0, height: 0))
-        jwtTextField.backgroundColor = .white
-        jwtTextField.placeholder = "Введине JWT"
-        jwtTextField.layer.cornerRadius = 10
-        jwtTextField.layer.masksToBounds = true
-        jwtTextField.frame.size.height = 100
-        return jwtTextField
+        var textField = UITextField()
+        textField.placeholderRect(forBounds: CGRect(x: 20, y: 0, width: 0, height: 0))
+        textField.backgroundColor = .white
+        textField.placeholder = "Введине JWT"
+        textField.layer.cornerRadius = 10
+        textField.layer.masksToBounds = true
+        textField.frame.size.height = 100
+        return textField
     }()
     
     lazy var clientIdTextField: UITextField = {
-        let clientIdTextField = UITextField()
-        clientIdTextField.backgroundColor = .white
-        clientIdTextField.placeholder = "Введите clientId"
-        clientIdTextField.layer.cornerRadius = 10
-        clientIdTextField.layer.masksToBounds = true
-        return clientIdTextField
+        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "Введите clientId"
+        textField.layer.cornerRadius = 10
+        textField.layer.masksToBounds = true
+        return textField
     }()
     
     lazy var tipsLabel: UILabel = {
-        var tipsLabel = UILabel()
-        tipsLabel.sizeToFit()
-        tipsLabel.numberOfLines = 0
-        tipsLabel.lineBreakMode = .byWordWrapping
-        tipsLabel.text = " "
-        return tipsLabel
+        var label = UILabel()
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.text = " "
+        return label
     }()
     
-    private let checkAndSaveJWTButton: UIButton = {
-        let checkAndSaveJWTButton = UIButton(type: .system)
-        checkAndSaveJWTButton.backgroundColor = UIColor.tochkaPurpleAccent
-        checkAndSaveJWTButton.setTitle("Check and save JWT and clientId", for: .normal)
-        checkAndSaveJWTButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
-        checkAndSaveJWTButton.tintColor = .white
-        checkAndSaveJWTButton.layer.cornerRadius = 10
-        checkAndSaveJWTButton.layer.masksToBounds = true
-        return checkAndSaveJWTButton
+    private lazy var checkAndSaveJWTButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = UIColor.myPurpleBold
+        button.setTitle("Check and save JWT and clientId", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        return button
     }()
     
-    private let jwtInfoButton: UIButton = {
-        let jwtInfoButton = UIButton(type: .system)
-        jwtInfoButton.backgroundColor = UIColor.tochkaGreenAccent
-        jwtInfoButton.setTitle("Where to find JWT", for: .normal)
-        jwtInfoButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
-        jwtInfoButton.tintColor = .white
-        jwtInfoButton.layer.cornerRadius = 10
-        jwtInfoButton.layer.masksToBounds = true
-        return jwtInfoButton
+    private lazy var jwtInfoButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .myGreenText
+        button.setTitle("Where to find JWT", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        return button
     }()
     
     private lazy var  tochkaJWTStackView: UIStackView = {
@@ -80,7 +80,7 @@ final class TochkaJWTViewController: UIViewController {
     //MARK: - METHODS
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tochkaPurpleBackground
+        view.backgroundColor = .myPurpleLight
         setupViews()
     }
     

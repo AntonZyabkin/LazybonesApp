@@ -9,6 +9,8 @@ import UIKit
 
 final class CominTableViewCell: UITableViewCell {
     
+    static let identifier = "CominTableViewCell"
+
     private lazy var contractorLogoImageView: UIImageView = {
         let contractorLogoImageView = UIImageView()
         contractorLogoImageView.layer.cornerRadius = 25
@@ -21,7 +23,7 @@ final class CominTableViewCell: UITableViewCell {
     private lazy var contractorNameLabel: UILabel = {
         let contractorNameLabel = UILabel()
         contractorNameLabel.numberOfLines = 1
-        contractorNameLabel.textColor = .textBlue
+        contractorNameLabel.textColor = .myBlueText
         contractorNameLabel.font = .tochkaBoldArial(size: 18)
         return contractorNameLabel
     }()
@@ -90,10 +92,10 @@ final class CominTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            contentView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
             
             contractorLogoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             contractorLogoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
@@ -134,9 +136,9 @@ final class CominTableViewCell: UITableViewCell {
         }
         
         if (Double(sumOfComingLabel.text ?? "") ?? 0) > 0 {
-            sumOfComingLabel.textColor = .textRed
+            sumOfComingLabel.textColor = .myRedText
         } else {
-            sumOfComingLabel.textColor = .textGreen
+            sumOfComingLabel.textColor = .myGreenText
         }
         
         dateOfComingLabel.text = comingList.date

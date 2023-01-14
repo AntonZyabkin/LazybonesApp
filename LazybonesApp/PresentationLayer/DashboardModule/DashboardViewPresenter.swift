@@ -49,7 +49,6 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
         }
         
         let request = createOFDRequestForChart(ofdAuthToket: ofdAuthToket)
-//        let request = OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: "2022-12-26T00:00:01", dateTo: "2023-01-09T14:21:27")
 
         ofdAPIService.gerReportsRequest(request: request) { response in
             switch response {
@@ -67,6 +66,8 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
                 print("success OFD request")
                 DispatchQueue.main.async {
                     self.view?.createBarChart(barChartDataSetArray: barChartDataSetArray)
+                    let report = result.data?.last ?? DailyReport(openDocDateTime: "no data", welcomeOperator: "no data", incomeSumm: 10, incomeCashSumm: 10, incomeCount: 10)
+                    self.view?.configLabels(report: report)
                 }
             case .failure(let error):
                 print("error OFD request")
@@ -102,12 +103,4 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
         print(OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString))
         return OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString)
     }
-
-}
-
-
-enum Weeks {
-    case eldestWeek
-    case previousWeek
-    case currentWeek
 }

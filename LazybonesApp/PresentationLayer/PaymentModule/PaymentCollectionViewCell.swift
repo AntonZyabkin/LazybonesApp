@@ -8,7 +8,9 @@
 import UIKit
 
 final class PaymentCollectionViewCell: UICollectionViewCell {
+    
     static let identifier = "PaymentCollectionViewCell"
+    
     private lazy var counterpartyINNLabel: UILabel = {
         var label = UILabel()
         label.font = .mainLightHelvetica(size: 16)
@@ -31,16 +33,15 @@ final class PaymentCollectionViewCell: UICollectionViewCell {
     private lazy var paymentAmountLabel: UILabel = {
         var label = UILabel()
         label.font = .mainBoldHelvetica(size: 34)
-        label.textColor = .tochkaExpense
+        label.textColor = .myRedText
         return label
     }()
     private lazy var stackView: UIStackView = {
-        var stackView = UIStackView(
-            arrangedSubviews: [paymentAmountLabel,
-                               counterpartyNameLabel,
-                               counterpartyINNLabel,
-                               paymentPurposeLabel
-                              ])
+        var stackView = UIStackView(arrangedSubviews: [paymentAmountLabel,
+                                                       counterpartyNameLabel,
+                                                       counterpartyINNLabel,
+                                                       paymentPurposeLabel
+                                                      ])
         stackView.axis = .vertical
         stackView.backgroundColor = .clear
         stackView.alignment = .fill
@@ -54,7 +55,7 @@ final class PaymentCollectionViewCell: UICollectionViewCell {
     }
     
     func configureContentView() {
-        contentView.backgroundColor = .tochkaPurpleBackground
+        contentView.backgroundColor = .myBackgroundPurpleLight
         contentView.layer.cornerRadius = 20
     }
     

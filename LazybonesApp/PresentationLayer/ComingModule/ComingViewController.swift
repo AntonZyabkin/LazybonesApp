@@ -19,7 +19,7 @@ final class ComingViewController: UIViewController {
     private var comingDocumentArray: [Document] = []
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .myGray
+        tableView.backgroundColor = .myBackgroundGray
         tableView.separatorStyle = .none
         tableView.rowHeight = 160
         return tableView
@@ -27,8 +27,6 @@ final class ComingViewController: UIViewController {
     
     private lazy var logOutSbisNavBarItem = UIBarButtonItem()
     private lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
-    //TODO: переделай реюз идентификатор как свойство ячейки
-    let reuseIdentifier = "contractor"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +41,11 @@ final class ComingViewController: UIViewController {
     }
 
     private func configeTableView() {
-        tableView.register(CominTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        view.addSubview(tableView)
+        tableView.register(CominTableViewCell.self, forCellReuseIdentifier: CominTableViewCell.identifier)
         tableView.frame = view.frame
         tableView.dataSource = self
         tableView.delegate = self
+        view.addSubview(tableView)
     }
     
     private func configeNavBar() {
@@ -94,7 +92,7 @@ extension ComingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? CominTableViewCell else { return UITableViewCell()}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CominTableViewCell.identifier, for: indexPath) as? CominTableViewCell else { return UITableViewCell()}
         cell.setupCellContent(comingList: comingDocumentArray[indexPath.row])
         return cell
     }

@@ -47,23 +47,20 @@ extension UIColor {
     }
     
     //MARK: - Some custon colors for this app
-    static let tochkaPurpleBackground = UIColor(hex: "E6DBFD")
-    static let tochkaIncome = UIColor(hex: "28B400")
-    static let tochkaExpense = UIColor(hex: "EE1415")
-    static let tochkaPurpleAccent = UIColor(hex: "8042E0")
-    static let tochkaGreenAccent = UIColor(hex: "8AC7AA")
-    static let chartPink = UIColor(hex: "FF7790")
-    static let chartOrange = UIColor(hex: "FFBE70")
-    static let chartGreen = UIColor(hex: "19F3E5")
-    static let chartPurple = UIColor(hex: "7A25F8")
-    static let chartLightRed = UIColor(hex: "ffaca6")
-    static let chartRed = UIColor(hex: "fc4e42")
-    static let chartbrightRed = UIColor(hex: "d90e00")
 
-    static let myGray = UIColor(hex: "fafafa")
-    static let textGreen = UIColor(hex: "1b8366")
-    static let textBlue = UIColor(hex: "334079")
-    static let textRed = UIColor(hex: "BD3D3A")
+    static let myPurpleLight = UIColor(hex: "d8c6f5")
+    static let myPurple = UIColor(hex: "#a67ae9")
+    static let myPurpleBold = UIColor(hex: "733bc9")
+
+    static let myGreenText = UIColor(hex: "#267365")
+    static let myRedText = UIColor(hex: "#F23030")
+    static let myOrangeText = UIColor(hex: "#F29F05")
+    static let myBlueText = UIColor(hex: "#01109B")
+
+    static let myGray = UIColor(hex: "757575")
+    static let myBackgroundGray = UIColor(hex: "F2F2F2")
+
+    static let myBackgroundPurpleLight = UIColor(hex: "f2ecfb")
 }
 
 extension UIFont {
@@ -71,12 +68,10 @@ extension UIFont {
         guard let font = UIFont(name: "NotoSansMyanmar-Light", size: size) else { return UIFont() }
         return font
     }
-//    ArialHebrew-Light
     static func tochkaBoldArial(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "NotoSansMyanmar-Bold", size: size) else { return UIFont() }
         return font
     }
-//    ArialHebrew-Bold
     static func mainHelvetica(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Helvetica", size: size) else { return UIFont() }
         return font

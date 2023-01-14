@@ -18,22 +18,22 @@ protocol PaymentViewProtocol: UIViewController {
 final class PaymentViewController: UIViewController {
     var presenter: PaymentViewPresenterProtocol?
     lazy var currentBalanceLabel: UILabel = {
-        let currentBalanceLabel = UILabel()
-        currentBalanceLabel.backgroundColor = .clear
-        currentBalanceLabel.textAlignment = .center
-        currentBalanceLabel.font = .mainBoldHelvetica(size: 45)
-        currentBalanceLabel.textColor = .tochkaIncome
-        return currentBalanceLabel
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.font = .mainBoldHelvetica(size: 45)
+        label.textColor = .black
+        return label
     }()
     lazy var lastPaymentDateLabel: UILabel = {
-        let lastPaymentDateLabel = UILabel()
-        lastPaymentDateLabel.backgroundColor = .clear
-        lastPaymentDateLabel.textAlignment = .center
-        lastPaymentDateLabel.font = .mainBoldHelvetica(size: 16)
-        lastPaymentDateLabel.textColor = .darkGray
-        lastPaymentDateLabel.numberOfLines = 0
-        lastPaymentDateLabel.text = " "
-        return lastPaymentDateLabel
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.textAlignment = .center
+        label.font = .mainBoldHelvetica(size: 16)
+        label.textColor = .darkGray
+        label.numberOfLines = 0
+        label.text = " "
+        return label
     }()
     private lazy var summaryStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [currentBalanceLabel, lastPaymentDateLabel])
@@ -41,31 +41,19 @@ final class PaymentViewController: UIViewController {
         stackView.alignment = .fill
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.backgroundColor = .tochkaPurpleBackground
-        stackView.layer.cornerRadius = 20
-        stackView.layer.shadowColor = UIColor.darkGray.cgColor
-        stackView.layer.shadowRadius = 5
-        stackView.layer.shadowOffset = CGSize(width: 0, height: 15)
-        stackView.layer.shadowOpacity = 0.6
-        stackView.layer.cornerRadius = 25
+        stackView.backgroundColor = .myBackgroundPurpleLight
+        stackView.layer.cornerRadius = 15
         return stackView
     }()
-    private var payOffDebtButton: UIButton = {
-        let payOffDebtButton = UIButton(type: .system)
-        payOffDebtButton.backgroundColor = .tochkaPurpleAccent
-        payOffDebtButton.layer.opacity = 0.9
-        payOffDebtButton.layer.cornerRadius = 30
-        payOffDebtButton.setTitle("Сформировать платежи", for: .normal)
-        payOffDebtButton.tintColor = .white
-        payOffDebtButton.titleLabel?.textAlignment = .center
-        payOffDebtButton.titleLabel?.font = .tochkaBoldArial(size: 22)
-        payOffDebtButton.layer.shadowColor = UIColor.tochkaPurpleAccent.cgColor
-        payOffDebtButton.layer.shadowRadius = 5
-        payOffDebtButton.layer.shadowOffset = CGSize(width: 0, height: 15)
-        payOffDebtButton.layer.shadowOpacity = 0.9
-        payOffDebtButton.layer.cornerRadius = 15
-        payOffDebtButton.isHidden = true
-        return payOffDebtButton
+    private lazy var payOffDebtButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .myPurpleBold
+        button.setTitle("Сформировать платежи", for: .normal)
+        button.tintColor = .white
+        button.titleLabel?.textAlignment = .center
+        button.titleLabel?.font = .tochkaBoldArial(size: 22)
+        button.isHidden = true
+        return button
     }()
     lazy var paymentCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -80,7 +68,7 @@ final class PaymentViewController: UIViewController {
     }()
     private lazy var headerBackgroundView: UIView = {
        let view = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        view.backgroundColor = .tochkaPurpleAccent
+        view.backgroundColor = .myPurpleBold
         view.layer.opacity = 0.8
         return view
     }()
@@ -114,16 +102,15 @@ final class PaymentViewController: UIViewController {
         view.addSubview(payOffDebtButton)
 
         NSLayoutConstraint.activate([
-            
             headerBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             headerBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerBackgroundView.bottomAnchor.constraint(equalTo: paymentCollectionView.topAnchor),
-
-            payOffDebtButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
-            payOffDebtButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            payOffDebtButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -50),
+            
+            payOffDebtButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -88),
             payOffDebtButton.heightAnchor.constraint(equalToConstant: 70),
+            payOffDebtButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            payOffDebtButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             
             summaryStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 64),
             summaryStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -133,7 +120,7 @@ final class PaymentViewController: UIViewController {
             paymentCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/4),
             paymentCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             paymentCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            paymentCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -(self.tabBarController?.tabBar.frame.height ?? 0))
+            paymentCollectionView.bottomAnchor.constraint(equalTo: payOffDebtButton.topAnchor)
         ])
         
         headerBackgroundView.translatesAutoresizingMaskIntoConstraints = false
