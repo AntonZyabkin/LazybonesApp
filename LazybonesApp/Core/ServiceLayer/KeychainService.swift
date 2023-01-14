@@ -32,7 +32,7 @@ final class KeychainService{
         case unexpectedStatus(OSStatus)
     }
 }
-//TODO: Нужно ли отлавливать ошибки в сервисе (если действие невозможно)?
+
 extension KeychainService: KeychainServicable {
     func save(_ value: String, for key: KeychainWrapper.Keys) -> Bool {
         return KeychainWrapper.standard.set(value, forKey: key.rawValue)

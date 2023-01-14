@@ -25,13 +25,12 @@ struct OfdGetReportsResponse: Codable {
 // MARK: - DailyReport
 struct DailyReport: Codable {
     let openDocDateTime, welcomeOperator: String
-    let shiftNumber: Int
-    let incomeSumm, incomeCashSumm: Int
+    let incomeSumm, incomeCashSumm, incomeCount: Int
 
     enum CodingKeys: String, CodingKey {
         case openDocDateTime = "Open_DocDateTime"
         case welcomeOperator = "Operator"
-        case shiftNumber = "ShiftNumber"
+        case incomeCount = "IncomeCount"
         case incomeSumm = "IncomeSumm"
         case incomeCashSumm = "IncomeCashSumm"
     }

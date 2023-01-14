@@ -212,13 +212,13 @@
 			children = (
 				E875D0AA28F2E118000B6A08 /* ModuleBuilder.swift */,
 				E83C82A72938EB380007A8A1 /* TabBarModule */,
-				E873F06B291E68530010048C /* SbisAuthModule */,
 				E83F35BF2908027F00C979D8 /* DashboardModule */,
-				E804F856294C4B2600815E20 /* OfdAuthModule */,
 				E83F35C02908029D00C979D8 /* ComingModule */,
-				E83F35EB29095DA800C979D8 /* webPageViewController */,
 				E83F35C1290802D000C979D8 /* TeamModule */,
 				E83F35C2290802DD00C979D8 /* PaymentModule */,
+				E873F06B291E68530010048C /* SbisAuthModule */,
+				E804F856294C4B2600815E20 /* OfdAuthModule */,
+				E83F35EB29095DA800C979D8 /* webPageViewController */,
 				E828D97A2932919D001F7817 /* TochkaJWTModule */,
 			);
 			path = PresentationLayer;

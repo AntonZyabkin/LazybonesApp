@@ -11,6 +11,6 @@ final class TeamViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .tochkaPurpleAccent
+        view.backgroundColor = .myPurpleLight
     }
 }

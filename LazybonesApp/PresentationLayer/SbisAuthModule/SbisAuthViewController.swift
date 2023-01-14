@@ -17,46 +17,42 @@ class SbisAuthViewController: UIViewController {
     var presenter: SbisAuthPresenterProtocol?
     //TODO: как изменить приватное свойство в дочернем класе
     var loginTextfield: UITextField = {
-        let loginTextfield = UITextField()
-        loginTextfield.backgroundColor = .white
-        loginTextfield.layer.cornerRadius = 10
-        loginTextfield.layer.masksToBounds = true
-        loginTextfield.placeholder = "Введите логин SBIS.RU"
-        loginTextfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
-        return loginTextfield
+        let textfield = UITextField()
+        textfield.backgroundColor = .white
+        textfield.layer.cornerRadius = 10
+        textfield.layer.masksToBounds = true
+        textfield.placeholder = "Введите логин SBIS.RU"
+        textfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        return textfield
     }()
-    
     private let passwordTextfield: UITextField = {
-        let passwordTextfield = UITextField()
-        passwordTextfield.backgroundColor = .white
-        passwordTextfield.layer.cornerRadius = 10
-        passwordTextfield.layer.masksToBounds = true
-        passwordTextfield.placeholder = "Введите пароль"
-        passwordTextfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
-        return passwordTextfield
+        let textfield = UITextField()
+        textfield.backgroundColor = .white
+        textfield.layer.cornerRadius = 10
+        textfield.layer.masksToBounds = true
+        textfield.placeholder = "Введите пароль"
+        textfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        return textfield
     }()
-    
     private lazy var authButton: UIButton =  {
-        let authButton = UIButton(type: .system)
-        authButton.backgroundColor = .tochkaPurpleAccent
-        authButton.setTitle("Enter", for: .normal)
-        authButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 18)
-        authButton.tintColor = .white
-        authButton.layer.cornerRadius = 10
-        authButton.layer.masksToBounds = true
-        authButton.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
-        return authButton
+        let button = UIButton(type: .system)
+        button.backgroundColor = .myPurpleBold
+        button.setTitle("Enter", for: .normal)
+        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(authRequest), for: .touchUpInside)
+        return button
     }()
-
     lazy var tipsLabel: UILabel = {
-        let tipsLabel = UILabel()
-        tipsLabel.sizeToFit()
-        tipsLabel.numberOfLines = 0
-        tipsLabel.lineBreakMode = .byWordWrapping
-        tipsLabel.textAlignment = .center
-        return tipsLabel
+        let label = UILabel()
+        label.sizeToFit()
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        return label
     }()
-    
     private lazy var authViewsStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [loginTextfield, passwordTextfield, tipsLabel, authButton])
         stackView.alignment = .fill
@@ -70,7 +66,7 @@ class SbisAuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewWasLoaded()
-        view.backgroundColor = .tochkaPurpleBackground
+        view.backgroundColor = .myPurpleLight
         configureView()
     }
     

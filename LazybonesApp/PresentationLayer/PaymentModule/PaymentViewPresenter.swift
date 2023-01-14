@@ -30,7 +30,7 @@ final class PaymentViewPresenter {
     weak var view: PaymentViewProtocol?
     var paymentRequestDictionary: [String: TochkaPaymentForSignRequest] = [:]
     var keysForCollectionViewCell: [String] = []
-
+    
     init(tochkaAPIService: TochkaAPIServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.tochkaAPIService = tochkaAPIService
         self.keychainService = keychainService
@@ -60,13 +60,17 @@ final class PaymentViewPresenter {
     //MARK: ВСПОМОГАТЕЛЬНАЯ ф-я для формата лейбла
     //TODO: нужно вернуть данные на главный поток?
     private func setBalanceLabel(_ balance: Double) {
-        self.view?.currentBalanceLabel.text = String(balance) + " \u{20BD}"
+        DispatchQueue.main.async {
+            self.view?.currentBalanceLabel.text = String(balance) + " \u{20BD}"
+        }
     }
     
     //MARK: - пуш ф-я для получения токена авторизации
     //TODO: пушим на главном потоке?
     private func showJWTViewController() {
-        self.view?.navigationController?.pushViewController(moduleBuilder.buildTochkaJWTViewController(), animated: true)
+        DispatchQueue.main.async {
+            self.view?.navigationController?.pushViewController(self.moduleBuilder.buildTochkaJWTViewController(), animated: true)
+        }
     }
     
     //MARK: - Создадим словарь с задолжностями
@@ -91,7 +95,6 @@ final class PaymentViewPresenter {
                     contractorsDictionary[document.counterparty.companyDetails.INN]?.debt += Double(document.summ) ?? 0
                 }
             }
-
         }
         return contractorsDictionary
     }
@@ -124,7 +127,7 @@ final class PaymentViewPresenter {
     
     //MARK: - Запрашиваем конкретную выписку с транзакциями по счету, созданную в initStatement
     func getStatement(_ request: TochkaGetStatementRequest) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .utility).async {
             self.tochkaAPIService.getStatement(request) { result in
                 switch result {
                 case .success(let responce):
@@ -147,7 +150,7 @@ final class PaymentViewPresenter {
             }
         }
     }
-
+    
     //MARK: - Функция отправки запроса о создании платежа на подпись
     func createPaymentForSign(_ paymentRequest: TochkaPaymentForSignRequest) {
         tochkaAPIService.createPaymentForSign(paymentRequest) { result in
@@ -159,7 +162,7 @@ final class PaymentViewPresenter {
             }
         }
     }
-
+    
     //MARK: - сформировать массив с платежками
     func fillPaymentRequestArray() {
         guard let jwt = keychainService.fetch(for: .tochkaJWT), let accountId = keychainService.fetch(for: .tochkaAccountID) else {
@@ -183,7 +186,7 @@ final class PaymentViewPresenter {
                 }
             }
         }
-
+        
         if !debtDict.isEmpty {
             tryCreatePaymentRequest(jwt: jwt, accountId: accountId)
         } else if !paymentRequestDictionary.isEmpty {
