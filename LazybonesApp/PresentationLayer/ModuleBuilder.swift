@@ -75,8 +75,11 @@ extension ModuleBuilder: Builder {
     }
     
     func buildTeamViewController() -> TeamViewController {
-        let viewControlelr = TeamViewController()
-        return viewControlelr
+        let viewController = TeamViewController()
+        let presenter = TeamViewPresenter(ofdAPIService: ofdAPIService, keychainService: keychainService)
+        presenter.view = viewController
+        viewController.presenter = presenter
+        return viewController
     }
     
     func buildWebPageViewController() -> WebPageViewController {

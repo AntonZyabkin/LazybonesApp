@@ -64,14 +64,6 @@ extension UIColor {
 }
 
 extension UIFont {
-    static func tochkaLightArial(size: CGFloat) -> UIFont {
-        guard let font = UIFont(name: "NotoSansMyanmar-Light", size: size) else { return UIFont() }
-        return font
-    }
-    static func tochkaBoldArial(size: CGFloat) -> UIFont {
-        guard let font = UIFont(name: "NotoSansMyanmar-Bold", size: size) else { return UIFont() }
-        return font
-    }
     static func mainHelvetica(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "Helvetica", size: size) else { return UIFont() }
         return font
@@ -80,13 +72,19 @@ extension UIFont {
         guard let font = UIFont(name: "Helvetica-Light", size: size) else { return UIFont() }
         return font
     }
-//    static func mainBoldHelvetica(size: CGFloat) -> UIFont {
-//        guard let font = UIFont(name: "Helvetica-Bold", size: size) else { return UIFont() }
-//        return font
-//    }
     static func mainBoldHelvetica(size: CGFloat) -> UIFont {
         guard let font = UIFont(name: "TimesNewRomanPS-BoldMT", size: size) else { return UIFont() }
         return font
     }
 }
 
+extension Date {
+    func firstDayOfMonth() -> Date {
+        let firstFay = Calendar.current.date(from: Calendar.current.dateComponents([.year, .month], from: Calendar.current.startOfDay(for: self)))!
+        return Calendar.current.date(byAdding: DateComponents(month: 0, day: 0), to: firstFay)!
+    }
+    
+    func lastDayOfMonth() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.firstDayOfMonth())!
+    }
+}

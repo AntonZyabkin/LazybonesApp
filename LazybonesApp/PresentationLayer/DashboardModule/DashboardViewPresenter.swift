@@ -49,7 +49,6 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
         }
         
         let request = createOFDRequestForChart(ofdAuthToket: ofdAuthToket)
-
         ofdAPIService.gerReportsRequest(request: request) { response in
             switch response {
             case .success(let result):

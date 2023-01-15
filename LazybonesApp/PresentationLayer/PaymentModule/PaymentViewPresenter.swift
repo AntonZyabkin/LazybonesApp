@@ -343,7 +343,7 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
         return paymentRequestDictionary.count
     }
     
-    func dataForPaymentCell(by indexPath:IndexPath) -> PaymentDetailModel? {
+    func dataForPaymentCell(by indexPath: IndexPath) -> PaymentDetailModel? {
         guard let request = paymentRequestDictionary[keysForCollectionViewCell[indexPath.row]] else { return nil }
         let dataForCell = PaymentDetailModel(incomeData: request)
         return dataForCell

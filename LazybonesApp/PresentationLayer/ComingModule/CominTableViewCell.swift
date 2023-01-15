@@ -24,7 +24,7 @@ final class CominTableViewCell: UITableViewCell {
         let contractorNameLabel = UILabel()
         contractorNameLabel.numberOfLines = 1
         contractorNameLabel.textColor = .myBlueText
-        contractorNameLabel.font = .tochkaBoldArial(size: 18)
+        contractorNameLabel.font = .mainBoldHelvetica(size: 18)
         return contractorNameLabel
     }()
     
@@ -32,7 +32,7 @@ final class CominTableViewCell: UITableViewCell {
         var sumOfComingLabel = UILabel()
         sumOfComingLabel.numberOfLines = 1
         sumOfComingLabel.textAlignment = .right
-        sumOfComingLabel.font = .tochkaBoldArial(size: 20)
+        sumOfComingLabel.font = .mainBoldHelvetica(size: 20)
         return sumOfComingLabel
     }()
     

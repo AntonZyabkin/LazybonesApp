@@ -71,6 +71,9 @@
 		E8B65C03291CE4CD00FF902C /* SbisEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */; };
 		E8B65C06291CE63700FF902C /* Extensions+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B65C05291CE63700FF902C /* Extensions+Encodable.swift */; };
 		E8D3B8B229640EB70038EE50 /* PaymentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D3B8B129640EB70038EE50 /* PaymentCollectionViewCell.swift */; };
+		E8EA3F832972EF3900E34166 /* TeamViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA3F822972EF3900E34166 /* TeamViewPresenter.swift */; };
+		E8EA3F8529732A1F00E34166 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA3F8429732A1F00E34166 /* TeamCollectionViewCell.swift */; };
+		E8EA3F872974176D00E34166 /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA3F862974176D00E34166 /* TeamModel.swift */; };
 		F630BF613E79AD8A914EE95E /* Pods_LazybonesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFDD0A524DE7BE145842C232 /* Pods_LazybonesApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +169,9 @@
 		E8B65C02291CE4CD00FF902C /* SbisEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SbisEndpoints.swift; sourceTree = "<group>"; };
 		E8B65C05291CE63700FF902C /* Extensions+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+Encodable.swift"; sourceTree = "<group>"; };
 		E8D3B8B129640EB70038EE50 /* PaymentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8EA3F822972EF3900E34166 /* TeamViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewPresenter.swift; sourceTree = "<group>"; };
+		E8EA3F8429732A1F00E34166 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		E8EA3F862974176D00E34166 /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		FC462BB5090219A00A169364 /* Pods_LazybonesApp_LazybonesAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LazybonesApp_LazybonesAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -412,7 +418,10 @@
 		E83F35C1290802D000C979D8 /* TeamModule */ = {
 			isa = PBXGroup;
 			children = (
+				E8EA3F862974176D00E34166 /* TeamModel.swift */,
 				E83F35D1290803C200C979D8 /* TeamViewController.swift */,
+				E8EA3F822972EF3900E34166 /* TeamViewPresenter.swift */,
+				E8EA3F8429732A1F00E34166 /* TeamCollectionViewCell.swift */,
 			);
 			path = TeamModule;
 			sourceTree = "<group>";
@@ -786,6 +795,7 @@
 				E8B5668228ED6886006C89F8 /* LazybonesApp.xcdatamodeld in Sources */,
 				E83C82D3293C761D0007A8A1 /* PaymentModel.swift in Sources */,
 				E828D955293277F4001F7817 /* TochkaBalanceInfoResponse.swift in Sources */,
+				E8EA3F8529732A1F00E34166 /* TeamCollectionViewCell.swift in Sources */,
 				E83F35D2290803C200C979D8 /* TeamViewController.swift in Sources */,
 				E828D94F29291473001F7817 /* TochkaPermissionsListRequest.swift in Sources */,
 				E83C82A92939E33D0007A8A1 /* TochkaInitStatementRequest.swift in Sources */,
@@ -797,6 +807,7 @@
 				E804F862294C88AC00815E20 /* OfdAuthRequest.swift in Sources */,
 				E8AF8A3628FD5B780058884F /* DecoderService.swift in Sources */,
 				E83BB2E7296816CA00FE1110 /* NetworkServiceByURLSession.swift in Sources */,
+				E8EA3F872974176D00E34166 /* TeamModel.swift in Sources */,
 				E828D9462928B72A001F7817 /* TochkaEndpoints.swift in Sources */,
 				E828D9442928ABE4001F7817 /* TochkaAccessTokenRequest.swift in Sources */,
 				E8B5667828ED6886006C89F8 /* AppDelegate.swift in Sources */,
@@ -818,6 +829,7 @@
 				E83F35F2290BB35B00C979D8 /* ComingModel.swift in Sources */,
 				E804F852294C45C100815E20 /* DashboardViewPresenter.swift in Sources */,
 				E83F35DB290836BC00C979D8 /* ComingViewPresenter.swift in Sources */,
+				E8EA3F832972EF3900E34166 /* TeamViewPresenter.swift in Sources */,
 				E804F868294CD09000815E20 /* OfdGetReportsResponse.swift in Sources */,
 				E83C82AF293A40790007A8A1 /* TochkaGetStatementResponse.swift in Sources */,
 				E83C82D7293DBBE50007A8A1 /* TochkaPaymentForSignResponse.swift in Sources */,

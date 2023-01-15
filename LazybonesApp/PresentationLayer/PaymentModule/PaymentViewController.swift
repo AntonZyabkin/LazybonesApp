@@ -51,7 +51,7 @@ final class PaymentViewController: UIViewController {
         button.setTitle("Сформировать платежи", for: .normal)
         button.tintColor = .white
         button.titleLabel?.textAlignment = .center
-        button.titleLabel?.font = .tochkaBoldArial(size: 22)
+        button.titleLabel?.font = .mainBoldHelvetica(size: 22)
         button.isHidden = true
         return button
     }()
