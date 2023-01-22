@@ -10,6 +10,7 @@ import UIKit
 protocol TeamViewControllerProtocol {
     func showAlert(errorDescription: String)
     func reloadData()
+    var currentMonthLabel : UILabel { get }
 }
 
 final class TeamViewController: UIViewController {
@@ -21,11 +22,11 @@ final class TeamViewController: UIViewController {
         button.setImage(UIImage(systemName: "arrow.backward.circle.fill"), for: .normal)
         return button
     }()
-    private lazy var currentMonthLabel: UILabel = {
+    internal lazy var currentMonthLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .mainBoldHelvetica(size: 26)
-        label.text = "февраль 2022"
+        label.text = ""
         return label
     }()
     private lazy var nextMonth: UIButton = {
@@ -50,13 +51,13 @@ final class TeamViewController: UIViewController {
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .myBackgroundGray
         return collectionView
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.startLoadData()
         view.backgroundColor = .myBackgroundGray
+        presenter.startLoadData()
         configViewsConstraints()
         fillStackView()
         calendarCollectionView.delegate = self

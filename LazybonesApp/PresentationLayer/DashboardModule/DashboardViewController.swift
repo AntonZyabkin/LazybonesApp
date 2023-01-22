@@ -198,7 +198,11 @@ final class DashboardViewController: UIViewController {
         incomeCashSummEntryLabel.text = String(Double(report.incomeCashSumm)/100) + " \u{20BD}"
         incomeEMonaySummEntryLabel.text = String(Double((report.incomeSumm - report.incomeCashSumm))/100) + " \u{20BD}"
         billNumbersEntryLabel.text = String(report.incomeCount)
-        billAmountEntryLabel.text = String(Double(report.incomeSumm/report.incomeCount)/100) + " \u{20BD}"
+        if report.incomeCount == 0 {
+            billAmountEntryLabel.text = "0"
+        } else {
+            billAmountEntryLabel.text = String(Double(report.incomeSumm/report.incomeCount)/100) + " \u{20BD}"
+        }
         dateEntryLabel.text = String(report.openDocDateTime.prefix(10))
         welcomeOperatorEntryLabel.text = report.welcomeOperator
         

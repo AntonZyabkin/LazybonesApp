@@ -45,6 +45,7 @@ final class TeamViewPresenter {
                 self.daysArray = CurrentMonth(reports: data, date: self.currentDate).daysArray
                 
                 DispatchQueue.main.async {
+                    self.view.currentMonthLabel.text = self.currentMonthString()
                     self.view.reloadData()
                 }
             case .failure(let error):
@@ -61,6 +62,12 @@ final class TeamViewPresenter {
         let datetoString = dateFormater.string(from: currentDate.lastDayOfMonth()) + "T23:59:59"
 
         return OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString)
+    }
+    
+    private func currentMonthString() -> String {
+        let number = Calendar.current.component(.month, from: currentDate)
+        let months = ["Январь", "Февраль", "Март", "Аперль", "Май", "Июнь", "Июль", "Август", "Сертябрь", "Октябрь", "Ноябрь", "Декабрь"]
+        return months[number - 1]
     }
 }
 

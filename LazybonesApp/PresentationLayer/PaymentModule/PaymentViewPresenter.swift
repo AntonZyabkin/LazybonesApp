@@ -325,7 +325,10 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
             dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
             let stringDate = dateFormater.string(from: date)
             if self.keychainService.save(stringDate, for: .lastPaymentDate) {
-                self.view?.showOrHidePayOffDebtButton()
+                DispatchQueue.main.async {
+                    self.view?.showOrHidePayOffDebtButton()
+                    self.view?.reloadCollectionView()
+                }
             }
         }
         //TODO: если долги есть в словаре, сделать спинер с надпитью - "формирование рассчет и формирование платежных поручений"

@@ -21,7 +21,6 @@ final class TochkaJWTViewController: UIViewController {
         var textField = UITextField()
         textField.placeholderRect(forBounds: CGRect(x: 20, y: 0, width: 0, height: 0))
         textField.backgroundColor = .white
-        textField.placeholder = "Введине JWT"
         textField.layer.cornerRadius = 10
         textField.layer.masksToBounds = true
         textField.frame.size.height = 100
@@ -49,7 +48,7 @@ final class TochkaJWTViewController: UIViewController {
     private lazy var checkAndSaveJWTButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor.myPurpleBold
-        button.setTitle("Check and save JWT and clientId", for: .normal)
+        button.setTitle("Войти в Точка банк", for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
         button.tintColor = .white
         button.layer.cornerRadius = 10
@@ -60,7 +59,7 @@ final class TochkaJWTViewController: UIViewController {
     private lazy var jwtInfoButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .myGreenText
-        button.setTitle("Where to find JWT", for: .normal)
+        button.setTitle("Где взять JWT?", for: .normal)
         button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 22)
         button.tintColor = .white
         button.layer.cornerRadius = 10

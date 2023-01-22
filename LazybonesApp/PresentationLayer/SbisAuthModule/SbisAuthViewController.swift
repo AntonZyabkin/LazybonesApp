@@ -22,7 +22,7 @@ class SbisAuthViewController: UIViewController {
         textfield.layer.cornerRadius = 10
         textfield.layer.masksToBounds = true
         textfield.placeholder = "Введите логин SBIS.RU"
-        textfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        textfield.font = .mainHelvetica(size: 18)
         return textfield
     }()
     private let passwordTextfield: UITextField = {
@@ -31,14 +31,14 @@ class SbisAuthViewController: UIViewController {
         textfield.layer.cornerRadius = 10
         textfield.layer.masksToBounds = true
         textfield.placeholder = "Введите пароль"
-        textfield.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        textfield.font = .mainHelvetica(size: 18)
         return textfield
     }()
     private lazy var authButton: UIButton =  {
         let button = UIButton(type: .system)
         button.backgroundColor = .myPurpleBold
         button.setTitle("Enter", for: .normal)
-        button.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 18)
+        button.titleLabel?.font = .mainHelvetica(size: 18)
         button.tintColor = .white
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true

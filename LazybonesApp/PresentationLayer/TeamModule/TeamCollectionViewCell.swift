@@ -12,13 +12,12 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = .mainHelvetica(size: 16)
+        label.font = .mainBoldHelvetica(size: 26)
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black
-        label.layer.cornerRadius = 8
         label.layer.masksToBounds = true
-        label.backgroundColor = .white
+        label.backgroundColor = .clear
         return label
     }()
 
@@ -35,26 +34,26 @@ class TeamCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         label.text = ""
-        label.backgroundColor = .white
+        contentView.backgroundColor = .white
     }
     
     func configCell(data: DayData) {
-        
+        contentView.layer.cornerRadius = 8
         switch data.welcomeOperator {
         case "Зябкина Т. В.":
-            label.backgroundColor = .myGreenText
+            contentView.backgroundColor = .myGreenText
         case "Алексеева И. Г.":
-            label.backgroundColor = .myOrangeText
+            contentView.backgroundColor = .myOrangeText
         default:
-            label.backgroundColor = .white
+            contentView.backgroundColor = .white
         }
         if data.dayNumber != "" && data.incomeSumm != 0 {
-            label.text = data.dayNumber + "\n\(String(Double(data.incomeSumm)/100))"
-        } else if data.dayNumber != "" {
             label.text = data.dayNumber
+        } else if data.dayNumber == "" {
+            contentView.backgroundColor = .clear
         } else {
             label.text = data.dayNumber
-            label.backgroundColor = .clear
+            contentView.backgroundColor = .white
         }
     }
     override func layoutSubviews() {
@@ -62,7 +61,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
         addSubview(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor),
+            label.bottomAnchor.constraint(equalTo: centerYAnchor),
             label.trailingAnchor.constraint(equalTo: trailingAnchor),
             label.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
