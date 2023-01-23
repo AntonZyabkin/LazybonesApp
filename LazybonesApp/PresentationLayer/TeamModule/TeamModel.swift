@@ -16,19 +16,14 @@ struct CurrentMonth {
     private mutating func configureDaysArrya(reports: [DailyReport], date: Date) {
         guard let daysInMonth = Calendar.current.dateComponents([.day], from: date.lastDayOfMonth()).day else { return }
         var weekDayNumber = Calendar.current.component(.weekday, from: date.firstDayOfMonth())
-        print(date.firstDayOfMonth().description)
         if weekDayNumber == 1 {
             weekDayNumber = 7
         } else {
             weekDayNumber -= 1
         }
-        print(weekDayNumber)
-        
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyy-MM-dd'T'HH.mm.ss"
-        
         daysArray = Array(repeating: DayData(), count: weekDayNumber - 1)
-        
         for dayNumber in 1...daysInMonth {
             var dayData = DayData()
             dayData.dayNumber = String(dayNumber)

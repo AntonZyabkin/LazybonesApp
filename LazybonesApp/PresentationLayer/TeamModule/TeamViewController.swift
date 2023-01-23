@@ -113,13 +113,11 @@ final class TeamViewController: UIViewController {
     
     @objc
     private func previousButtonDidPressed() {
-        print("go back")
         presenter.minusMonth()
     }
     
     @objc
     private func nextButtonDidPressed() {
-        print("go forvard")
         presenter.plusMonth()
     }
     

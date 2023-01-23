@@ -328,6 +328,7 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
                 DispatchQueue.main.async {
                     self.view?.showOrHidePayOffDebtButton()
                     self.view?.reloadCollectionView()
+                    self.view?.showAlert()
                 }
             }
         }

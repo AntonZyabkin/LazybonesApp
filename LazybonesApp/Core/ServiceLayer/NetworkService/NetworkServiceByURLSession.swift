@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Moya
 
 protocol NetworkServicerPotocol {
     func request<T>(_ request: Urlable, complition: @escaping (Result<T, Error>) -> Void) where T: Decodable

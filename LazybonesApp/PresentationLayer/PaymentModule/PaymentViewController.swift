@@ -10,9 +10,9 @@ import UIKit
 protocol PaymentViewProtocol: UIViewController {
     var currentBalanceLabel: UILabel { get }
     var lastPaymentDateLabel: UILabel { get set }
-    var paymentCollectionView: UICollectionView { get set }
     func reloadCollectionView()
     func showOrHidePayOffDebtButton()
+    func showAlert()
 }
 
 final class PaymentViewController: UIViewController {
@@ -71,6 +71,12 @@ final class PaymentViewController: UIViewController {
         view.backgroundColor = .myPurpleBold
         view.layer.opacity = 0.8
         return view
+    }()
+    private lazy var messageAllert: UIAlertController = {
+        let alert = UIAlertController(title: "Успех!", message: "Все платежи были созданы и ожидают подписания в приложении Банка Точка", preferredStyle:  .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(alertAction)
+        return alert
     }()
 
     override func viewDidLoad() {
@@ -148,6 +154,9 @@ extension PaymentViewController: PaymentViewProtocol {
         case false:
             payOffDebtButton.isHidden = true
         }
+    }
+    func showAlert() {
+        present(messageAllert, animated: true)
     }
 }
 

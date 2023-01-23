@@ -10,17 +10,43 @@ import UIKit
 class TeamCollectionViewCell: UICollectionViewCell {
     static var identifier = "TeamCollectionViewCell"
     
-    private lazy var label: UILabel = {
+    private lazy var datelabel: UILabel = {
         let label = UILabel()
         label.font = .mainBoldHelvetica(size: 26)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .center
         label.textColor = .black
-        label.layer.masksToBounds = true
         label.backgroundColor = .clear
         return label
     }()
-
+    private lazy var operatorLabel: UILabel = {
+        let label = UILabel()
+        label.font = .mainLightHelvetica(size: 12)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .black
+        label.backgroundColor = .clear
+        return label
+    }()
+    private lazy var incomeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .mainLightHelvetica(size: 12)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = .black
+        label.backgroundColor = .clear
+        return label
+    }()
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [datelabel, operatorLabel, incomeLabel])
+        stackView.alignment = .fill
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 5
+        return stackView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -33,7 +59,9 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        label.text = ""
+        datelabel.text = ""
+        operatorLabel.text = ""
+        incomeLabel.text = ""
         contentView.backgroundColor = .white
     }
     
@@ -48,23 +76,30 @@ class TeamCollectionViewCell: UICollectionViewCell {
             contentView.backgroundColor = .white
         }
         if data.dayNumber != "" && data.incomeSumm != 0 {
-            label.text = data.dayNumber
+            datelabel.text = data.dayNumber
+            if let shortOperatorString = data.welcomeOperator.split(separator: " ").first {
+                operatorLabel.text = String(shortOperatorString)
+            } else {
+                operatorLabel.text = data.welcomeOperator
+            }
+            
+            incomeLabel.text = "\(data.incomeSumm/100) \u{20BD}"
         } else if data.dayNumber == "" {
             contentView.backgroundColor = .clear
         } else {
-            label.text = data.dayNumber
+            datelabel.text = data.dayNumber
             contentView.backgroundColor = .white
         }
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        addSubview(label)
+        addSubview(stackView)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: topAnchor),
-            label.bottomAnchor.constraint(equalTo: centerYAnchor),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor)
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
-        label.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
     }
 }

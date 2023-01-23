@@ -86,20 +86,17 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
         dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         dateFormater.locale = Locale(identifier: "ru_RU")
         let todayDate = Date()
-        
         var weekDayNumber = Calendar.current.component(.weekday, from: todayDate)
-        if weekDayNumber == 1 {
-            weekDayNumber = 7
-        } else {
+        if weekDayNumber != 1 {
             weekDayNumber -= 1
+        } else {
+            weekDayNumber = 7
         }
         let periodSize = 13 + weekDayNumber
-        
         let datetoString = dateFormater.string(from: todayDate)
         let dateFromDate = Calendar.current.date(byAdding: .day, value: -periodSize, to: todayDate) ?? Date()
         dateFormater.dateFormat = "yyyy-MM-dd"
         let dateFromString = dateFormater.string(from: dateFromDate) + "T00:00:01"
-        print(OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString))
         return OfdGetReportsRequest(inn: "5024198006", authToken: ofdAuthToket, dateFrom: dateFromString, dateTo: datetoString)
     }
 }
