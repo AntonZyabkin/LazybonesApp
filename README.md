@@ -67,7 +67,7 @@
 - отправляет платежные поручения в банк Точка «на подписание»
 
 ## Скриншоты
-<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC1.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC2.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC3.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC4.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC5.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC6.png" width="252" height="503" />  
+<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC1.png" width="252" height="503" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC2.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC3.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC4.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC5.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC6.png" width="252" height="545" />  
 
 ## Mockups
 <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/mockup1.jpg" width="400" height="532" /> 
