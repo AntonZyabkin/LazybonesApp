@@ -39,7 +39,6 @@ final class PaymentViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [currentBalanceLabel, lastPaymentDateLabel])
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.backgroundColor = .myBackgroundPurpleLight
         stackView.layer.cornerRadius = 15

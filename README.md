@@ -1,4 +1,4 @@
-![enter image description here](https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/LBapp%20for%20GitHub.png)
+![enter image description here](https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/logo.png)
 # Содержание:
  1. Аннотация 
  2. Установка и требования 
