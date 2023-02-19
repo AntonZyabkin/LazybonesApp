@@ -28,6 +28,7 @@ enum NetworkError: Error {
 }
 
 extension NetworkService: Networkable {
+    
     func request<T>(_ target: TargetType, complition: @escaping (Result<T, Error>) -> Void) where T: Decodable {
         let multiTarget = MultiTarget(target)
         func complitionHandler(_ result: Result<T, Error>) {

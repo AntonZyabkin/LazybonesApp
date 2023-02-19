@@ -19,7 +19,6 @@ final class DecoderService{
 }
 
 extension DecoderService: DecoderServicable {
-    //TODO: пришлось откзаться от перевода на другой поток работу Кодера, т.к. результат возвращается в неожиданное время
     func decode<T: Decodable>(_ data: Data, complition: @escaping (Result<T, Error>) -> Void) {
         do {
             let result = try self.jsonDecoder.decode(T.self, from: data)
@@ -37,5 +36,4 @@ extension DecoderService: DecoderServicable {
             complition(.failure(error))
         }
     }
-    
 }
