@@ -30,6 +30,7 @@ final class KeychainService{
         case duplicateItem
         case invalidItemFormat
         case unexpectedStatus(OSStatus)
+        case innNotFound
     }
 }
 
@@ -68,7 +69,7 @@ extension KeychainService: KeychainServicable {
         if let data = KeychainWrapper.standard.data(forKey: key) {
             decoder.decode(data, complition: complition)
         } else {
-            print("no data by that INN")
+            complition(.failure(KeychainError.innNotFound))
         }
     }
     

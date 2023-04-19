@@ -85,18 +85,12 @@ final class CominTableViewCell: UITableViewCell {
         contentView.layer.cornerRadius = 25
         
         //TODO: как мне сделать кастомный лейаут контентвью?
-        contentView.translatesAutoresizingMaskIntoConstraints = false
         contractorLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         sumOfComingLabel.translatesAutoresizingMaskIntoConstraints = false
         dateOfComingLabel.translatesAutoresizingMaskIntoConstraints = false
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            
             contractorLogoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             contractorLogoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             contractorLogoImageView.widthAnchor.constraint(equalToConstant: 48),

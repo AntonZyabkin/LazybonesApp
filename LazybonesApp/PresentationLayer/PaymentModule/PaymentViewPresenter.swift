@@ -75,6 +75,12 @@ final class PaymentViewPresenter {
     
     //MARK: - Создадим словарь с задолжностями
     func createDebtsDictionary(coming: SbisShortComingListResponse) -> [String: Contractor] {
+//        let date = Date()
+//        let dateFormater = DateFormatter()
+//        dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
+//        let stringDate = "05.04.2023 09.50.00"
+//        keychainService.save(stringDate, for: .lastPaymentDate)
+        
         guard let lastPaymentDateString = keychainService.fetch(for: .lastPaymentDate) else {
             print("last date keychain extract error")
             return [:]
@@ -183,6 +189,11 @@ final class PaymentViewPresenter {
                     keysForCollectionViewCell.append(debt.key)
                     keychainService.saveCodable(request, for: debt.key)
                     debtDict.removeValue(forKey: debt.key)
+                } else if findPayment(key: debt.key) == nil {
+                    print("no payment")
+                    if debt.key == "7718603255" {
+                        debtDict.removeValue(forKey: debt.key)
+                    }
                 }
             }
         }

@@ -42,8 +42,7 @@ extension DashboardViewPresenter: DashboardViewPresenterProtocol {
     
     func startLoadData() {
         guard let ofdAuthToket = keychainService.fetch(for: .ofdAuthToken) else {
-            let authViewController = moduleBuilder.buildOFDAuthViewController()
-            view?.navigationController?.pushViewController(authViewController, animated: true)
+            showOFDAuthViewController()
             print("go to auth OFD")
             return
         }
