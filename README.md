@@ -40,8 +40,8 @@
 
 ### Для работы с приложением необходимо авторизоваться в трех сервисах:
 - Точка  Банк (JWT  bearer  auth) 
-- Сбис (логин + пароль) 
-- OFD (логин +  пароль)
+- Сбис (логин + пароль = auth token) 
+- OFD (логин +  пароль = auth token)
 
 ### Модули
 #### ФинТабло:
@@ -68,9 +68,3 @@
 
 ## Скриншоты
 <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC1.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC2.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC3.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC4.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC5.png" width="252" height="545" />  <img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/SC6.png" width="252" height="545" />  
-
-## Mockups
-<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/mockup1.jpg" width="400" height="532" /> 
-<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/mockup2.jpg" width="500" height="333" /> 
-<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/mockup3.jpg" width="333" height="500" /> 
-<img src="https://raw.githubusercontent.com/AntonZyabkin/LazybonesApp/main/Screenshots/mockup4.png" width="730" height="547" /> 

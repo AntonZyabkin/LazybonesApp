@@ -279,7 +279,7 @@ final class PaymentViewPresenter {
             body: TochkaPaymentForSignBodyRequest(
                 data: DataClasPaymentForSign(
                     accountCode: "40702810501500049085",
-                    bankCode: "044525999",
+                    bankCode: "044525104",
                     counterpartyBankBic: transaction.creditorAgent!.identification,
                     counterpartyAccountNumber: transaction.creditorAccount!.identification,
                     counterpartyINN: inn,
