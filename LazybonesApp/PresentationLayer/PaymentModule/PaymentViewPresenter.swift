@@ -185,6 +185,7 @@ final class PaymentViewPresenter {
                     request.jwt = jwt
                     request.body.data.paymentNumber = String(paymentRequestDictionary.count + 1)
                     request.body.data.paymentAmount = String(debt.value.debt)
+                    request.body.data.bankCode = "044525104"
                     paymentRequestDictionary[debt.key] = request
                     keysForCollectionViewCell.append(debt.key)
                     keychainService.saveCodable(request, for: debt.key)
