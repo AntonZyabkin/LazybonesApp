@@ -75,10 +75,10 @@ final class PaymentViewPresenter {
     
     //MARK: - Создадим словарь с задолжностями
     func createDebtsDictionary(coming: SbisShortComingListResponse) -> [String: Contractor] {
-//        let date = Date()
-//        let dateFormater = DateFormatter()
-//        dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
-//        let stringDate = "05.04.2023 09.50.00"
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
+
+//        let stringDate = "13.11.2023 08.25.00"
 //        keychainService.save(stringDate, for: .lastPaymentDate)
         
         guard let lastPaymentDateString = keychainService.fetch(for: .lastPaymentDate) else {
@@ -86,8 +86,6 @@ final class PaymentViewPresenter {
             return [:]
         }
         setLastPaymentDateLabel()
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
         let lastPaymentDateLikeDate = dateFormater.date(from: lastPaymentDateString) ?? Date()
         var contractorsDictionary: [String: Contractor] = [:]
         for document in coming.result.document {
