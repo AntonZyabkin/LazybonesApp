@@ -30,7 +30,7 @@ final class PaymentViewPresenter {
     weak var view: PaymentViewProtocol?
     var paymentRequestDictionary: [String: TochkaPaymentForSignRequest] = [:]
     var keysForCollectionViewCell: [String] = []
-    
+    var numberOfTry = 3
     init(tochkaAPIService: TochkaAPIServicable, keychainService: KeychainServicable, moduleBuilder: Builder) {
         self.tochkaAPIService = tochkaAPIService
         self.keychainService = keychainService
@@ -78,7 +78,7 @@ final class PaymentViewPresenter {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "dd.MM.yyyy HH.mm.ss"
 
-//        let stringDate = "13.11.2023 08.25.00"
+//        let stringDate = "08.07.2024 08.25.00"
 //        keychainService.save(stringDate, for: .lastPaymentDate)
         
         guard let lastPaymentDateString = keychainService.fetch(for: .lastPaymentDate) else {
@@ -189,10 +189,15 @@ final class PaymentViewPresenter {
                     keychainService.saveCodable(request, for: debt.key)
                     debtDict.removeValue(forKey: debt.key)
                 } else if findPayment(key: debt.key) == nil {
-                    print("no payment")
-                    if debt.key == "7718603255" {
-                        debtDict.removeValue(forKey: debt.key)
-                    }
+//                    if debt.key == "7718603255" || debt.key == "7605016030" {
+//                    }
+
+					print("Ищем платежку")
+
+					if numberOfTry == 0 {
+						debtDict.removeValue(forKey: debt.key)
+						print("Не найдено платежное поручения для счета от компании ИНН: \(debt.key)")
+					}
                 }
             }
         }
@@ -201,7 +206,7 @@ final class PaymentViewPresenter {
             tryCreatePaymentRequest(jwt: jwt, accountId: accountId)
         } else if !paymentRequestDictionary.isEmpty {
             print("all payments was created")
-            self.view?.showOrHidePayOffDebtButton()
+            self.view?.isNeedHidePaymentButton(false)
         } else {
             print("there is nothing to pay")
         }
@@ -243,7 +248,6 @@ final class PaymentViewPresenter {
             } else {
                 print(paymentRequestDictionary)
             }
-            
         }
     }
     //TODO: надо синхронизировать очереди
@@ -336,7 +340,7 @@ extension PaymentViewPresenter: PaymentViewPresenterProtocol {
             let stringDate = dateFormater.string(from: date)
             if self.keychainService.save(stringDate, for: .lastPaymentDate) {
                 DispatchQueue.main.async {
-                    self.view?.showOrHidePayOffDebtButton()
+                    self.view?.isNeedHidePaymentButton(true)
                     self.view?.reloadCollectionView()
                     self.view?.showAlert()
                 }

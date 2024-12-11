@@ -11,7 +11,7 @@ protocol PaymentViewProtocol: UIViewController {
     var currentBalanceLabel: UILabel { get }
     var lastPaymentDateLabel: UILabel { get set }
     func reloadCollectionView()
-    func showOrHidePayOffDebtButton()
+	func isNeedHidePaymentButton(_ status: Bool)
     func showAlert()
 }
 
@@ -146,14 +146,10 @@ extension PaymentViewController: PaymentViewProtocol {
         paymentCollectionView.reloadData()
     }
     
-    func showOrHidePayOffDebtButton() {
-        switch payOffDebtButton.isHidden {
-        case true:
-            payOffDebtButton.isHidden = false
-        case false:
-            payOffDebtButton.isHidden = true
-        }
+	func isNeedHidePaymentButton(_ status: Bool) {
+		payOffDebtButton.isHidden = status
     }
+
     func showAlert() {
         present(messageAllert, animated: true)
     }
@@ -172,6 +168,7 @@ extension PaymentViewController: UICollectionViewDelegate, UICollectionViewDataS
         }
         guard let dataForPaymentCell = presenter?.dataForPaymentCell(by: indexPath) else { return cell }
         cell.configureCell(dataForCell: dataForPaymentCell)
+		payOffDebtButton.isHidden = presenter?.numberOfItemsInSection() == 0
         return cell
     }
 }
